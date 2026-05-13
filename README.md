@@ -16,38 +16,58 @@ Claude takes it from there.
 
 **[Download the skill (ZIP)](https://github.com/abiodedeyi/ai-seo/releases/latest/download/ai-seo-skill.zip)**
 
-That's the easy button. Then follow Option A or Option B below depending on which Claude you use.
+Then follow the option below that matches how you use Claude.
 
 ---
 
-## Which Claude do you use?
+## Where will you install it?
 
-| If you use… | Follow… | Difficulty |
+| You use Claude on… | Follow… | Difficulty |
 |---|---|---|
-| Claude on the web (claude.ai) | **Option A** | Easiest — no terminal |
-| Claude Code (terminal app) | **Option B** | A few extra steps |
+| **Claude Desktop app** (the **Cowork** tab) | **Option A** | Easy |
+| **claude.ai** in a web browser | **Option B** | Easy |
+| **Claude Code** (terminal app) | **Option C** | A few extra steps |
 
-Not sure? Most people use claude.ai in their browser → **go with Option A**.
+Not sure which one you use? Most people use claude.ai in their browser → **Option B**.
 
 ---
 
-## Option A — Install on Claude.ai (web) ⭐ Easiest
+## Option A — Install in Claude Desktop (Cowork) ⭐
+
+1. Open the **Claude Desktop** app on your Mac or Windows PC.
+2. Click the **Cowork** tab.
+3. In the left sidebar, click **Customize**.
+4. Click the **+** button → choose **Upload a skill**.
+5. Select the **`ai-seo-skill.zip`** file you downloaded.
+6. Toggle the skill **on**.
+
+That's it. Start a new chat and try:
+
+> "Audit my website for AI search."
+
+> Don't have Claude Desktop yet? Download it at [claude.com/download](https://claude.com/download). Cowork is only available in the desktop app (not the web or mobile app).
+
+---
+
+## Option B — Install on Claude.ai (web)
 
 1. Go to **[claude.ai](https://claude.ai)** and sign in.
 2. In the sidebar, click **Customize → Skills**.
 3. Click the **+** button → **+ Create skill** → **Upload a skill**.
-4. Upload the **`ai-seo-skill.zip`** file you downloaded.
-5. Done! Open a new chat and try:
+4. Select the **`ai-seo-skill.zip`** file you downloaded.
+5. Toggle it on. Done.
+
+Start a new chat and try:
 
 > "Audit my website for AI search."
 
-**Requirements:** Any Claude plan works (Free, Pro, Max, Team, Enterprise). Make sure **Code execution** is enabled — find it under **Settings → Capabilities**.
+> If you don't see "Upload a skill," make sure **Code execution** is enabled under **Settings → Capabilities**.
 
 ---
 
-## Option B — Install on Claude Code (terminal)
+## Option C — Install on Claude Code (terminal)
 
-If you have [Claude Code](https://claude.com/claude-code) installed on your computer:
+If you have [Claude Code](https://claude.com/claude-code) installed:
 
 ### Step 1 — Open the skills folder
 
@@ -80,7 +100,7 @@ If you have [Claude Code](https://claude.com/claude-code) installed on your comp
 
 > "Help me show up in ChatGPT answers."
 
-If Claude starts asking you about your business and website — 🎉 **it's working.**
+If Claude starts asking about your business and website — 🎉 it's working.
 
 ---
 
@@ -115,18 +135,23 @@ A complete playbook on AI search optimization:
 
 ## Troubleshooting
 
-**(Option A) "Upload a skill" doesn't appear**
+**(Option A — Cowork) "Upload a skill" doesn't appear**
 
-- Make sure **Code execution** is enabled under **Settings → Capabilities** on claude.ai.
+- Make sure you're on the **Cowork** tab (not the regular chat tab).
+- Make sure your Claude Desktop app is updated to the latest version.
+
+**(Option B — Web) "Upload a skill" doesn't appear**
+
+- Make sure **Code execution** is enabled under **Settings → Capabilities**.
 - Reload claude.ai after enabling it.
 
-**(Option B) Claude Code doesn't seem to know about the skill**
+**(Option C — Claude Code) Claude doesn't seem to know about the skill**
 
 - Folder must be named exactly `ai-seo` — no spaces, no capitals.
 - Folder must sit *directly* inside the `skills` folder (not nested).
 - Restart Claude Code (close it and run `claude` again).
 
-**Can't find the `.claude` folder (Option B)**
+**Can't find the `.claude` folder (Option C)**
 
 The `.` at the start hides it by default.
 
