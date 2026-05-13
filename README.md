@@ -14,63 +14,71 @@ Claude takes it from there.
 
 ## ⬇️ Download
 
-**[Click here to download the skill (ZIP)](ai-seo-skill.zip?raw=true)**
+**[Download the skill (ZIP)](https://github.com/abiodedeyi/ai-seo/releases/latest/download/ai-seo-skill.zip)**
 
-That's the easy button. If you'd rather clone the repo:
-
-```bash
-git clone https://github.com/abiodedeyi/ai-seo.git
-```
+That's the easy button. Then follow Option A or Option B below depending on which Claude you use.
 
 ---
 
-## What you need first
+## Which Claude do you use?
 
-**Claude Code** installed on your computer (Mac, Windows, or Linux).
+| If you use… | Follow… | Difficulty |
+|---|---|---|
+| Claude on the web (claude.ai) | **Option A** | Easiest — no terminal |
+| Claude Code (terminal app) | **Option B** | A few extra steps |
 
-If you don't have it: → https://claude.com/claude-code
-
-It's free to install (you pay only for Claude usage). Install Claude Code first, then come back here.
+Not sure? Most people use claude.ai in their browser → **go with Option A**.
 
 ---
 
-## How to install — 3 steps, takes 2 minutes
+## Option A — Install on Claude.ai (web) ⭐ Easiest
 
-### Step 1 — Find the right folder on your computer
+1. Go to **[claude.ai](https://claude.ai)** and sign in.
+2. In the sidebar, click **Customize → Skills**.
+3. Click the **+** button → **+ Create skill** → **Upload a skill**.
+4. Upload the **`ai-seo-skill.zip`** file you downloaded.
+5. Done! Open a new chat and try:
 
-Claude looks for skills in a special folder. Here's how to find it.
+> "Audit my website for AI search."
+
+**Requirements:** Any Claude plan works (Free, Pro, Max, Team, Enterprise). Make sure **Code execution** is enabled — find it under **Settings → Capabilities**.
+
+---
+
+## Option B — Install on Claude Code (terminal)
+
+If you have [Claude Code](https://claude.com/claude-code) installed on your computer:
+
+### Step 1 — Open the skills folder
 
 **On a Mac:**
 
 1. Open **Finder**.
-2. Press these three keys together: `Cmd` + `Shift` + `G`.
-3. A little box pops up. Paste this in: `~/.claude/skills/`
+2. Press `Cmd` + `Shift` + `G`.
+3. Paste: `~/.claude/skills/`
 4. Press **Enter**.
 
 **On a Windows PC:**
 
 1. Open **File Explorer**.
 2. Click the address bar at the top.
-3. Paste this in: `%USERPROFILE%\.claude\skills\`
+3. Paste: `%USERPROFILE%\.claude\skills\`
 4. Press **Enter**.
 
-> If a window says the folder doesn't exist, just create a folder called `skills` inside the `.claude` folder. Done.
+> If the `skills` folder doesn't exist, create it inside the `.claude` folder.
 
 ### Step 2 — Drop the skill in
 
 1. Open the ZIP file you downloaded.
-2. Inside, you'll see a folder called **`ai-seo`**.
-3. **Drag that whole folder** into the `skills` folder you opened in Step 1.
+2. Drag the **`ai-seo`** folder from inside the zip into your `skills` folder.
 
-No installer. No setup. No passwords. Done.
-
-### Step 3 — Test it works
+### Step 3 — Test it
 
 1. Open **Terminal** (Mac) or **Command Prompt / PowerShell** (Windows).
-2. Type `claude` and press **Enter**. Claude Code starts up.
-3. Type this and press Enter:
+2. Type `claude` and press **Enter**.
+3. Type:
 
-> Help me show up in ChatGPT answers
+> "Help me show up in ChatGPT answers."
 
 If Claude starts asking you about your business and website — 🎉 **it's working.**
 
@@ -87,7 +95,7 @@ Just chat with Claude. The skill kicks in automatically when you ask about AI se
 - "My competitor shows up in AI answers and I don't. Fix it."
 - "Check if my robots.txt is blocking AI bots."
 
-If Claude doesn't pick it up, just say: **"Use the ai-seo skill."**
+If Claude doesn't pick it up automatically, just say: **"Use the ai-seo skill."**
 
 ---
 
@@ -107,22 +115,23 @@ A complete playbook on AI search optimization:
 
 ## Troubleshooting
 
-**"Claude doesn't seem to know about the skill."**
+**(Option A) "Upload a skill" doesn't appear**
+
+- Make sure **Code execution** is enabled under **Settings → Capabilities** on claude.ai.
+- Reload claude.ai after enabling it.
+
+**(Option B) Claude Code doesn't seem to know about the skill**
 
 - Folder must be named exactly `ai-seo` — no spaces, no capitals.
-- Folder must sit *directly* inside the `skills` folder, not nested inside another folder.
+- Folder must sit *directly* inside the `skills` folder (not nested).
 - Restart Claude Code (close it and run `claude` again).
 
-**"I can't find the `.claude` folder."**
+**Can't find the `.claude` folder (Option B)**
 
 The `.` at the start hides it by default.
 
 - **Mac:** In Finder, press `Cmd + Shift + .` (period) to reveal hidden folders.
 - **Windows:** In File Explorer, click the **View** tab → tick **Hidden items**.
-
-**"I don't have Claude Code installed."**
-
-Grab it here → https://claude.com/claude-code
 
 ---
 
