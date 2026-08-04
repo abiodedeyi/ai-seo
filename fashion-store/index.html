@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ODETTA — Clothing &amp; Jewellery for the Whole Family</title>
-<meta name="description" content="ODETTA, the family label by Abi Odedeyi. Womenswear, menswear, kidswear and jewellery for every family, everywhere. Natural fabrics, small batches, made to last.">
+<meta name="description" content="ODETTA, the family label. Womenswear, menswear, kidswear and jewellery for every family, everywhere. Natural fabrics, small batches, made to last.">
 <style>
   @font-face{
     font-family:'Space Grotesk';
@@ -23,6 +23,7 @@
     --ink:#0f172a;
     --rust:#bf5e2e;
     --rust-dark:#9c4b22;
+    --rust-soft:#e8b48f;
     --sage:#7d8a6a;
     --muted:#475569;
     --soft:#8a93a5;
@@ -41,18 +42,17 @@
   button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
   a{color:inherit;text-decoration:none}
   :focus-visible{outline:3px solid var(--rust);outline-offset:2px;border-radius:4px}
-  .mono{font-family:var(--mono)}
 
   /* ---------- Announcement bar ---------- */
   .announce{background:var(--ink);color:#f6efe2;text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:.6rem 1rem}
-  .announce b{color:#e8b48f;font-weight:600}
+  .announce b{color:var(--rust-soft);font-weight:600}
 
   /* ---------- Header ---------- */
   header{position:sticky;top:0;z-index:50;background:rgba(251,250,245,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .nav{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.5rem;gap:1rem}
   .brand{font-weight:700;font-size:1.5rem;letter-spacing:.32em;text-transform:uppercase}
   .brand .o{color:var(--rust)}
-  .nav-links{display:flex;gap:1.5rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
+  .nav-links{display:flex;gap:1.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
   .nav-links a{position:relative;padding:.2rem 0;color:var(--muted);transition:color .2s}
   .nav-links a:hover{color:var(--ink)}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--rust);transition:width .25s}
@@ -74,26 +74,29 @@
   .btn-ghost:hover{background:var(--ink);color:var(--paper)}
   .hero-art{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--paper2)}
 
-  /* ---------- Section scaffolding ---------- */
+  /* ---------- Section scaffolding + bands ---------- */
   section{max-width:1240px;margin:0 auto;padding:3.2rem 1.5rem}
+  .band-tint{background:linear-gradient(180deg,var(--paper2),#f2e8d8)}
+  .band-dark{background:var(--ink);color:#f0e9dc}
   .sec-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1.8rem;flex-wrap:wrap}
+  .eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--rust);margin-bottom:.35rem}
   .sec-head h2{font-size:clamp(1.5rem,3vw,2.1rem)}
-  .sec-head .sub{font-family:var(--mono);color:var(--muted);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+  .sec-head .sub{font-family:var(--mono);color:var(--muted);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}
+  .band-dark .eyebrow{color:var(--rust-soft)}
+  .band-dark .sec-head .sub{color:#9a917f}
 
   /* ---------- Collections ---------- */
   .collections{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem}
-  .collection{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;padding:0;text-align:left;transition:transform .25s;background:var(--paper2)}
+  .collection{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .25s;background:var(--paper2)}
   .collection:hover{transform:translateY(-5px)}
   .collection img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
-  .collection .label{position:absolute;left:.9rem;bottom:.9rem;background:rgba(251,250,245,.95);padding:.45rem 1rem;border-radius:999px;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+  .collection .label{position:absolute;left:.9rem;bottom:.9rem;background:rgba(251,250,245,.95);color:var(--ink);padding:.45rem 1rem;border-radius:999px;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
 
-  /* ---------- Products ---------- */
-  .filters{display:flex;gap:.55rem;flex-wrap:wrap;margin-bottom:1.8rem}
-  .chip{padding:.5rem 1.1rem;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:all .2s}
-  .chip:hover{border-color:var(--rust);color:var(--rust)}
-  .chip.active{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+  /* ---------- Product grids ---------- */
   .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem}
-  .card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .25s}
+  .grid.g3{grid-template-columns:repeat(3,1fr)}
+  .grid.g5{grid-template-columns:repeat(5,1fr)}
+  .card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .25s;color:var(--ink)}
   .card:hover{transform:translateY(-5px)}
   .card .art{position:relative;background:var(--paper2)}
   .card .art img{width:100%;aspect-ratio:4/5;object-fit:cover}
@@ -109,18 +112,22 @@
   .add{padding:.5rem .95rem;border-radius:999px;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:background .2s;white-space:nowrap}
   .add:hover{background:var(--rust-dark)}
   .add.added{background:var(--sage)}
+  .band-dark .card{box-shadow:0 16px 40px rgba(0,0,0,.4)}
 
-  /* ---------- Founder / story ---------- */
-  .story{background:var(--ink);color:#f0e9dc;border-radius:var(--radius);overflow:hidden}
-  .story-inner{display:grid;grid-template-columns:.8fr 1.2fr;gap:2.5rem;align-items:center;padding:2.8rem}
-  .founder-photo{border-radius:var(--radius);overflow:hidden;box-shadow:0 14px 36px rgba(0,0,0,.35);max-width:340px}
-  .founder-photo img{width:100%;object-fit:cover;aspect-ratio:4/5}
-  .story .kicker{color:#e8b48f}
-  .story h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:1rem}
-  .story p{color:#c3bcae;margin-bottom:1.1rem;max-width:56ch}
-  .story p b{color:#f0e9dc}
+  /* ---------- Kids sub-shelves ---------- */
+  .kids-sub{display:flex;align-items:center;gap:.9rem;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:1.6rem 0 1rem}
+  .kids-sub:first-of-type{margin-top:0}
+  .kids-sub::after{content:"";flex:1;height:1.5px;background:var(--line)}
+  .kids-sub .dot{width:.55rem;height:.55rem;border-radius:999px;background:var(--sage)}
+  .kids-sub.boys .dot{background:var(--rust)}
+
+  /* ---------- Story ---------- */
+  .story-text{max-width:64ch}
+  .band-dark h2{color:#f6efe2}
+  .story-text p{color:#c3bcae;margin-bottom:1.1rem;max-width:56ch}
+  .story-text p b{color:#f0e9dc}
   .stats{display:flex;gap:2.2rem;margin-top:1.6rem;flex-wrap:wrap}
-  .stat b{display:block;font-family:var(--mono);font-size:1.7rem;font-weight:700;color:#e8b48f}
+  .stat b{display:block;font-family:var(--mono);font-size:1.7rem;font-weight:700;color:var(--rust-soft)}
   .stat span{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#9a917f}
 
   /* ---------- Newsletter ---------- */
@@ -172,20 +179,20 @@
   .toast.show{transform:translate(-50%,0)}
 
   /* ---------- Responsive ---------- */
-  @media (max-width:1000px){
+  @media (max-width:1080px){
+    .grid,.grid.g5{grid-template-columns:repeat(3,1fr)}
     .collections{grid-template-columns:repeat(3,1fr)}
-    .grid{grid-template-columns:repeat(3,1fr)}
   }
   @media (max-width:860px){
     .hero{grid-template-columns:1fr;padding-top:2.2rem}
     .hero-art{order:-1;max-width:520px}
-    .grid{grid-template-columns:1fr 1fr}
-    .story-inner{grid-template-columns:1fr;padding:2rem}
+    .grid,.grid.g3,.grid.g5{grid-template-columns:1fr 1fr}
+    .story-inner{grid-template-columns:1fr}
     .founder-photo{max-width:260px}
     .nav-links{display:none}
   }
   @media (max-width:540px){
-    .grid{grid-template-columns:1fr}
+    .grid,.grid.g3,.grid.g5{grid-template-columns:1fr}
     .collections{grid-template-columns:1fr 1fr}
     .news-form{flex-direction:column}
     .btn-ghost{margin-left:0;margin-top:.7rem}
@@ -200,10 +207,12 @@
   <div class="nav">
     <a class="brand" href="#"><span class="o">O</span>DETTA</a>
     <nav class="nav-links" aria-label="Main">
-      <a href="#collections">Collections</a>
-      <a href="#shop">Shop</a>
+      <a href="#s-women">Women</a>
+      <a href="#s-men">Men</a>
+      <a href="#s-kids">Kids</a>
+      <a href="#s-accessories">Accessories</a>
+      <a href="#s-jewellery">Jewellery</a>
       <a href="#story">Our Story</a>
-      <a href="#newsletter">Contact</a>
     </nav>
     <button class="cart-btn" id="cartBtn" aria-label="Open cart">
       Cart <span class="cart-count" id="cartCount">0</span>
@@ -218,68 +227,117 @@
       <div class="kicker">AW26 · The Family Edit</div>
       <h1>Everyday style for the <span class="hl">whole family</span>.</h1>
       <p>Womenswear, menswear, kidswear and jewellery for every family, everywhere. Natural fabrics, small batches, and pieces designed to be worn for years, not seasons.</p>
-      <a href="#shop" class="btn btn-rust">Shop the collection</a>
+      <a href="#s-women" class="btn btn-rust">Shop the collection</a>
       <a href="#story" class="btn btn-ghost">Our story</a>
     </div>
     <div class="hero-art">
-      <img src="images/hero.svg" alt="Styled flat-lay of camel coat, silk scarf, gold jewellery and sunglasses" width="600" height="750">
+      <img src="images/hero2.svg" alt="Styled flat-lay of camel coat, silk scarf, beaded necklace and sunglasses" width="600" height="750">
     </div>
   </div>
 
   <!-- COLLECTIONS -->
   <section id="collections">
     <div class="sec-head">
-      <h2>Shop by collection</h2>
+      <div>
+        <div class="eyebrow">The Label</div>
+        <h2>Shop by collection</h2>
+      </div>
       <div class="sub">Five edits, one label</div>
     </div>
     <div class="collections">
-      <button class="collection" data-filter="women"><img src="images/t-women.svg" alt="Rust wrap dress on a wooden hanger" width="400" height="300"><span class="label">Women</span></button>
-      <button class="collection" data-filter="men"><img src="images/t-men.svg" alt="Stack of folded menswear knits and shirts" width="400" height="300"><span class="label">Men</span></button>
-      <button class="collection" data-filter="kids"><img src="images/t-kids.svg" alt="Small denim dungarees and striped tee" width="400" height="300"><span class="label">Kids</span></button>
-      <button class="collection" data-filter="accessories"><img src="images/t-accessories.svg" alt="Tan leather tote with silk scarf" width="400" height="300"><span class="label">Accessories</span></button>
-      <button class="collection" data-filter="jewellery"><img src="images/t-jewellery.svg" alt="Gold pendant necklace on display bust" width="400" height="300"><span class="label">Jewellery</span></button>
+      <a class="collection" href="#s-women"><img src="images/t-women.svg" alt="Rust wrap dress on a wooden hanger" width="400" height="300"><span class="label">Women</span></a>
+      <a class="collection" href="#s-men"><img src="images/t-men.svg" alt="Stack of folded menswear knits and shirts" width="400" height="300"><span class="label">Men</span></a>
+      <a class="collection" href="#s-kids"><img src="images/t-kids.svg" alt="Small denim dungarees and striped tee" width="400" height="300"><span class="label">Kids</span></a>
+      <a class="collection" href="#s-accessories"><img src="images/t-accessories.svg" alt="Tan leather tote with silk scarf" width="400" height="300"><span class="label">Accessories</span></a>
+      <a class="collection" href="#s-jewellery"><img src="images/t-jewellery2.svg" alt="Terracotta bead necklace coiled on studio backdrop" width="400" height="300"><span class="label">Jewellery</span></a>
     </div>
   </section>
 
-  <!-- SHOP -->
-  <section id="shop">
+  <!-- WOMEN -->
+  <section id="s-women">
     <div class="sec-head">
-      <h2>The collection</h2>
-      <div class="sub">Small batches. When they are gone, they are gone</div>
+      <div>
+        <div class="eyebrow">Womenswear</div>
+        <h2>Women</h2>
+      </div>
+      <div class="sub">Timeless silhouettes, natural fabrics</div>
     </div>
-    <div class="filters" id="filters" role="group" aria-label="Filter products">
-      <button class="chip active" data-f="all">All</button>
-      <button class="chip" data-f="women">Women</button>
-      <button class="chip" data-f="men">Men</button>
-      <button class="chip" data-f="girls">Girls</button>
-      <button class="chip" data-f="boys">Boys</button>
-      <button class="chip" data-f="accessories">Accessories</button>
-      <button class="chip" data-f="jewellery">Jewellery</button>
-    </div>
-    <div class="grid" id="grid"></div>
+    <div class="grid" data-cat="women"></div>
   </section>
 
-  <!-- STORY / FOUNDER -->
-  <section id="story">
-    <div class="story">
-      <div class="story-inner">
-        <div class="founder-photo">
-          <img src="images/founder.jpg" alt="Abi Odedeyi, founder of ODETTA" width="340" height="425">
-        </div>
+  <!-- MEN -->
+  <div class="band-tint">
+    <section id="s-men">
+      <div class="sec-head">
         <div>
-          <div class="kicker">Meet the founder</div>
-          <h2>Made slowly, worn for years.</h2>
-          <p>ODETTA is the family label from <b>Abi Odedeyi</b>. The name is carved from Odedeyi, and the idea is simple: fewer, better things for every member of the family.</p>
-          <p>Every garment is cut from natural fabrics and made in small batches by makers we know by name. The jewellery line pairs timeless classics with a quiet nod to Abi's heritage: <b>Ayo</b>, the pendant, simply means joy.</p>
-          <div class="stats">
-            <div class="stat"><b>100%</b><span>Natural fibres</span></div>
-            <div class="stat"><b>23</b><span>Pieces in the edit</span></div>
-            <div class="stat"><b>0</b><span>Air freight</span></div>
-          </div>
+          <div class="eyebrow">Menswear</div>
+          <h2>Men</h2>
+        </div>
+        <div class="sub">Workwear roots, softened for every day</div>
+      </div>
+      <div class="grid" data-cat="men"></div>
+    </section>
+  </div>
+
+  <!-- KIDS -->
+  <section id="s-kids">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Kidswear</div>
+        <h2>Kids</h2>
+      </div>
+      <div class="sub">Built for playgrounds, washed a hundred times</div>
+    </div>
+    <div class="kids-sub girls"><span class="dot"></span>Girls</div>
+    <div class="grid" data-cat="girls"></div>
+    <div class="kids-sub boys"><span class="dot"></span>Boys</div>
+    <div class="grid" data-cat="boys"></div>
+  </section>
+
+  <!-- ACCESSORIES -->
+  <div class="band-tint">
+    <section id="s-accessories">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">Accessories</div>
+          <h2>Accessories</h2>
+        </div>
+        <div class="sub">The finishing touches</div>
+      </div>
+      <div class="grid" data-cat="accessories"></div>
+    </section>
+  </div>
+
+  <!-- JEWELLERY -->
+  <div class="band-dark">
+    <section id="s-jewellery">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">The Jewellery Edit</div>
+          <h2>Jewellery</h2>
+        </div>
+        <div class="sub">Hand-strung beads on knotted cord</div>
+      </div>
+      <div class="grid g5" data-cat="jewellery"></div>
+    </section>
+  </div>
+
+  <!-- STORY -->
+  <div class="band-dark" id="story" style="border-top:1px solid rgba(246,239,226,.12)">
+    <section>
+      <div class="story-text">
+        <div class="kicker" style="color:var(--rust-soft)">Our Story</div>
+        <h2>Made slowly, worn for years.</h2>
+        <p>ODETTA is a family label built on a simple idea: <b>fewer, better things</b> for every member of the family. Timeless over trend-led, natural over synthetic, and made well enough to hand down.</p>
+        <p>Every garment is cut from natural fabrics and made in small batches by makers we know by name. The jewellery line is <b>strung by hand</b>: natural clay, wood and glass beads on knotted cord, made to be worn every day.</p>
+        <div class="stats">
+          <div class="stat"><b>100%</b><span>Natural fibres</span></div>
+          <div class="stat"><b>30</b><span>Pieces in the edit</span></div>
+          <div class="stat"><b>0</b><span>Air freight</span></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <!-- NEWSLETTER -->
   <section id="newsletter" class="newsletter">
@@ -297,11 +355,10 @@
   <div class="foot">
     <div>
       <div class="brand"><span class="o">O</span>DETTA</div>
-      <div class="by">Founded by Abi Odedeyi</div>
       <div>© 2026 ODETTA. All rights reserved.</div>
     </div>
     <div class="foot-links">
-      <a href="#shop">Shop</a>
+      <a href="#s-women">Shop</a>
       <a href="#story">About</a>
       <a href="#">Shipping</a>
       <a href="#">Returns</a>
@@ -334,40 +391,40 @@ const PRODUCTS = [
   {id:"w2", name:"Camden Wool Coat",        cat:"women",       price:189, was:null, badge:"New",  alt:"Camel double-breasted wool coat"},
   {id:"w3", name:"Elm Pleated Skirt",       cat:"women",       price:69,  was:null, badge:null,   alt:"Olive pleated midi skirt"},
   {id:"w4", name:"Luna Rib Knit",           cat:"women",       price:75,  was:null, badge:null,   alt:"Dusty rose ribbed jumper"},
+  {id:"w5", name:"Nora Shirt Dress",        cat:"women",       price:79,  was:null, badge:null,   alt:"Indigo belted shirt dress"},
+  {id:"w6", name:"Ivy Wide-Leg Trousers",   cat:"women",       price:69,  was:null, badge:null,   alt:"Warm stone wide-leg trousers"},
+  {id:"w7", name:"Sol Longline Cardigan",   cat:"women",       price:85,  was:null, badge:"New",  alt:"Oatmeal chunky-knit longline cardigan"},
   {id:"m1", name:"Linen Everyday Shirt",    cat:"men",         price:59,  was:null, badge:null,   alt:"Sage linen camp-collar shirt"},
   {id:"m2", name:"Tailored Twill Trousers", cat:"men",         price:79,  was:null, badge:null,   alt:"Charcoal tailored trousers"},
   {id:"m3", name:"Harbour Overshirt",       cat:"men",         price:99,  was:null, badge:"New",  alt:"Navy wool overshirt with chest pockets"},
   {id:"m4", name:"Fell Merino Jumper",      cat:"men",         price:95,  was:null, badge:null,   alt:"Slate blue merino crew-neck jumper"},
+  {id:"m5", name:"Dune Chore Jacket",       cat:"men",         price:119, was:null, badge:"New",  alt:"Tobacco canvas chore jacket"},
+  {id:"m6", name:"Ash Heavy Tee",           cat:"men",         price:29,  was:null, badge:null,   alt:"Washed charcoal heavyweight tee"},
   {id:"g1", name:"Poppy Party Dress",       cat:"girls",       price:45,  was:null, badge:"New",  alt:"Dusty pink party dress with tulle skirt"},
   {id:"g2", name:"Meadow Cardigan",         cat:"girls",       price:35,  was:null, badge:null,   alt:"Butter yellow cardigan with wooden buttons"},
   {id:"g3", name:"Skye Denim Pinafore",     cat:"girls",       price:39,  was:null, badge:null,   alt:"Light-wash denim pinafore dress"},
+  {id:"g4", name:"Wren Cord Dress",         cat:"girls",       price:37,  was:null, badge:null,   alt:"Terracotta corduroy dress"},
   {id:"b1", name:"Scout Hoodie",            cat:"boys",        price:35,  was:null, badge:null,   alt:"Forest green hoodie with kangaroo pocket"},
   {id:"b2", name:"Finn Striped Tee",        cat:"boys",        price:19,  was:null, badge:null,   alt:"Navy and cream breton striped tee"},
   {id:"b3", name:"Bear Dungarees",          cat:"boys",        price:42,  was:null, badge:"New",  alt:"Mid-wash denim dungarees with brass clasps"},
+  {id:"b4", name:"Cove Rain Mac",           cat:"boys",        price:44,  was:null, badge:null,   alt:"Mustard hooded rain mac with toggles"},
   {id:"a1", name:"Sienna Leather Tote",     cat:"accessories", price:145, was:null, badge:null,   alt:"Tan pebbled leather tote with brass hardware"},
   {id:"a2", name:"Mara Silk Scarf",         cat:"accessories", price:45,  was:60,   badge:"Sale", alt:"Plum and rose silk scarf, loosely knotted"},
   {id:"a3", name:"Juno Sunglasses",         cat:"accessories", price:65,  was:null, badge:null,   alt:"Round tortoiseshell sunglasses"},
   {id:"a4", name:"Weald Leather Belt",      cat:"accessories", price:49,  was:null, badge:null,   alt:"Dark brown leather belt with brass buckle"},
-  {id:"j1", name:"Ayo Pendant Necklace",    cat:"jewellery",   price:120, was:null, badge:"New",  alt:"Gold pendant necklace on display bust"},
-  {id:"j2", name:"Etta Pearl Earrings",     cat:"jewellery",   price:85,  was:null, badge:null,   alt:"Gold huggie hoops with pearl drops"},
-  {id:"j3", name:"Ada Stacking Rings",      cat:"jewellery",   price:95,  was:null, badge:null,   alt:"Trio of gold stacking rings"},
-  {id:"j4", name:"Aria Bangle",             cat:"jewellery",   price:110, was:null, badge:null,   alt:"Hammered gold bangle"},
-  {id:"j5", name:"Nia Tennis Bracelet",     cat:"jewellery",   price:150, was:null, badge:"New",  alt:"Silver tennis bracelet with clear stones"},
+  {id:"jb1", name:"Terra Bead Necklace",    cat:"jewellery",   price:55,  was:null, badge:"New",  alt:"Terracotta clay bead necklace on knotted cord"},
+  {id:"jb2", name:"Coco Bead Earrings",     cat:"jewellery",   price:32,  was:null, badge:null,   alt:"Wooden bead drop earrings"},
+  {id:"jb3", name:"Indigo Bead Bracelet",   cat:"jewellery",   price:38,  was:null, badge:null,   alt:"Indigo glass bead bracelet on cord"},
+  {id:"jb4", name:"Meadow Bead Strand",     cat:"jewellery",   price:45,  was:null, badge:null,   alt:"Long sage and cream bead strand necklace"},
+  {id:"jb5", name:"Ivory Knot Bracelet",    cat:"jewellery",   price:35,  was:null, badge:"New",  alt:"Cream bead bracelet with knotted cord detail"},
 ];
 
 const money = n => "£" + n.toFixed(2);
 const imgFor = id => `images/${id}.svg`;
 
-// ---------- Render products ----------
-const grid = document.getElementById("grid");
-function matches(p, f){
-  if(f === "all") return true;
-  if(f === "kids") return p.cat === "girls" || p.cat === "boys";
-  return p.cat === f;
-}
-function renderGrid(filter = "all"){
-  const items = PRODUCTS.filter(p => matches(p, filter));
-  grid.innerHTML = items.map(p => `
+// ---------- Render category sections ----------
+function cardHTML(p){
+  return `
     <div class="card">
       <div class="art">
         ${p.badge ? `<span class="badge ${p.badge.toLowerCase()}">${p.badge}</span>` : ""}
@@ -381,26 +438,11 @@ function renderGrid(filter = "all"){
           <button class="add" data-id="${p.id}">Add to cart</button>
         </div>
       </div>
-    </div>`).join("");
+    </div>`;
 }
-renderGrid();
-
-// ---------- Filters ----------
-function setActiveChip(f){
-  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c.dataset.f === f));
-}
-document.getElementById("filters").addEventListener("click", e => {
-  const chip = e.target.closest(".chip");
-  if(!chip) return;
-  setActiveChip(chip.dataset.f);
-  renderGrid(chip.dataset.f);
+document.querySelectorAll(".grid[data-cat]").forEach(g => {
+  g.innerHTML = PRODUCTS.filter(p => p.cat === g.dataset.cat).map(cardHTML).join("");
 });
-document.querySelectorAll(".collection").forEach(c => c.addEventListener("click", () => {
-  const f = c.dataset.filter;
-  setActiveChip(f); // "kids" highlights no chip; girls/boys chips remain available
-  renderGrid(f);
-  document.getElementById("shop").scrollIntoView({behavior:"smooth"});
-}));
 
 // ---------- Cart ----------
 let cart = [];
@@ -450,7 +492,7 @@ function renderCart(){
   saveCart();
 }
 
-grid.addEventListener("click", e => {
+document.querySelector("main").addEventListener("click", e => {
   const btn = e.target.closest(".add");
   if(!btn) return;
   const id = btn.dataset.id;
