@@ -7,15 +7,15 @@
 <meta name="description" content="AURELLE — considered clothing and accessories. Shop the new season collection.">
 <style>
   :root{
-    --ink:#1a1714;
-    --paper:#faf7f2;
-    --card:#ffffff;
-    --accent:#9a6a4f;
-    --accent-dark:#7c523a;
-    --muted:#8a8178;
-    --line:#e7e0d6;
+    --ink:#16110c;
+    --paper:#f6f4ee;
+    --card:#fffdf9;
+    --accent:#722430;
+    --accent-dark:#571a24;
+    --muted:#7c7468;
+    --line:#e5dfd3;
     --radius:14px;
-    --shadow:0 10px 30px rgba(26,23,20,.08);
+    --shadow:0 10px 30px rgba(22,17,12,.08);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -23,7 +23,8 @@
     font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
     background:var(--paper);color:var(--ink);line-height:1.6;
   }
-  h1,h2,h3,.brand{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:.01em}
+  h1,h2,h3,.brand{font-family:Didot,"Bodoni MT","Playfair Display",Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:.01em}
+  .hero h1 em{font-style:italic;color:var(--accent)}
   img,svg{display:block;max-width:100%}
   button{font:inherit;cursor:pointer;border:none;background:none}
   a{color:inherit;text-decoration:none}
@@ -187,7 +188,7 @@
   <div class="hero">
     <div>
       <div class="kicker">Autumn / Winter 2026</div>
-      <h1>Considered clothing for every day that matters.</h1>
+      <h1>Considered clothing for every day that <em>matters</em>.</h1>
       <p>Timeless silhouettes, natural fabrics, and small-batch production. Discover pieces designed to be worn for years — not seasons.</p>
       <a href="#shop" class="btn btn-dark">Shop the collection</a>
       <a href="#story" class="btn btn-ghost">Our story</a>
@@ -201,8 +202,8 @@
         </defs>
         <rect width="520" height="420" fill="url(#hbg)"/>
         <circle cx="400" cy="90" r="70" fill="#f5efe7" opacity=".7"/>
-        <path d="M180 380 L200 170 Q210 120 260 118 Q310 120 320 170 L340 380 Q260 400 180 380Z" fill="#9a6a4f"/>
-        <path d="M215 150 Q260 190 305 150 L300 128 Q260 150 220 128Z" fill="#7c523a"/>
+        <path d="M180 380 L200 170 Q210 120 260 118 Q310 120 320 170 L340 380 Q260 400 180 380Z" fill="#722430"/>
+        <path d="M215 150 Q260 190 305 150 L300 128 Q260 150 220 128Z" fill="#571a24"/>
         <circle cx="260" cy="96" r="26" fill="#f5efe7"/>
         <path d="M120 380 Q135 300 175 260 L190 300 Q160 340 150 385Z" fill="#4b3a2e"/>
         <path d="M400 380 Q385 300 345 260 L330 300 Q360 340 370 385Z" fill="#4b3a2e"/>
@@ -218,7 +219,7 @@
     </div>
     <div class="collections">
       <div class="collection" data-filter="women">
-        <svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#dcc7b2"/><path d="M160 280 L172 130 Q180 96 200 95 Q220 96 228 130 L240 280 Q200 296 160 280Z" fill="#9a6a4f"/><circle cx="200" cy="70" r="20" fill="#f5efe7"/></svg>
+        <svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#dcc7b2"/><path d="M160 280 L172 130 Q180 96 200 95 Q220 96 228 130 L240 280 Q200 296 160 280Z" fill="#722430"/><circle cx="200" cy="70" r="20" fill="#f5efe7"/></svg>
         <span class="label">Women</span>
       </div>
       <div class="collection" data-filter="men">
