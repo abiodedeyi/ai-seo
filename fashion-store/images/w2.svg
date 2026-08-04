@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#f7f1e6"/><stop offset="1" stop-color="#e9decb"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.26" r="0.7">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="ground" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#3a2f24" stop-opacity="0.30"/><stop offset="0.65" stop-color="#3a2f24" stop-opacity="0.12"/><stop offset="1" stop-color="#3a2f24" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="coatBody" x1="0.1" y1="0" x2="0.95" y2="1">
+    <stop offset="0" stop-color="#c9a271"/><stop offset="0.5" stop-color="#b08a5a"/><stop offset="1" stop-color="#846030"/>
+  </linearGradient>
+  <linearGradient id="lapelG" x1="0" y1="0" x2="0.7" y2="1">
+    <stop offset="0" stop-color="#d5b183"/><stop offset="1" stop-color="#9d7540"/>
+  </linearGradient>
+  <linearGradient id="sleeveLG" x1="0" y1="0" x2="1" y2="0.4">
+    <stop offset="0" stop-color="#c19664"/><stop offset="1" stop-color="#7d5a2c"/>
+  </linearGradient>
+  <linearGradient id="sleeveRG" x1="1" y1="0" x2="0" y2="0.4">
+    <stop offset="0" stop-color="#b78c5a"/><stop offset="1" stop-color="#755327"/>
+  </linearGradient>
+  <linearGradient id="beltG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#c39a68"/><stop offset="0.5" stop-color="#9d7442"/><stop offset="1" stop-color="#7a5626"/>
+  </linearGradient>
+  <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#8a6a2f"/><stop offset="0.4" stop-color="#d4a94e"/><stop offset="0.65" stop-color="#f7e7b0"/><stop offset="1" stop-color="#d4a94e"/>
+  </linearGradient>
+  <radialGradient id="horn" cx="0.35" cy="0.3" r="0.9">
+    <stop offset="0" stop-color="#7a5c3a"/><stop offset="0.45" stop-color="#57402a"/><stop offset="0.8" stop-color="#33241a"/><stop offset="1" stop-color="#241811"/>
+  </radialGradient>
+  <filter id="soft2" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2"/></filter>
+  <filter id="soft4" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4"/></filter>
+  <filter id="soft8" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="8"/></filter>
+  <filter id="noiseF" x="0%" y="0%" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0.24  0 0 0 0 0.16  0 0 0 0 0.07  0 0 0 0.5 0"/>
+  </filter>
+  <mask id="gm">
+    <path d="M141,102 C160,92 240,92 259,102 C266,150 272,220 276,300 C279,360 281,405 282,428 C240,442 160,442 118,428 C119,405 121,360 124,300 C128,220 134,150 141,102 Z" fill="#fff"/>
+    <path d="M141,102 C126,116 116,150 111,200 C108,240 106,275 107,300 C117,310 138,310 146,302 C147,260 148,190 152,140 Z" fill="#fff"/>
+    <path d="M259,102 C274,116 284,150 289,200 C292,240 294,275 293,300 C283,310 262,310 254,302 C253,260 252,190 248,140 Z" fill="#fff"/>
+  </mask>
+</defs>
+
+<rect width="400" height="500" fill="url(#bg)"/>
+<rect width="400" height="500" fill="url(#glow)"/>
+<ellipse cx="200" cy="452" rx="160" ry="22" fill="url(#ground)"/>
+
+<!-- contact shadow -->
+<g filter="url(#soft8)" opacity="0.20">
+  <path d="M141,102 L259,102 L290,300 L282,430 C240,444 160,444 118,430 L110,300 Z" fill="#3a2f24" transform="translate(5,11)"/>
+</g>
+
+<!-- sleeves -->
+<path d="M141,102 C126,116 116,150 111,200 C108,240 106,275 107,300 C117,310 138,310 146,302 C147,260 148,190 152,140 Z" fill="url(#sleeveLG)"/>
+<path d="M259,102 C274,116 284,150 289,200 C292,240 294,275 293,300 C283,310 262,310 254,302 C253,260 252,190 248,140 Z" fill="url(#sleeveRG)"/>
+<!-- sleeve shading -->
+<g filter="url(#soft4)">
+  <path d="M150,140 C147,200 146,260 147,300" fill="none" stroke="#4a3312" stroke-width="9" opacity="0.20"/>
+  <path d="M250,140 C253,200 254,260 253,300" fill="none" stroke="#4a3312" stroke-width="9" opacity="0.22"/>
+  <path d="M120,135 C114,185 111,245 110,292" fill="none" stroke="#ffffff" stroke-width="6" opacity="0.14"/>
+  <path d="M280,135 C286,185 289,245 290,292" fill="none" stroke="#3a2508" stroke-width="6" opacity="0.16"/>
+</g>
+<!-- cuff seams -->
+<path d="M108,286 C118,292 136,292 146,287" fill="none" stroke="#5f4419" stroke-width="1.6" opacity="0.45"/>
+<path d="M292,286 C282,292 264,292 254,287" fill="none" stroke="#5f4419" stroke-width="1.6" opacity="0.45"/>
+
+<!-- coat body -->
+<path d="M141,102 C160,92 240,92 259,102 C266,150 272,220 276,300 C279,360 281,405 282,428 C240,442 160,442 118,428 C119,405 121,360 124,300 C128,220 134,150 141,102 Z" fill="url(#coatBody)"/>
+
+<!-- body fold shading -->
+<g filter="url(#soft4)">
+  <path d="M132,130 C128,220 124,330 121,420" fill="none" stroke="#4a3312" stroke-width="10" opacity="0.16"/>
+  <path d="M268,130 C272,220 276,330 279,420" fill="none" stroke="#3a2508" stroke-width="11" opacity="0.20"/>
+  <path d="M158,300 C156,345 154,390 153,428" fill="none" stroke="#4a3312" stroke-width="9" opacity="0.10"/>
+  <path d="M250,300 C252,345 254,390 255,428" fill="none" stroke="#4a3312" stroke-width="9" opacity="0.12"/>
+  <path d="M196,120 C195,200 194,300 194,428" fill="none" stroke="#ffffff" stroke-width="14" opacity="0.10"/>
+</g>
+
+<!-- front overlap edge -->
+<g filter="url(#soft4)">
+  <path d="M228,206 C234,240 238,300 240,430" fill="none" stroke="#3a2508" stroke-width="6" opacity="0.28"/>
+</g>
+<path d="M224,206 C230,240 234,300 236,430" fill="none" stroke="#8a6234" stroke-width="1.6" opacity="0.6"/>
+<path d="M221,208 C227,242 231,300 233,428" fill="none" stroke="#6f4f28" stroke-width="1" opacity="0.4" stroke-dasharray="4 3"/>
+
+<!-- lapel under-shadows -->
+<g filter="url(#soft4)">
+  <path d="M183,104 C172,114 161,130 154,150 C166,162 178,182 184,200" fill="none" stroke="#3a2508" stroke-width="7" opacity="0.28"/>
+  <path d="M217,104 C228,114 239,130 246,150 C234,162 222,182 216,200" fill="none" stroke="#3a2508" stroke-width="7" opacity="0.28"/>
+</g>
+<!-- lapels -->
+<path d="M183,102 C172,112 160,128 152,148 L170,154 C176,168 182,184 186,200 C189,168 187,128 183,102 Z" fill="url(#lapelG)"/>
+<path d="M217,102 C228,112 240,128 248,148 L230,154 C224,168 218,184 214,200 C211,168 213,128 217,102 Z" fill="url(#lapelG)"/>
+<path d="M183,102 C172,112 160,128 152,148" fill="none" stroke="#d9b98c" stroke-width="1.4" opacity="0.7"/>
+<path d="M217,102 C228,112 240,128 248,148" fill="none" stroke="#d9b98c" stroke-width="1.4" opacity="0.7"/>
+<path d="M154,150 C165,155 176,160 184,166" fill="none" stroke="#6f4f28" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/>
+<path d="M246,150 C235,155 224,160 216,166" fill="none" stroke="#6f4f28" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/>
+<!-- collar -->
+<path d="M184,101 C188,90 212,90 216,101 C209,96 191,96 184,101 Z" fill="#8a6234"/>
+
+<!-- buttons (horn) -->
+<g>
+  <circle cx="178" cy="212" r="7.5" fill="url(#horn)"/>
+  <circle cx="178" cy="212" r="7.5" fill="none" stroke="#1d1209" stroke-width="0.8" opacity="0.5"/>
+  <circle cx="175.5" cy="209.5" r="1.6" fill="#ffffff" opacity="0.85"/>
+  <circle cx="226" cy="212" r="7.5" fill="url(#horn)"/>
+  <circle cx="226" cy="212" r="7.5" fill="none" stroke="#1d1209" stroke-width="0.8" opacity="0.5"/>
+  <circle cx="223.5" cy="209.5" r="1.6" fill="#ffffff" opacity="0.85"/>
+  <circle cx="176" cy="240" r="7.5" fill="url(#horn)"/>
+  <circle cx="176" cy="240" r="7.5" fill="none" stroke="#1d1209" stroke-width="0.8" opacity="0.5"/>
+  <circle cx="173.5" cy="237.5" r="1.6" fill="#ffffff" opacity="0.85"/>
+  <circle cx="228" cy="240" r="7.5" fill="url(#horn)"/>
+  <circle cx="228" cy="240" r="7.5" fill="none" stroke="#1d1209" stroke-width="0.8" opacity="0.5"/>
+  <circle cx="225.5" cy="237.5" r="1.6" fill="#ffffff" opacity="0.85"/>
+</g>
+
+<!-- belt shadow -->
+<g filter="url(#soft4)">
+  <path d="M124,282 C160,289 240,289 276,282" fill="none" stroke="#3a2508" stroke-width="7" opacity="0.30"/>
+</g>
+<!-- belt -->
+<path d="M123,256 C160,249 240,249 277,256 L278,280 C240,273 160,273 122,280 Z" fill="url(#beltG)"/>
+<path d="M125,257 C160,250.5 240,250.5 275,257" fill="none" stroke="#dcb887" stroke-width="1.5" opacity="0.6"/>
+<!-- belt tail through buckle -->
+<path d="M186,260 L148,262 C142,262.5 142,272.5 148,273 L186,275 Z" fill="url(#beltG)"/>
+<path d="M186,261 L150,263" fill="none" stroke="#dcb887" stroke-width="1.2" opacity="0.5"/>
+<!-- buckle -->
+<rect x="184" y="252" width="34" height="32" rx="6" fill="none" stroke="url(#brass)" stroke-width="6"/>
+<rect x="184" y="252" width="34" height="32" rx="6" fill="none" stroke="#5c4310" stroke-width="1" opacity="0.4"/>
+<circle cx="188" cy="255" r="1.3" fill="#ffffff" opacity="0.9"/>
+
+<!-- pocket flaps -->
+<g filter="url(#soft2)">
+  <path d="M136,336 L184,338 L183,342 L135,340 Z" fill="#3a2508" opacity="0.35"/>
+  <path d="M216,338 L264,336 L265,340 L217,342 Z" fill="#3a2508" opacity="0.35"/>
+</g>
+<path d="M134,320 L184,322 C186,328 186,334 184,338 L134,336 C132,330 132,325 134,320 Z" fill="url(#lapelG)"/>
+<path d="M266,320 L216,322 C214,328 214,334 216,338 L266,336 C268,330 268,325 266,320 Z" fill="url(#lapelG)"/>
+<path d="M136,322 L182,324" fill="none" stroke="#6f4f28" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/>
+<path d="M264,322 L218,324" fill="none" stroke="#6f4f28" stroke-width="1" opacity="0.35" stroke-dasharray="3 3"/>
+
+<!-- hem stitch -->
+<path d="M122,424 C160,436 240,436 278,424" fill="none" stroke="#6f4f28" stroke-width="1" opacity="0.35" stroke-dasharray="4 3"/>
+
+<!-- wool grain -->
+<rect width="400" height="500" filter="url(#noiseF)" mask="url(#gm)" opacity="0.4"/>
+</svg>

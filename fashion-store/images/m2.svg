@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7f1e6"/>
+      <stop offset="1" stop-color="#e9decb"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.26" r="0.62">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ground" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3a2f24" stop-opacity="0.30"/>
+      <stop offset="0.65" stop-color="#3a2f24" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#3a2f24" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="legG" x1="0" y1="0" x2="1" y2="0.1">
+      <stop offset="0" stop-color="#33363a"/>
+      <stop offset="0.3" stop-color="#484c51"/>
+      <stop offset="0.52" stop-color="#565b60"/>
+      <stop offset="0.8" stop-color="#43474b"/>
+      <stop offset="1" stop-color="#2b2e31"/>
+    </linearGradient>
+    <linearGradient id="backLegG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#26282b"/>
+      <stop offset="1" stop-color="#37393d"/>
+    </linearGradient>
+    <linearGradient id="wbG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5c6166"/>
+      <stop offset="0.45" stop-color="#4a4e52"/>
+      <stop offset="1" stop-color="#303336"/>
+    </linearGradient>
+    <linearGradient id="loopG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2b2e31"/>
+      <stop offset="0.5" stop-color="#54585d"/>
+      <stop offset="1" stop-color="#2b2e31"/>
+    </linearGradient>
+    <radialGradient id="btnG" cx="0.35" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#83888e"/>
+      <stop offset="0.5" stop-color="#55595e"/>
+      <stop offset="0.85" stop-color="#3a3d41"/>
+      <stop offset="1" stop-color="#26282b"/>
+    </radialGradient>
+    <filter id="b2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2"/></filter>
+    <filter id="b4" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="b7" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="7"/></filter>
+    <pattern id="twillW" patternUnits="userSpaceOnUse" width="6" height="6">
+      <path d="M-1 7 L7 -1" stroke="#ffffff" stroke-width="1" opacity="0.045"/>
+    </pattern>
+    <pattern id="twillD" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="translate(3 0)">
+      <path d="M-1 7 L7 -1" stroke="#17191b" stroke-width="1" opacity="0.05"/>
+    </pattern>
+    <clipPath id="trouserClip">
+      <path d="M141 106 L259 106 C260 106 261 108 261 111 L261 128 C261 131 260 133 259 133 L141 133 C140 133 139 131 139 128 L139 111 C139 108 140 106 141 106 Z"/>
+      <path d="M143 130 C138 165 136 195 139 225 C144 285 151 345 159 402 C161 411 163 416 166 418 L236 418 C239 415 241 409 242 401 C250 342 257 282 261 224 C264 194 262 164 257 130 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="400" height="500" fill="url(#bg)"/>
+  <rect width="400" height="500" fill="url(#glow)"/>
+  <ellipse cx="200" cy="446" rx="140" ry="21" fill="url(#ground)"/>
+
+  <!-- soft cast shadow -->
+  <g filter="url(#b7)" opacity="0.18" fill="#3a2f24" transform="translate(5,12)">
+    <path d="M141 106 L259 106 L261 130 L262 224 C258 282 251 342 243 401 L236 418 L166 418 L159 402 C151 345 144 285 139 225 L138 130 Z"/>
+  </g>
+
+  <!-- back folded leg peeking out -->
+  <g transform="translate(11,13)">
+    <path d="M143 130 C138 165 136 195 139 225 C144 285 151 345 159 402 C161 411 163 416 166 418 L236 418 C239 415 241 409 242 401 C250 342 257 282 261 224 C264 194 262 164 257 130 Z" fill="url(#backLegG)"/>
+    <path d="M170 413 L232 413" stroke="#4a4e52" stroke-width="1" stroke-dasharray="3 3" opacity="0.4" fill="none"/>
+  </g>
+
+  <!-- front leg -->
+  <path d="M143 130 C138 165 136 195 139 225 C144 285 151 345 159 402 C161 411 163 416 166 418 L236 418 C239 415 241 409 242 401 C250 342 257 282 261 224 C264 194 262 164 257 130 Z" fill="url(#legG)"/>
+
+  <!-- twill texture -->
+  <g clip-path="url(#trouserClip)">
+    <rect x="130" y="100" width="140" height="330" fill="url(#twillW)"/>
+    <rect x="130" y="100" width="140" height="330" fill="url(#twillD)"/>
+  </g>
+
+  <!-- shading -->
+  <g clip-path="url(#trouserClip)" filter="url(#b4)" fill="#0e1012">
+    <path d="M143 135 C138 190 138 250 146 320 C150 360 155 390 160 412 L174 412 C168 385 162 350 158 315 C151 252 150 192 154 138 Z" opacity="0.17"/>
+    <path d="M257 135 C262 190 262 250 254 320 C250 360 246 392 241 414 L228 414 C234 386 240 350 244 315 C251 252 252 192 248 138 Z" opacity="0.20"/>
+    <path d="M150 255 C180 262 225 250 256 258 L255 268 C224 261 180 273 151 266 Z" opacity="0.07"/>
+    <path d="M154 300 C185 308 222 296 252 304 L251 313 C221 306 185 318 155 309 Z" opacity="0.06"/>
+    <path d="M142 133 L258 133 L258 142 C220 136 180 136 142 142 Z" opacity="0.14"/>
+    <path d="M162 396 C190 402 214 402 240 396 L238 414 L165 414 Z" opacity="0.10"/>
+  </g>
+
+  <!-- center crease highlight -->
+  <g clip-path="url(#trouserClip)">
+    <path d="M195 148 C192 240 192 330 196 410 L207 410 C204 330 204 240 206 148 Z" fill="#ffffff" opacity="0.13" filter="url(#b4)"/>
+    <path d="M200.5 150 C198.5 245 198.5 335 201.5 408" stroke="#ffffff" stroke-width="2.2" opacity="0.25" fill="none" filter="url(#b2)"/>
+    <path d="M170 150 C168 240 170 320 176 400" stroke="#ffffff" stroke-width="1.4" opacity="0.07" fill="none" filter="url(#b2)"/>
+    <path d="M233 152 C236 240 234 320 228 400" stroke="#ffffff" stroke-width="1.4" opacity="0.07" fill="none" filter="url(#b2)"/>
+  </g>
+
+  <!-- hem stitch front -->
+  <path d="M167 410 L236 410" stroke="#63676c" stroke-width="1" stroke-dasharray="4 3" opacity="0.5" fill="none"/>
+
+  <!-- fly J-stitch -->
+  <path d="M176 136 L175 190 C175 200 180 206 189 207" stroke="#63676c" stroke-width="1" stroke-dasharray="4 3" opacity="0.55" fill="none"/>
+  <path d="M181 136 L180 188 C180 196 184 201 190 202" stroke="#26282b" stroke-width="1" opacity="0.5" fill="none"/>
+
+  <!-- waistband -->
+  <path d="M141 106 L259 106 C260 106 261 108 261 111 L261 128 C261 131 260 133 259 133 L141 133 C140 133 139 131 139 128 L139 111 C139 108 140 106 141 106 Z" fill="url(#wbG)"/>
+  <path d="M141 107.5 L259 107.5" stroke="#ffffff" stroke-width="1" opacity="0.14" fill="none"/>
+  <path d="M143 111 L257 111" stroke="#6a6f74" stroke-width="1" stroke-dasharray="4 3" opacity="0.5" fill="none"/>
+  <path d="M143 129 L257 129" stroke="#6a6f74" stroke-width="1" stroke-dasharray="4 3" opacity="0.5" fill="none"/>
+  <!-- waistband button -->
+  <circle cx="170" cy="120" r="4.6" fill="url(#btnG)" stroke="#1d1f21" stroke-width="0.6"/>
+  <circle cx="168.6" cy="118.6" r="1.1" fill="#ffffff" opacity="0.8"/>
+
+  <!-- belt loops -->
+  <g>
+    <rect x="150" y="103" width="7" height="26" rx="2" fill="url(#loopG)"/>
+    <rect x="196" y="103" width="7" height="26" rx="2" fill="url(#loopG)"/>
+    <rect x="244" y="103" width="7" height="26" rx="2" fill="url(#loopG)"/>
+    <rect x="150" y="127" width="7" height="4" fill="#17191b" opacity="0.5" filter="url(#b2)"/>
+    <rect x="196" y="127" width="7" height="4" fill="#17191b" opacity="0.5" filter="url(#b2)"/>
+    <rect x="244" y="127" width="7" height="4" fill="#17191b" opacity="0.5" filter="url(#b2)"/>
+  </g>
+
+  <!-- waistband top sheen -->
+  <ellipse cx="205" cy="112" rx="55" ry="4" fill="#ffffff" opacity="0.10" filter="url(#b2)"/>
+</svg>

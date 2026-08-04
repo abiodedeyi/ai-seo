@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#f7f1e6"/><stop offset="1" stop-color="#e9decb"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.26" r="0.7">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="ground" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#3a2f24" stop-opacity="0.30"/><stop offset="0.65" stop-color="#3a2f24" stop-opacity="0.12"/><stop offset="1" stop-color="#3a2f24" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="faceL" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#90906a"/><stop offset="0.6" stop-color="#7a7a52"/><stop offset="1" stop-color="#63643e"/>
+  </linearGradient>
+  <linearGradient id="faceD" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#63643f"/><stop offset="0.6" stop-color="#53542f"/><stop offset="1" stop-color="#414222"/>
+  </linearGradient>
+  <linearGradient id="wbG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#8b8b61"/><stop offset="0.5" stop-color="#71714a"/><stop offset="1" stop-color="#565733"/>
+  </linearGradient>
+  <linearGradient id="lightLR" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+    <stop offset="0.35" stop-color="#ffffff" stop-opacity="0"/>
+    <stop offset="0.65" stop-color="#000000" stop-opacity="0"/>
+    <stop offset="1" stop-color="#000000" stop-opacity="0.18"/>
+  </linearGradient>
+  <radialGradient id="sheen" cx="0.45" cy="0.25" r="0.7">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="0.12"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="soft2" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2"/></filter>
+  <filter id="soft4" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4"/></filter>
+  <filter id="soft8" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="8"/></filter>
+  <filter id="noiseF" x="0%" y="0%" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0.12  0 0 0 0 0.12  0 0 0 0 0.06  0 0 0 0.45 0"/>
+  </filter>
+  <clipPath id="skirtClip">
+    <path d="M151,141 L249,141 L293,397 L280,416 L266,407 L253,426 L240,416 L227,433 L213,420 L200,435 L187,420 L173,433 L160,416 L147,426 L134,407 L120,416 L107,397 Z"/>
+  </clipPath>
+</defs>
+
+<rect width="400" height="500" fill="url(#bg)"/>
+<rect width="400" height="500" fill="url(#glow)"/>
+<ellipse cx="200" cy="452" rx="150" ry="21" fill="url(#ground)"/>
+
+<!-- contact shadow -->
+<g filter="url(#soft8)" opacity="0.20">
+  <path d="M151,141 L249,141 L293,397 L200,435 L107,397 Z" fill="#3a2f24" transform="translate(5,11)"/>
+</g>
+
+<!-- pleat faces -->
+<g>
+  <polygon points="151,141 158,141 120,416 107,397" fill="url(#faceL)"/>
+  <polygon points="158,141 165,141 134,407 120,416" fill="url(#faceD)"/>
+  <polygon points="165,141 172,141 147,426 134,407" fill="url(#faceL)"/>
+  <polygon points="172,141 179,141 160,416 147,426" fill="url(#faceD)"/>
+  <polygon points="179,141 186,141 173,433 160,416" fill="url(#faceL)"/>
+  <polygon points="186,141 193,141 187,420 173,433" fill="url(#faceD)"/>
+  <polygon points="193,141 200,141 200,435 187,420" fill="url(#faceL)"/>
+  <polygon points="200,141 207,141 213,420 200,435" fill="url(#faceD)"/>
+  <polygon points="207,141 214,141 227,433 213,420" fill="url(#faceL)"/>
+  <polygon points="214,141 221,141 240,416 227,433" fill="url(#faceD)"/>
+  <polygon points="221,141 228,141 253,426 240,416" fill="url(#faceL)"/>
+  <polygon points="228,141 235,141 266,407 253,426" fill="url(#faceD)"/>
+  <polygon points="235,141 242,141 280,416 266,407" fill="url(#faceL)"/>
+  <polygon points="242,141 249,141 293,397 280,416" fill="url(#faceD)"/>
+</g>
+
+<!-- crease lines -->
+<g>
+  <line x1="158" y1="141" x2="120" y2="416" stroke="#2f3018" stroke-width="1" opacity="0.30"/>
+  <line x1="165" y1="141" x2="134" y2="407" stroke="#ffffff" stroke-width="1.2" opacity="0.22"/>
+  <line x1="172" y1="141" x2="147" y2="426" stroke="#2f3018" stroke-width="1" opacity="0.30"/>
+  <line x1="179" y1="141" x2="160" y2="416" stroke="#ffffff" stroke-width="1.2" opacity="0.22"/>
+  <line x1="186" y1="141" x2="173" y2="433" stroke="#2f3018" stroke-width="1" opacity="0.30"/>
+  <line x1="193" y1="141" x2="187" y2="420" stroke="#ffffff" stroke-width="1.2" opacity="0.22"/>
+  <line x1="200" y1="141" x2="200" y2="435" stroke="#2f3018" stroke-width="1" opacity="0.30"/>
+  <line x1="207" y1="141" x2="213" y2="420" stroke="#ffffff" stroke-width="1.2" opacity="0.22"/>
+  <line x1="214" y1="141" x2="227" y2="433" stroke="#2f3018" stroke-width="1" opacity="0.30"/>
+  <line x1="221" y1="141" x2="240" y2="416" stroke="#ffffff" stroke-width="1.2" opacity="0.22"/>
+  <line x1="228" y1="141" x2="253" y2="426" stroke="#2f3018" stroke-width="1" opacity="0.30"/>
+  <line x1="235" y1="141" x2="266" y2="407" stroke="#ffffff" stroke-width="1.2" opacity="0.22"/>
+  <line x1="242" y1="141" x2="280" y2="416" stroke="#2f3018" stroke-width="1" opacity="0.30"/>
+</g>
+
+<!-- global light + sheen + waistband shadow -->
+<g clip-path="url(#skirtClip)">
+  <rect x="100" y="130" width="200" height="320" fill="url(#lightLR)"/>
+  <rect x="100" y="130" width="200" height="320" fill="url(#sheen)"/>
+  <g filter="url(#soft4)">
+    <rect x="145" y="141" width="110" height="10" fill="#2f3018" opacity="0.35"/>
+  </g>
+  <rect width="400" height="500" filter="url(#noiseF)" opacity="0.30"/>
+</g>
+
+<!-- waistband -->
+<g filter="url(#soft2)">
+  <path d="M150,140 C170,136 230,136 250,140" fill="none" stroke="#2f3018" stroke-width="4" opacity="0.3"/>
+</g>
+<path d="M150,118 C170,113 230,113 250,118 L250,140 C230,136 170,136 150,140 Z" fill="url(#wbG)"/>
+<path d="M152,119.5 C172,114.8 228,114.8 248,119.5" fill="none" stroke="#a8a87e" stroke-width="1.6" opacity="0.7"/>
+<path d="M152,137 C172,133 228,133 248,137" fill="none" stroke="#3c3d20" stroke-width="1" opacity="0.45" stroke-dasharray="3 2.5"/>
+<circle cx="200" cy="127" r="4" fill="url(#wbG)"/>
+<circle cx="200" cy="127" r="4" fill="none" stroke="#3c3d20" stroke-width="0.8" opacity="0.6"/>
+<circle cx="198.6" cy="125.6" r="1" fill="#ffffff" opacity="0.7"/>
+</svg>

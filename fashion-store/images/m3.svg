@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7f1e6"/>
+      <stop offset="1" stop-color="#e9decb"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.26" r="0.62">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ground" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3a2f24" stop-opacity="0.30"/>
+      <stop offset="0.65" stop-color="#3a2f24" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#3a2f24" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="0.15">
+      <stop offset="0" stop-color="#22304a"/>
+      <stop offset="0.28" stop-color="#31425f"/>
+      <stop offset="0.5" stop-color="#3c4e6d"/>
+      <stop offset="0.78" stop-color="#2c3d59"/>
+      <stop offset="1" stop-color="#1c283d"/>
+    </linearGradient>
+    <linearGradient id="sleeveLG" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0" stop-color="#1d2a40"/>
+      <stop offset="0.55" stop-color="#334562"/>
+      <stop offset="1" stop-color="#243350"/>
+    </linearGradient>
+    <linearGradient id="sleeveRG" x1="1" y1="0" x2="0" y2="0.3">
+      <stop offset="0" stop-color="#1d2a40"/>
+      <stop offset="0.55" stop-color="#334562"/>
+      <stop offset="1" stop-color="#243350"/>
+    </linearGradient>
+    <linearGradient id="collarG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#465a7c"/>
+      <stop offset="1" stop-color="#243350"/>
+    </linearGradient>
+    <linearGradient id="innerG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#141e30"/>
+      <stop offset="1" stop-color="#22304a"/>
+    </linearGradient>
+    <linearGradient id="plackG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#283955"/>
+      <stop offset="0.5" stop-color="#40536f"/>
+      <stop offset="1" stop-color="#263752"/>
+    </linearGradient>
+    <linearGradient id="pocketG" x1="0" y1="0" x2="0.25" y2="1">
+      <stop offset="0" stop-color="#3b4d6b"/>
+      <stop offset="1" stop-color="#27374f"/>
+    </linearGradient>
+    <linearGradient id="flapG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#455878"/>
+      <stop offset="1" stop-color="#2d3f5c"/>
+    </linearGradient>
+    <radialGradient id="btnG" cx="0.35" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#d8c096"/>
+      <stop offset="0.45" stop-color="#b3956b"/>
+      <stop offset="0.8" stop-color="#8a6c46"/>
+      <stop offset="1" stop-color="#6b5233"/>
+    </radialGradient>
+    <filter id="b2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2"/></filter>
+    <filter id="b4" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="b7" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="7"/></filter>
+    <pattern id="woolT" patternUnits="userSpaceOnUse" width="5" height="4">
+      <path d="M0 2 H5" stroke="#0d1626" stroke-width="1" opacity="0.06"/>
+    </pattern>
+    <pattern id="woolT2" patternUnits="userSpaceOnUse" width="9" height="7">
+      <path d="M0 4.5 H9" stroke="#8fa2c0" stroke-width="1" stroke-dasharray="5 4" opacity="0.05"/>
+    </pattern>
+    <clipPath id="osClip">
+      <path d="M168 112 C158 114 149 117 145 121 C148 150 151 178 152 206 C149 265 147 330 147 382 C147 392 150 399 156 401 C185 406 215 406 244 401 C250 399 253 392 253 382 C253 330 251 265 248 206 C249 178 252 150 255 121 C251 117 242 114 232 112 C226 128 214 142 200 150 C186 142 174 128 168 112 Z"/>
+      <path d="M143 121 C122 128 106 142 96 165 C86 190 78 235 73 280 C70 302 69 318 70 326 L114 314 C121 276 131 240 146 210 C149 180 148 148 147 124 Z"/>
+      <path d="M257 121 C278 128 294 142 304 165 C314 190 322 235 327 280 C330 302 331 318 330 326 L286 314 C279 276 269 240 254 210 C251 180 252 148 253 124 Z"/>
+      <path d="M70 326 L114 314 L118 336 C118 340 116 343 112 344 L78 352 C73 353 69 350 68 346 Z"/>
+      <path d="M330 326 L286 314 L282 336 C282 340 284 343 288 344 L322 352 C327 353 331 350 332 346 Z"/>
+      <path d="M200 100 C186 100 172 104 165 111 C162 122 166 134 176 146 L184 154 C192 146 197 130 199 112 C200 107 200 103 200 100 Z"/>
+      <path d="M200 100 C214 100 228 104 235 111 C238 122 234 134 224 146 L216 154 C208 146 203 130 201 112 C200 107 200 103 200 100 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="400" height="500" fill="url(#bg)"/>
+  <rect width="400" height="500" fill="url(#glow)"/>
+  <ellipse cx="200" cy="436" rx="158" ry="23" fill="url(#ground)"/>
+
+  <!-- soft cast shadow -->
+  <g filter="url(#b7)" opacity="0.18" fill="#3a2f24" transform="translate(4,12)">
+    <path d="M168 112 C158 114 149 117 145 121 C148 150 151 178 152 206 C149 265 147 330 147 382 C147 392 150 399 156 401 C185 406 215 406 244 401 C250 399 253 392 253 382 C253 330 251 265 248 206 C249 178 252 150 255 121 C251 117 242 114 232 112 Z"/>
+    <path d="M143 121 C122 128 106 142 96 165 C86 190 78 235 73 280 C70 302 69 318 70 326 L118 336 L114 314 L146 210 L147 124 Z"/>
+    <path d="M257 121 C278 128 294 142 304 165 C314 190 322 235 327 280 C330 302 331 318 330 326 L282 336 L286 314 L254 210 L253 124 Z"/>
+  </g>
+
+  <!-- sleeves -->
+  <path d="M143 121 C122 128 106 142 96 165 C86 190 78 235 73 280 C70 302 69 318 70 326 L114 314 C121 276 131 240 146 210 C149 180 148 148 147 124 Z" fill="url(#sleeveLG)"/>
+  <path d="M257 121 C278 128 294 142 304 165 C314 190 322 235 327 280 C330 302 331 318 330 326 L286 314 C279 276 269 240 254 210 C251 180 252 148 253 124 Z" fill="url(#sleeveRG)"/>
+  <!-- cuffs -->
+  <path d="M70 326 L114 314 L118 336 C118 340 116 343 112 344 L78 352 C73 353 69 350 68 346 Z" fill="url(#collarG)"/>
+  <path d="M330 326 L286 314 L282 336 C282 340 284 343 288 344 L322 352 C327 353 331 350 332 346 Z" fill="url(#collarG)"/>
+  <path d="M73 331 L114 320" stroke="#5a6f92" stroke-width="1" stroke-dasharray="3 3" opacity="0.5" fill="none"/>
+  <path d="M327 331 L286 320" stroke="#5a6f92" stroke-width="1" stroke-dasharray="3 3" opacity="0.5" fill="none"/>
+  <circle cx="93" cy="336" r="3.6" fill="url(#btnG)" stroke="#55402a" stroke-width="0.5"/>
+  <circle cx="307" cy="336" r="3.6" fill="url(#btnG)" stroke="#55402a" stroke-width="0.5"/>
+
+  <!-- inner neck -->
+  <path d="M171 110 L229 110 C220 132 210 144 200 148 C190 144 180 132 171 110 Z" fill="url(#innerG)"/>
+
+  <!-- body -->
+  <path d="M168 112 C158 114 149 117 145 121 C148 150 151 178 152 206 C149 265 147 330 147 382 C147 392 150 399 156 401 C185 406 215 406 244 401 C250 399 253 392 253 382 C253 330 251 265 248 206 C249 178 252 150 255 121 C251 117 242 114 232 112 C226 128 214 142 200 150 C186 142 174 128 168 112 Z" fill="url(#bodyG)"/>
+
+  <!-- wool texture -->
+  <g clip-path="url(#osClip)">
+    <rect x="60" y="95" width="280" height="320" fill="url(#woolT)"/>
+    <rect x="60" y="98" width="280" height="320" fill="url(#woolT2)"/>
+  </g>
+
+  <!-- fold shading -->
+  <g clip-path="url(#osClip)" filter="url(#b4)" fill="#060b14">
+    <path d="M180 165 C174 230 174 310 178 392 L187 392 C183 310 184 228 189 166 Z" opacity="0.12"/>
+    <path d="M220 168 C226 232 226 310 223 390 L214 390 C218 310 217 230 212 168 Z" opacity="0.10"/>
+    <path d="M152 208 C148 268 146 330 147 396 L160 396 C156 330 157 266 162 210 Z" opacity="0.14"/>
+    <path d="M248 208 C252 268 254 330 253 396 L240 396 C244 330 243 266 238 210 Z" opacity="0.16"/>
+    <path d="M148 380 C180 372 222 388 252 378 L252 388 C220 398 180 382 148 390 Z" opacity="0.07"/>
+    <path d="M96 170 C104 210 96 260 84 310 L74 306 C84 258 90 212 88 172 Z" opacity="0.12"/>
+    <path d="M304 170 C296 210 304 260 316 310 L326 306 C316 258 310 212 312 172 Z" opacity="0.14"/>
+    <path d="M146 210 C136 244 126 282 118 318 L128 322 C136 284 144 248 152 216 Z" opacity="0.13"/>
+    <path d="M254 210 C264 244 274 282 282 318 L272 322 C264 284 256 248 248 216 Z" opacity="0.13"/>
+  </g>
+
+  <!-- highlights -->
+  <g clip-path="url(#osClip)" filter="url(#b4)" fill="#c8d6ec">
+    <path d="M209 165 C215 230 215 300 211 365 L225 363 C229 298 229 228 221 165 Z" opacity="0.10"/>
+    <ellipse cx="167" cy="128" rx="28" ry="8" opacity="0.14"/>
+    <ellipse cx="233" cy="128" rx="28" ry="8" opacity="0.14"/>
+    <ellipse cx="112" cy="160" rx="30" ry="9" transform="rotate(-48 112 160)" opacity="0.12"/>
+    <ellipse cx="288" cy="160" rx="30" ry="9" transform="rotate(48 288 160)" opacity="0.12"/>
+    <path d="M86 200 C80 240 76 280 73 314" stroke="#c8d6ec" stroke-width="6" opacity="0.10" fill="none"/>
+    <path d="M314 200 C320 240 324 280 327 314" stroke="#c8d6ec" stroke-width="6" opacity="0.10" fill="none"/>
+  </g>
+
+  <!-- armhole seams -->
+  <path d="M145 121 C148 150 151 178 152 206" stroke="#16233a" stroke-width="1" opacity="0.6" fill="none"/>
+  <path d="M255 121 C252 150 249 178 248 206" stroke="#16233a" stroke-width="1" opacity="0.6" fill="none"/>
+  <path d="M147 125 C150 152 152 180 154 204" stroke="#5a6f92" stroke-width="1" stroke-dasharray="3 3" opacity="0.35" fill="none"/>
+  <path d="M253 125 C250 152 248 180 246 204" stroke="#5a6f92" stroke-width="1" stroke-dasharray="3 3" opacity="0.35" fill="none"/>
+
+  <!-- placket -->
+  <rect x="192.5" y="146" width="15" height="256" rx="2" fill="url(#plackG)"/>
+  <path d="M195 150 V398" stroke="#5a6f92" stroke-width="1" stroke-dasharray="3 3" opacity="0.45" fill="none"/>
+  <path d="M205 150 V398" stroke="#5a6f92" stroke-width="1" stroke-dasharray="3 3" opacity="0.45" fill="none"/>
+
+  <!-- buttons (corozo) -->
+  <g>
+    <g transform="translate(200,163)"><circle r="5.2" fill="url(#btnG)" stroke="#55402a" stroke-width="0.6"/><circle r="3" fill="none" stroke="#5f4a2e" stroke-width="0.7" opacity="0.7"/><circle cx="-1.6" cy="-1.6" r="1.1" fill="#ffffff" opacity="0.85"/></g>
+    <g transform="translate(200,210)"><circle r="5.2" fill="url(#btnG)" stroke="#55402a" stroke-width="0.6"/><circle r="3" fill="none" stroke="#5f4a2e" stroke-width="0.7" opacity="0.7"/><circle cx="-1.6" cy="-1.6" r="1.1" fill="#ffffff" opacity="0.85"/></g>
+    <g transform="translate(200,257)"><circle r="5.2" fill="url(#btnG)" stroke="#55402a" stroke-width="0.6"/><circle r="3" fill="none" stroke="#5f4a2e" stroke-width="0.7" opacity="0.7"/><circle cx="-1.6" cy="-1.6" r="1.1" fill="#ffffff" opacity="0.85"/></g>
+    <g transform="translate(200,304)"><circle r="5.2" fill="url(#btnG)" stroke="#55402a" stroke-width="0.6"/><circle r="3" fill="none" stroke="#5f4a2e" stroke-width="0.7" opacity="0.7"/><circle cx="-1.6" cy="-1.6" r="1.1" fill="#ffffff" opacity="0.85"/></g>
+    <g transform="translate(200,351)"><circle r="5.2" fill="url(#btnG)" stroke="#55402a" stroke-width="0.6"/><circle r="3" fill="none" stroke="#5f4a2e" stroke-width="0.7" opacity="0.7"/><circle cx="-1.6" cy="-1.6" r="1.1" fill="#ffffff" opacity="0.85"/></g>
+    <g transform="translate(200,390)"><circle r="5.2" fill="url(#btnG)" stroke="#55402a" stroke-width="0.6"/><circle r="3" fill="none" stroke="#5f4a2e" stroke-width="0.7" opacity="0.7"/><circle cx="-1.6" cy="-1.6" r="1.1" fill="#ffffff" opacity="0.85"/></g>
+  </g>
+
+  <!-- chest pockets with flaps -->
+  <g>
+    <path d="M137 206 L181 206 L181 252 C181 256 179 258 176 258 L142 258 C139 258 137 256 137 252 Z" fill="url(#pocketG)"/>
+    <path d="M139.5 210 L178.5 210 L178.5 251 C178.5 254 177 255.5 175 255.5 L143 255.5 C141 255.5 139.5 254 139.5 251 Z" fill="none" stroke="#5a6f92" stroke-width="1" stroke-dasharray="3 3" opacity="0.4"/>
+    <circle cx="159" cy="234" r="4.4" fill="url(#btnG)" stroke="#55402a" stroke-width="0.5"/>
+    <circle cx="157.7" cy="232.7" r="1" fill="#ffffff" opacity="0.8"/>
+    <path d="M134 202 L184 202 L183 216 L159 227 L135 216 Z" fill="#060b14" opacity="0.28" filter="url(#b2)" transform="translate(0,4)"/>
+    <path d="M134 199 L184 199 L183 215 L159 226 L135 215 Z" fill="url(#flapG)"/>
+    <path d="M136.5 202 L181.5 202 L180.6 213.4 L159 223 L137.4 213.4 Z" fill="none" stroke="#5a6f92" stroke-width="1" stroke-dasharray="3 3" opacity="0.45"/>
+  </g>
+  <g>
+    <path d="M219 206 L263 206 L263 252 C263 256 261 258 258 258 L224 258 C221 258 219 256 219 252 Z" fill="url(#pocketG)"/>
+    <path d="M221.5 210 L260.5 210 L260.5 251 C260.5 254 259 255.5 257 255.5 L225 255.5 C223 255.5 221.5 254 221.5 251 Z" fill="none" stroke="#5a6f92" stroke-width="1" stroke-dasharray="3 3" opacity="0.4"/>
+    <circle cx="241" cy="234" r="4.4" fill="url(#btnG)" stroke="#55402a" stroke-width="0.5"/>
+    <circle cx="239.7" cy="232.7" r="1" fill="#ffffff" opacity="0.8"/>
+    <path d="M216 202 L266 202 L265 216 L241 227 L217 216 Z" fill="#060b14" opacity="0.28" filter="url(#b2)" transform="translate(0,4)"/>
+    <path d="M216 199 L266 199 L265 215 L241 226 L217 215 Z" fill="url(#flapG)"/>
+    <path d="M218.5 202 L263.5 202 L262.6 213.4 L241 223 L219.4 213.4 Z" fill="none" stroke="#5a6f92" stroke-width="1" stroke-dasharray="3 3" opacity="0.45"/>
+  </g>
+
+  <!-- under-collar shadow -->
+  <g clip-path="url(#osClip)" filter="url(#b4)">
+    <path d="M165 113 C162 124 166 136 178 150" stroke="#060b14" stroke-width="7" opacity="0.22" fill="none"/>
+    <path d="M235 113 C238 124 234 136 222 150" stroke="#060b14" stroke-width="7" opacity="0.22" fill="none"/>
+  </g>
+
+  <!-- collar -->
+  <path d="M200 100 C186 100 172 104 165 111 C162 122 166 134 176 146 L184 154 C192 146 197 130 199 112 C200 107 200 103 200 100 Z" fill="url(#collarG)"/>
+  <path d="M200 100 C214 100 228 104 235 111 C238 122 234 134 224 146 L216 154 C208 146 203 130 201 112 C200 107 200 103 200 100 Z" fill="url(#collarG)"/>
+  <path d="M167 113 C165 122 168 132 177 143 L183 149" stroke="#5a6f92" stroke-width="1" stroke-dasharray="3 3" opacity="0.4" fill="none"/>
+  <path d="M233 113 C235 122 232 132 223 143 L217 149" stroke="#5a6f92" stroke-width="1" stroke-dasharray="3 3" opacity="0.4" fill="none"/>
+  <path d="M199 112 C197 130 192 146 184 154" stroke="#16233a" stroke-width="1" opacity="0.6" fill="none"/>
+  <path d="M201 112 C203 130 208 146 216 154" stroke="#16233a" stroke-width="1" opacity="0.6" fill="none"/>
+
+  <!-- shoulder seams + hem stitch -->
+  <path d="M167 113 L146 122" stroke="#16233a" stroke-width="1" opacity="0.5" fill="none"/>
+  <path d="M233 113 L254 122" stroke="#16233a" stroke-width="1" opacity="0.5" fill="none"/>
+  <path d="M157 397 C185 402 215 402 243 397" stroke="#5a6f92" stroke-width="1" stroke-dasharray="3 3" opacity="0.45" fill="none"/>
+</svg>

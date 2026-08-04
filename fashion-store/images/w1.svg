@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#f7f1e6"/><stop offset="1" stop-color="#e9decb"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.26" r="0.7">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="ground" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#3a2f24" stop-opacity="0.30"/><stop offset="0.65" stop-color="#3a2f24" stop-opacity="0.12"/><stop offset="1" stop-color="#3a2f24" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="bodiceG" x1="0" y1="0" x2="1" y2="0.9">
+    <stop offset="0" stop-color="#c9713e"/><stop offset="0.5" stop-color="#a54f26"/><stop offset="1" stop-color="#7f3b18"/>
+  </linearGradient>
+  <linearGradient id="skirtG" x1="0.15" y1="0" x2="0.9" y2="1">
+    <stop offset="0" stop-color="#b95f30"/><stop offset="0.55" stop-color="#9c4a22"/><stop offset="1" stop-color="#763514"/>
+  </linearGradient>
+  <linearGradient id="panelG" x1="0" y1="0" x2="0.9" y2="1">
+    <stop offset="0" stop-color="#c76e3b"/><stop offset="0.55" stop-color="#a54f26"/><stop offset="1" stop-color="#84401b"/>
+  </linearGradient>
+  <linearGradient id="sleeveLG" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#c06336"/><stop offset="1" stop-color="#7c3917"/>
+  </linearGradient>
+  <linearGradient id="sleeveRG" x1="1" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#b25a2c"/><stop offset="1" stop-color="#733413"/>
+  </linearGradient>
+  <linearGradient id="sashG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#c26a38"/><stop offset="0.5" stop-color="#9a4a22"/><stop offset="1" stop-color="#7a3715"/>
+  </linearGradient>
+  <linearGradient id="vintG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#823c19"/><stop offset="1" stop-color="#521d09"/>
+  </linearGradient>
+  <filter id="soft2" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2"/></filter>
+  <filter id="soft4" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4"/></filter>
+  <filter id="soft8" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="8"/></filter>
+  <filter id="noiseF" x="0%" y="0%" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0.20  0 0 0 0 0.09  0 0 0 0 0.04  0 0 0 0.5 0"/>
+  </filter>
+  <mask id="gm">
+    <path d="M150,206 L250,206 C263,262 281,330 292,406 C258,424 142,424 108,406 C119,330 137,262 150,206 Z" fill="#fff"/>
+    <path d="M152,206 C146,168 143,128 149,104 C163,95 180,92 200,92 C220,92 237,95 251,104 C257,128 254,168 248,206 Z" fill="#fff"/>
+    <path d="M150,104 C133,112 115,132 103,161 C97,176 95,189 98,199 C108,207 124,206 133,198 C139,178 144,148 151,126 Z" fill="#fff"/>
+    <path d="M250,104 C267,112 285,132 297,161 C303,176 305,189 302,199 C292,207 276,206 267,198 C261,178 256,148 249,126 Z" fill="#fff"/>
+  </mask>
+</defs>
+
+<rect width="400" height="500" fill="url(#bg)"/>
+<rect width="400" height="500" fill="url(#glow)"/>
+<ellipse cx="200" cy="450" rx="155" ry="22" fill="url(#ground)"/>
+
+<!-- contact shadow -->
+<g filter="url(#soft8)" opacity="0.20">
+  <path d="M152,104 L248,104 L256,206 L290,410 C250,426 150,426 110,410 L144,206 Z" fill="#3a2f24" transform="translate(5,11)"/>
+</g>
+
+<!-- sleeves -->
+<path d="M150,104 C133,112 115,132 103,161 C97,176 95,189 98,199 C108,207 124,206 133,198 C139,178 144,148 151,126 Z" fill="url(#sleeveLG)"/>
+<g filter="url(#soft2)">
+  <path d="M116,140 C108,158 102,176 100,192" fill="none" stroke="#5e2a12" stroke-width="6" stroke-linecap="round" opacity="0.16"/>
+  <path d="M130,122 C120,143 112,166 108,188" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.14"/>
+</g>
+<path d="M250,104 C267,112 285,132 297,161 C303,176 305,189 302,199 C292,207 276,206 267,198 C261,178 256,148 249,126 Z" fill="url(#sleeveRG)"/>
+<g filter="url(#soft2)">
+  <path d="M284,140 C292,158 298,176 300,192" fill="none" stroke="#521d09" stroke-width="6" stroke-linecap="round" opacity="0.18"/>
+  <path d="M270,122 C280,143 288,166 292,188" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.10"/>
+</g>
+
+<!-- skirt (under layer) -->
+<path d="M150,206 L250,206 C263,262 281,330 292,406 C258,424 142,424 108,406 C119,330 137,262 150,206 Z" fill="url(#skirtG)"/>
+<!-- folds on under-skirt right -->
+<g filter="url(#soft4)">
+  <path d="M228,212 C236,300 248,360 260,406" fill="none" stroke="#521d09" stroke-width="10" opacity="0.14"/>
+</g>
+<!-- shadow cast by wrap panel edge -->
+<g filter="url(#soft4)">
+  <path d="M246,208 C242,280 227,356 215,418" fill="none" stroke="#3f1503" stroke-width="8" opacity="0.30"/>
+</g>
+<!-- wrap front panel -->
+<path d="M152,206 L240,206 C236,278 220,356 208,420 C168,422 130,414 108,406 C119,330 137,262 152,206 Z" fill="url(#panelG)"/>
+<path d="M240,206 C236,278 220,356 208,420" fill="none" stroke="#d98a52" stroke-width="1.8" opacity="0.55"/>
+<!-- skirt folds + highlights on panel -->
+<g filter="url(#soft4)">
+  <path d="M170,212 C163,280 152,340 141,404" fill="none" stroke="#5e2a12" stroke-width="10" opacity="0.12"/>
+  <path d="M197,212 C193,290 187,352 183,414" fill="none" stroke="#5e2a12" stroke-width="12" opacity="0.10"/>
+  <path d="M124,230 C120,290 114,350 112,400" fill="none" stroke="#5e2a12" stroke-width="9" opacity="0.12"/>
+  <path d="M183,214 C177,290 167,350 158,408" fill="none" stroke="#ffffff" stroke-width="6" opacity="0.13"/>
+  <path d="M210,212 C207,300 201,360 197,416" fill="none" stroke="#ffffff" stroke-width="7" opacity="0.11"/>
+  <path d="M148,220 C142,290 134,350 126,402" fill="none" stroke="#ffffff" stroke-width="5" opacity="0.10"/>
+</g>
+<!-- hem shading -->
+<g filter="url(#soft4)">
+  <path d="M114,404 C160,421 240,421 286,404" fill="none" stroke="#4a1c08" stroke-width="6" opacity="0.16"/>
+</g>
+
+<!-- bodice -->
+<path d="M152,206 C146,168 143,128 149,104 C163,95 180,92 200,92 C220,92 237,95 251,104 C257,128 254,168 248,206 Z" fill="url(#bodiceG)"/>
+<!-- back neck sliver -->
+<path d="M182,95 C190,90 210,90 218,95 C212,99 188,99 182,95 Z" fill="#6e3111"/>
+<!-- V interior (back panel in shadow) -->
+<path d="M179,98 C186,94 214,94 221,98 C212,120 204,146 200,168 C196,146 188,120 179,98 Z" fill="url(#vintG)"/>
+<!-- under band: left shoulder to right waist -->
+<path d="M179,98 C194,130 206,158 224,182 C232,192 242,200 248,206" fill="none" stroke="#8f421c" stroke-width="10" stroke-linecap="round"/>
+<!-- shadow beneath over band -->
+<g filter="url(#soft4)">
+  <path d="M224,102 C209,134 197,162 179,186 C171,196 161,204 155,210" fill="none" stroke="#3f1503" stroke-width="8" opacity="0.30"/>
+</g>
+<!-- over band: right shoulder to left waist -->
+<path d="M221,98 C206,130 194,158 176,182 C168,192 158,200 152,206" fill="none" stroke="#b85c2e" stroke-width="11" stroke-linecap="round"/>
+<path d="M221,98 C206,130 194,158 176,182 C168,192 158,200 152,206" fill="none" stroke="#d68a54" stroke-width="3.5" opacity="0.8" transform="translate(-2,-2)"/>
+<path d="M221,98 C206,130 194,158 176,182 C168,192 158,200 152,206" fill="none" stroke="#ffffff" stroke-width="1.4" opacity="0.30" transform="translate(-3,-3)"/>
+<!-- bust shading -->
+<g filter="url(#soft4)">
+  <path d="M166,152 C174,162 184,167 195,167" fill="none" stroke="#5e2a12" stroke-width="7" opacity="0.12"/>
+  <path d="M234,152 C226,162 216,167 205,167" fill="none" stroke="#5e2a12" stroke-width="7" opacity="0.14"/>
+  <ellipse cx="176" cy="140" rx="12" ry="32" fill="#ffffff" opacity="0.10"/>
+  <path d="M156,190 C176,198 224,198 244,190" fill="none" stroke="#5e2a12" stroke-width="6" opacity="0.14"/>
+</g>
+
+<!-- sash -->
+<g filter="url(#soft2)">
+  <path d="M150,204 C172,199 228,199 250,204" fill="none" stroke="#4a1c08" stroke-width="5" opacity="0.25"/>
+</g>
+<path d="M148,204 C170,199 230,199 252,204 L252,222 C230,227 170,227 148,222 Z" fill="url(#sashG)"/>
+<path d="M150,206 C172,201 228,201 250,206" fill="none" stroke="#d98a52" stroke-width="1.4" opacity="0.5"/>
+<g filter="url(#soft2)">
+  <path d="M186,203 L184,224" stroke="#5e2a12" stroke-width="3" opacity="0.18"/>
+  <path d="M214,203 L216,224" stroke="#5e2a12" stroke-width="3" opacity="0.16"/>
+  <path d="M232,203 L234,223" stroke="#5e2a12" stroke-width="2.5" opacity="0.14"/>
+</g>
+
+<!-- bow: loops -->
+<path d="M143,210 C130,196 114,194 109,203 C106,212 120,219 143,217 Z" fill="url(#panelG)"/>
+<path d="M143,216 C128,214 114,220 113,229 C115,238 132,236 145,224 Z" fill="url(#skirtG)"/>
+<g filter="url(#soft2)">
+  <path d="M138,212 C128,204 118,202 113,206" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.25"/>
+  <path d="M140,220 C130,220 122,224 119,228" fill="none" stroke="#3f1503" stroke-width="3" opacity="0.25"/>
+</g>
+<!-- bow tails -->
+<path d="M146,222 C138,252 128,282 118,308 C116,315 123,319 127,313 C138,286 148,254 154,224 Z" fill="url(#skirtG)"/>
+<path d="M152,224 C150,258 146,294 138,326 C136,333 144,336 147,330 C156,298 161,260 162,226 Z" fill="url(#panelG)"/>
+<g filter="url(#soft2)">
+  <path d="M149,230 C142,258 134,286 125,308" fill="none" stroke="#ffffff" stroke-width="2.2" opacity="0.20"/>
+  <path d="M157,230 C154,262 150,294 143,324" fill="none" stroke="#ffffff" stroke-width="2.2" opacity="0.18"/>
+</g>
+<!-- bow knot -->
+<path d="M141,205 C147,203 151,204 153,207 L154,222 C150,226 145,226 141,224 Z" fill="url(#sashG)"/>
+<path d="M143,207 C147,205.5 150,206 152,208" fill="none" stroke="#d98a52" stroke-width="1.3" opacity="0.6"/>
+
+<!-- crepe grain -->
+<rect width="400" height="500" filter="url(#noiseF)" mask="url(#gm)" opacity="0.35"/>
+</svg>
