@@ -178,6 +178,39 @@
   .toast{position:fixed;bottom:1.5rem;left:50%;transform:translate(-50%,150%);background:var(--ink);color:var(--paper);padding:.8rem 1.5rem;border-radius:999px;font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;transition:transform .3s;z-index:120;max-width:90vw;text-align:center}
   .toast.show{transform:translate(-50%,0)}
 
+  /* ---------- Auth modals ---------- */
+  .modal{position:fixed;inset:0;background:rgba(15,23,42,.6);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;z-index:110}
+  .modal.open{opacity:1;pointer-events:auto}
+  .modal-box{background:var(--paper);border-radius:var(--radius);max-width:420px;width:90%;padding:2.2rem;box-shadow:0 20px 60px rgba(15,23,42,.2);position:relative}
+  .modal-head{margin-bottom:2rem}
+  .modal-head h2{font-size:1.5rem;margin-bottom:.5rem}
+  .modal-head p{color:var(--muted);font-size:.9rem}
+  .auth-form{display:flex;flex-direction:column;gap:1.2rem}
+  .auth-form input{padding:.95rem 1.1rem;border:1.5px solid var(--line);border-radius:8px;background:var(--card);font-family:var(--sans);font-size:.95rem;color:var(--ink);transition:border-color .2s}
+  .auth-form input:focus{outline:none;border-color:var(--rust)}
+  .auth-form .input-group{display:flex;flex-direction:column;gap:.35rem}
+  .auth-form .input-group label{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .form-note{font-family:var(--mono);font-size:.75rem;color:var(--muted);margin-top:.3rem}
+  .form-note.error{color:#dc2626}
+  .form-note.success{color:var(--sage)}
+  .auth-btn{padding:.95rem;border-radius:999px;background:var(--rust);color:#f8f0e8;font-family:var(--mono);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:background .2s,transform .15s;cursor:pointer;border:none}
+  .auth-btn:hover{background:var(--rust-dark);transform:translateY(-2px)}
+  .auth-toggle{text-align:center;font-size:.85rem;color:var(--muted);margin-top:1.5rem}
+  .auth-toggle a{color:var(--rust);cursor:pointer;font-weight:600;text-decoration:underline}
+  .close-modal{position:absolute;top:1rem;right:1.2rem;background:none;border:none;font-size:1.5rem;color:var(--muted);cursor:pointer;line-height:1}
+  .close-modal:hover{color:var(--rust)}
+
+  .account-menu{position:relative}
+  .account-btn{padding:.55rem 1rem;border:1.5px solid var(--ink);border-radius:999px;background:var(--paper);color:var(--ink);font-family:var(--mono);font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+  .account-btn:hover{background:var(--ink);color:var(--paper)}
+  .account-dropdown{position:absolute;top:calc(100% + .5rem);right:0;background:var(--paper);border:1.5px solid var(--line);border-radius:8px;min-width:160px;z-index:105;box-shadow:var(--shadow);opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .2s,transform .2s}
+  .account-dropdown.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+  .account-dropdown button{display:block;width:100%;text-align:left;padding:.7rem 1rem;font-size:.8rem;color:var(--ink);cursor:pointer;transition:background .2s}
+  .account-dropdown button:hover{background:var(--paper2)}
+  .account-dropdown button:first-child{border-radius:7px 7px 0 0}
+  .account-dropdown button:last-child{border-radius:0 0 7px 7px}
+  .account-user{padding:.7rem 1rem;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--rust);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
   /* ---------- Responsive ---------- */
   @media (max-width:1080px){
     .grid,.grid.g5{grid-template-columns:repeat(3,1fr)}
@@ -214,9 +247,22 @@
       <a href="#s-jewellery">Jewellery</a>
       <a href="#story">Our Story</a>
     </nav>
-    <button class="cart-btn" id="cartBtn" aria-label="Open cart">
-      Cart <span class="cart-count" id="cartCount">0</span>
-    </button>
+    <div style="display:flex;gap:1rem;align-items:center">
+      <div class="account-menu">
+        <button class="account-btn" id="authToggle" style="display:none">Account</button>
+        <div class="account-dropdown" id="accountDropdown">
+          <div class="account-user" id="accountEmail"></div>
+          <button id="logoutBtn">Logout</button>
+        </div>
+        <div id="authButtons" style="display:flex;gap:.6rem">
+          <button class="account-btn" id="signInBtn">Sign in</button>
+          <button class="btn btn-rust" id="signUpBtn" style="padding:.55rem 1rem;font-size:.74rem">Sign up</button>
+        </div>
+      </div>
+      <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+        Cart <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -384,6 +430,59 @@
 
 <div class="toast" id="toast" role="status"></div>
 
+<!-- SIGN UP MODAL -->
+<div class="modal" id="signUpModal">
+  <div class="modal-box">
+    <button class="close-modal" id="closeSignUp" aria-label="Close sign up">×</button>
+    <div class="modal-head">
+      <h2>Create an account</h2>
+      <p>Join ODETTA for early access and 10% off your first order.</p>
+    </div>
+    <form class="auth-form" id="signUpForm">
+      <div class="input-group">
+        <label for="signUpEmail">Email address</label>
+        <input type="email" id="signUpEmail" required placeholder="you@example.com" aria-label="Email address">
+      </div>
+      <div class="input-group">
+        <label for="signUpPassword">Password</label>
+        <input type="password" id="signUpPassword" required placeholder="Min. 6 characters" aria-label="Password">
+        <div class="form-note" id="passwordNote"></div>
+      </div>
+      <div class="input-group">
+        <label for="signUpConfirm">Confirm password</label>
+        <input type="password" id="signUpConfirm" required placeholder="Confirm password" aria-label="Confirm password">
+      </div>
+      <button type="submit" class="auth-btn">Create account</button>
+      <div class="form-note" id="signUpMsg"></div>
+    </form>
+    <div class="auth-toggle">Already have an account? <a id="toSignIn">Sign in</a></div>
+  </div>
+</div>
+
+<!-- SIGN IN MODAL -->
+<div class="modal" id="signInModal">
+  <div class="modal-box">
+    <button class="close-modal" id="closeSignIn" aria-label="Close sign in">×</button>
+    <div class="modal-head">
+      <h2>Sign in</h2>
+      <p>Welcome back to ODETTA.</p>
+    </div>
+    <form class="auth-form" id="signInForm">
+      <div class="input-group">
+        <label for="signInEmail">Email address</label>
+        <input type="email" id="signInEmail" required placeholder="you@example.com" aria-label="Email address">
+      </div>
+      <div class="input-group">
+        <label for="signInPassword">Password</label>
+        <input type="password" id="signInPassword" required placeholder="Your password" aria-label="Password">
+      </div>
+      <button type="submit" class="auth-btn">Sign in</button>
+      <div class="form-note" id="signInMsg"></div>
+    </form>
+    <div class="auth-toggle">Don't have an account? <a id="toSignUp">Create one</a></div>
+  </div>
+</div>
+
 <script>
 // ---------- Product data ----------
 const PRODUCTS = [
@@ -537,6 +636,163 @@ document.getElementById("newsForm").addEventListener("submit", e => {
 });
 
 renderCart();
+
+// ---------- Authentication ----------
+let currentUser = null;
+try { currentUser = JSON.parse(localStorage.getItem("odetta-user")); } catch(e){}
+
+const signUpModal = document.getElementById("signUpModal");
+const signInModal = document.getElementById("signInModal");
+const signUpForm = document.getElementById("signUpForm");
+const signInForm = document.getElementById("signInForm");
+const authButtons = document.getElementById("authButtons");
+const authToggle = document.getElementById("authToggle");
+const accountDropdown = document.getElementById("accountDropdown");
+const accountEmail = document.getElementById("accountEmail");
+
+function closeModals(){
+  signUpModal.classList.remove("open");
+  signInModal.classList.remove("open");
+}
+
+function openSignUp(){
+  closeModals();
+  signUpModal.classList.add("open");
+  document.getElementById("signUpEmail").focus();
+}
+
+function openSignIn(){
+  closeModals();
+  signInModal.classList.add("open");
+  document.getElementById("signInEmail").focus();
+}
+
+function logoutUser(){
+  currentUser = null;
+  try { localStorage.removeItem("odetta-user"); } catch(e){}
+  updateAuthUI();
+  accountDropdown.classList.remove("show");
+  showToast("Signed out. See you soon!");
+}
+
+function updateAuthUI(){
+  if(currentUser){
+    authButtons.style.display = "none";
+    authToggle.style.display = "block";
+    accountEmail.textContent = currentUser.email;
+  } else {
+    authButtons.style.display = "flex";
+    authToggle.style.display = "none";
+    accountDropdown.classList.remove("show");
+  }
+}
+
+function getAllUsers(){
+  try { return JSON.parse(localStorage.getItem("odetta-users")) || []; } catch(e){ return []; }
+}
+
+function saveUsers(users){
+  try { localStorage.setItem("odetta-users", JSON.stringify(users)); } catch(e){}
+}
+
+// Sign Up
+document.getElementById("signUpBtn").addEventListener("click", openSignUp);
+document.getElementById("closeSignUp").addEventListener("click", closeModals);
+document.getElementById("toSignIn").addEventListener("click", openSignIn);
+
+signUpForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const email = document.getElementById("signUpEmail").value.trim();
+  const password = document.getElementById("signUpPassword").value;
+  const confirm = document.getElementById("signUpConfirm").value;
+  const msg = document.getElementById("signUpMsg");
+
+  msg.textContent = "";
+  msg.className = "form-note";
+
+  if(!email.includes("@")){
+    msg.textContent = "Please enter a valid email.";
+    msg.classList.add("error");
+    return;
+  }
+  if(password.length < 6){
+    msg.textContent = "Password must be at least 6 characters.";
+    msg.classList.add("error");
+    return;
+  }
+  if(password !== confirm){
+    msg.textContent = "Passwords don't match.";
+    msg.classList.add("error");
+    return;
+  }
+
+  const users = getAllUsers();
+  if(users.some(u => u.email === email)){
+    msg.textContent = "This email is already registered.";
+    msg.classList.add("error");
+    return;
+  }
+
+  users.push({email, password});
+  saveUsers(users);
+
+  currentUser = {email};
+  try { localStorage.setItem("odetta-user", JSON.stringify(currentUser)); } catch(e){}
+
+  updateAuthUI();
+  closeModals();
+  signUpForm.reset();
+  showToast("Welcome to ODETTA! 🎉");
+});
+
+// Sign In
+document.getElementById("signInBtn").addEventListener("click", openSignIn);
+document.getElementById("closeSignIn").addEventListener("click", closeModals);
+document.getElementById("toSignUp").addEventListener("click", openSignUp);
+
+signInForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const email = document.getElementById("signInEmail").value.trim();
+  const password = document.getElementById("signInPassword").value;
+  const msg = document.getElementById("signInMsg");
+
+  msg.textContent = "";
+  msg.className = "form-note";
+
+  const users = getAllUsers();
+  const user = users.find(u => u.email === email && u.password === password);
+
+  if(!user){
+    msg.textContent = "Invalid email or password.";
+    msg.classList.add("error");
+    return;
+  }
+
+  currentUser = {email};
+  try { localStorage.setItem("odetta-user", JSON.stringify(currentUser)); } catch(e){}
+
+  updateAuthUI();
+  closeModals();
+  signInForm.reset();
+  showToast("Welcome back! ✓");
+});
+
+// Account dropdown
+authToggle.addEventListener("click", () => {
+  accountDropdown.classList.toggle("show");
+});
+
+document.getElementById("logoutBtn").addEventListener("click", logoutUser);
+
+document.addEventListener("click", e => {
+  if(!e.target.closest(".account-menu")) accountDropdown.classList.remove("show");
+});
+
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape") closeModals();
+});
+
+updateAuthUI();
 </script>
 </body>
 </html>
