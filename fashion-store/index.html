@@ -200,6 +200,26 @@
   .close-modal{position:absolute;top:1rem;right:1.2rem;background:none;border:none;font-size:1.5rem;color:var(--muted);cursor:pointer;line-height:1}
   .close-modal:hover{color:var(--rust)}
 
+  /* ---------- Product detail modal ---------- */
+  .product-modal{position:fixed;inset:0;background:rgba(15,23,42,.6);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;z-index:110}
+  .product-modal.open{opacity:1;pointer-events:auto}
+  .product-detail{background:var(--paper);border-radius:var(--radius);max-width:600px;width:90%;max-height:90vh;overflow-y:auto;padding:2rem;box-shadow:0 20px 60px rgba(15,23,42,.2);position:relative}
+  .product-detail h2{font-size:1.5rem;margin-bottom:1rem}
+  .product-detail .price{font-family:var(--mono);font-weight:700;font-size:1.1rem;margin-bottom:1.5rem}
+  .opt-group{margin-bottom:1.5rem}
+  .opt-group label{display:block;font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:.6rem}
+  .opt-btns{display:flex;flex-wrap:wrap;gap:.5rem}
+  .opt-btn{padding:.6rem 1rem;border:1.5px solid var(--line);border-radius:8px;background:var(--card);font-size:.85rem;cursor:pointer;transition:all .2s}
+  .opt-btn:hover{border-color:var(--rust)}
+  .opt-btn.active{background:var(--rust);color:#fff;border-color:var(--rust)}
+  .qty-control{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+  .qty-control label{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .qty-control input{width:60px;padding:.6rem;border:1.5px solid var(--line);border-radius:8px;font-family:var(--mono);text-align:center}
+  .add-to-cart-btn{width:100%;padding:1rem;background:var(--rust);color:#f8f0e8;font-family:var(--mono);font-size:.9rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:999px;cursor:pointer;transition:background .2s}
+  .add-to-cart-btn:hover{background:var(--rust-dark)}
+  .close-detail{position:absolute;top:1rem;right:1.2rem;background:none;border:none;font-size:1.5rem;color:var(--muted);cursor:pointer;line-height:1}
+  .close-detail:hover{color:var(--rust)}
+
   .account-menu{position:relative}
   .account-btn{padding:.55rem 1rem;border:1.5px solid var(--ink);border-radius:999px;background:var(--paper);color:var(--ink);font-family:var(--mono);font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
   .account-btn:hover{background:var(--ink);color:var(--paper)}
@@ -430,6 +450,37 @@
 
 <div class="toast" id="toast" role="status"></div>
 
+<!-- PRODUCT DETAIL MODAL -->
+<div class="product-modal" id="productModal">
+  <div class="product-detail">
+    <button class="close-detail" id="closeProduct">×</button>
+    <h2 id="productName"></h2>
+    <div class="price" id="productPrice"></div>
+
+    <div class="opt-group" id="sizeGroup" style="display:none">
+      <label>Size</label>
+      <div class="opt-btns" id="sizeOptions"></div>
+    </div>
+
+    <div class="opt-group" id="colorGroup" style="display:none">
+      <label>Color</label>
+      <div class="opt-btns" id="colorOptions"></div>
+    </div>
+
+    <div class="opt-group" id="ageGroup" style="display:none">
+      <label>Age</label>
+      <div class="opt-btns" id="ageOptions"></div>
+    </div>
+
+    <div class="qty-control">
+      <label for="qty">Quantity</label>
+      <input type="number" id="qty" value="1" min="1" max="99">
+    </div>
+
+    <button class="add-to-cart-btn" id="addToCartBtn">Add to cart</button>
+  </div>
+</div>
+
 <!-- SIGN UP MODAL -->
 <div class="modal" id="signUpModal">
   <div class="modal-box">
@@ -486,36 +537,42 @@
 <script>
 // ---------- Product data ----------
 const PRODUCTS = [
-  {id:"w1", name:"Ana Wrap Dress",          cat:"women",       price:89,  was:119,  badge:"Sale", alt:"Rust crepe wrap dress with waist tie"},
-  {id:"w2", name:"Camden Wool Coat",        cat:"women",       price:189, was:null, badge:"New",  alt:"Camel double-breasted wool coat"},
-  {id:"w3", name:"Elm Pleated Skirt",       cat:"women",       price:69,  was:null, badge:null,   alt:"Olive pleated midi skirt"},
-  {id:"w4", name:"Luna Rib Knit",           cat:"women",       price:75,  was:null, badge:null,   alt:"Dusty rose ribbed jumper"},
-  {id:"w5", name:"Nora Shirt Dress",        cat:"women",       price:79,  was:null, badge:null,   alt:"Indigo belted shirt dress"},
-  {id:"w6", name:"Ivy Wide-Leg Trousers",   cat:"women",       price:69,  was:null, badge:null,   alt:"Warm stone wide-leg trousers"},
-  {id:"w7", name:"Sol Longline Cardigan",   cat:"women",       price:85,  was:null, badge:"New",  alt:"Oatmeal chunky-knit longline cardigan"},
-  {id:"m1", name:"Linen Everyday Shirt",    cat:"men",         price:59,  was:null, badge:null,   alt:"Sage linen camp-collar shirt"},
-  {id:"m2", name:"Tailored Twill Trousers", cat:"men",         price:79,  was:null, badge:null,   alt:"Charcoal tailored trousers"},
-  {id:"m3", name:"Harbour Overshirt",       cat:"men",         price:99,  was:null, badge:"New",  alt:"Navy wool overshirt with chest pockets"},
-  {id:"m4", name:"Fell Merino Jumper",      cat:"men",         price:95,  was:null, badge:null,   alt:"Slate blue merino crew-neck jumper"},
-  {id:"m5", name:"Dune Chore Jacket",       cat:"men",         price:119, was:null, badge:"New",  alt:"Tobacco canvas chore jacket"},
-  {id:"m6", name:"Ash Heavy Tee",           cat:"men",         price:29,  was:null, badge:null,   alt:"Washed charcoal heavyweight tee"},
-  {id:"g1", name:"Poppy Party Dress",       cat:"girls",       price:45,  was:null, badge:"New",  alt:"Dusty pink party dress with tulle skirt"},
-  {id:"g2", name:"Meadow Cardigan",         cat:"girls",       price:35,  was:null, badge:null,   alt:"Butter yellow cardigan with wooden buttons"},
-  {id:"g3", name:"Skye Denim Pinafore",     cat:"girls",       price:39,  was:null, badge:null,   alt:"Light-wash denim pinafore dress"},
-  {id:"g4", name:"Wren Cord Dress",         cat:"girls",       price:37,  was:null, badge:null,   alt:"Terracotta corduroy dress"},
-  {id:"b1", name:"Scout Hoodie",            cat:"boys",        price:35,  was:null, badge:null,   alt:"Forest green hoodie with kangaroo pocket"},
-  {id:"b2", name:"Finn Striped Tee",        cat:"boys",        price:19,  was:null, badge:null,   alt:"Navy and cream breton striped tee"},
-  {id:"b3", name:"Bear Dungarees",          cat:"boys",        price:42,  was:null, badge:"New",  alt:"Mid-wash denim dungarees with brass clasps"},
-  {id:"b4", name:"Cove Rain Mac",           cat:"boys",        price:44,  was:null, badge:null,   alt:"Mustard hooded rain mac with toggles"},
-  {id:"a1", name:"Sienna Leather Tote",     cat:"accessories", price:145, was:null, badge:null,   alt:"Tan pebbled leather tote with brass hardware"},
-  {id:"a2", name:"Mara Silk Scarf",         cat:"accessories", price:45,  was:60,   badge:"Sale", alt:"Plum and rose silk scarf, loosely knotted"},
-  {id:"a3", name:"Juno Sunglasses",         cat:"accessories", price:65,  was:null, badge:null,   alt:"Round tortoiseshell sunglasses"},
-  {id:"a4", name:"Weald Leather Belt",      cat:"accessories", price:49,  was:null, badge:null,   alt:"Dark brown leather belt with brass buckle"},
-  {id:"jb1", name:"Terra Bead Necklace",    cat:"jewellery",   price:55,  was:null, badge:"New",  alt:"Terracotta clay bead necklace on knotted cord"},
-  {id:"jb2", name:"Coco Bead Earrings",     cat:"jewellery",   price:32,  was:null, badge:null,   alt:"Wooden bead drop earrings"},
-  {id:"jb3", name:"Indigo Bead Bracelet",   cat:"jewellery",   price:38,  was:null, badge:null,   alt:"Indigo glass bead bracelet on cord"},
-  {id:"jb4", name:"Meadow Bead Strand",     cat:"jewellery",   price:45,  was:null, badge:null,   alt:"Long sage and cream bead strand necklace"},
-  {id:"jb5", name:"Ivory Knot Bracelet",    cat:"jewellery",   price:35,  was:null, badge:"New",  alt:"Cream bead bracelet with knotted cord detail"},
+  {id:"w1", name:"Ana Wrap Dress",          cat:"women",       price:89,  was:119,  badge:"Sale", alt:"Rust crepe wrap dress with waist tie", sizes:["XS","S","M","L","XL"], colors:[]},
+  {id:"w2", name:"Camden Wool Coat",        cat:"women",       price:189, was:null, badge:"New",  alt:"Camel double-breasted wool coat", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
+  {id:"w3", name:"Elm Pleated Skirt",       cat:"women",       price:69,  was:null, badge:null,   alt:"Olive pleated midi skirt", sizes:["XS","S","M","L","XL"], colors:[]},
+  {id:"w4", name:"Luna Rib Knit",           cat:"women",       price:75,  was:null, badge:null,   alt:"Dusty rose ribbed jumper", sizes:["XS","S","M","L","XL"], colors:[]},
+  {id:"w5", name:"Nora Shirt Dress",        cat:"women",       price:79,  was:null, badge:null,   alt:"Indigo belted shirt dress", sizes:["XS","S","M","L","XL"], colors:[]},
+  {id:"w6", name:"Ivy Wide-Leg Trousers",   cat:"women",       price:69,  was:null, badge:null,   alt:"Warm stone wide-leg trousers", sizes:["XS","S","M","L","XL"], colors:[]},
+  {id:"w7", name:"Sol Longline Cardigan",   cat:"women",       price:85,  was:null, badge:"New",  alt:"Oatmeal chunky-knit longline cardigan", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
+  {id:"w8", name:"Mixed Gown — Purple & Pink", cat:"women",    price:145, was:null, badge:"New",  alt:"Colorblock maxi gown", sizes:["XS","S","M","L","XL"], colors:["Purple & Pink","Forest & Teal","Navy & Sage"]},
+  {id:"w9", name:"Mixed Gown — Forest & Teal", cat:"women",    price:145, was:null, badge:"New",  alt:"Colorblock maxi gown", sizes:["XS","S","M","L","XL"], colors:["Purple & Pink","Forest & Teal","Navy & Sage"]},
+  {id:"w10", name:"Mixed Gown — Navy & Sage", cat:"women",     price:145, was:null, badge:"New",  alt:"Colorblock maxi gown", sizes:["XS","S","M","L","XL"], colors:["Purple & Pink","Forest & Teal","Navy & Sage"]},
+  {id:"m1", name:"Linen Everyday Shirt",    cat:"men",         price:59,  was:null, badge:null,   alt:"Sage linen camp-collar shirt", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
+  {id:"m2", name:"Tailored Twill Trousers", cat:"men",         price:79,  was:null, badge:null,   alt:"Charcoal tailored trousers", sizes:["28","30","32","34","36","38"], colors:[]},
+  {id:"m3", name:"Harbour Overshirt",       cat:"men",         price:99,  was:null, badge:"New",  alt:"Navy wool overshirt with chest pockets", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
+  {id:"m4", name:"Fell Merino Jumper",      cat:"men",         price:95,  was:null, badge:null,   alt:"Slate blue merino crew-neck jumper", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
+  {id:"m5", name:"Dune Chore Jacket",       cat:"men",         price:119, was:null, badge:"New",  alt:"Tobacco canvas chore jacket", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
+  {id:"m6", name:"Ash Heavy Tee",           cat:"men",         price:29,  was:null, badge:null,   alt:"Washed charcoal heavyweight tee", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
+  {id:"g1", name:"Poppy Party Dress",       cat:"girls",       price:45,  was:null, badge:"New",  alt:"Dusty pink party dress with tulle skirt", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
+  {id:"g2", name:"Meadow Cardigan",         cat:"girls",       price:35,  was:null, badge:null,   alt:"Butter yellow cardigan with wooden buttons", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
+  {id:"g3", name:"Skye Denim Pinafore",     cat:"girls",       price:39,  was:null, badge:null,   alt:"Light-wash denim pinafore dress", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
+  {id:"g4", name:"Wren Cord Dress",         cat:"girls",       price:37,  was:null, badge:null,   alt:"Terracotta corduroy dress", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
+  {id:"g5", name:"Mixed Gown — Purple & Pink", cat:"girls",    price:65,  was:null, badge:"New",  alt:"Colorblock midi gown", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"], colors:["Purple & Pink","Forest & Teal","Navy & Sage"]},
+  {id:"g6", name:"Mixed Gown — Forest & Teal", cat:"girls",    price:65,  was:null, badge:"New",  alt:"Colorblock midi gown", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"], colors:["Purple & Pink","Forest & Teal","Navy & Sage"]},
+  {id:"g7", name:"Mixed Gown — Navy & Sage", cat:"girls",      price:65,  was:null, badge:"New",  alt:"Colorblock midi gown", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"], colors:["Purple & Pink","Forest & Teal","Navy & Sage"]},
+  {id:"b1", name:"Scout Hoodie",            cat:"boys",        price:35,  was:null, badge:null,   alt:"Forest green hoodie with kangaroo pocket", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
+  {id:"b2", name:"Finn Striped Tee",        cat:"boys",        price:19,  was:null, badge:null,   alt:"Navy and cream breton striped tee", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
+  {id:"b3", name:"Bear Dungarees",          cat:"boys",        price:42,  was:null, badge:"New",  alt:"Mid-wash denim dungarees with brass clasps", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
+  {id:"b4", name:"Cove Rain Mac",           cat:"boys",        price:44,  was:null, badge:null,   alt:"Mustard hooded rain mac with toggles", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
+  {id:"a1", name:"Sienna Leather Tote",     cat:"accessories", price:145, was:null, badge:null,   alt:"Tan pebbled leather tote with brass hardware", sizes:[], colors:[]},
+  {id:"a2", name:"Mara Silk Scarf",         cat:"accessories", price:45,  was:60,   badge:"Sale", alt:"Plum and rose silk scarf, loosely knotted", sizes:[], colors:[]},
+  {id:"a3", name:"Juno Sunglasses",         cat:"accessories", price:65,  was:null, badge:null,   alt:"Round tortoiseshell sunglasses", sizes:[], colors:[]},
+  {id:"a4", name:"Weald Leather Belt",      cat:"accessories", price:49,  was:null, badge:null,   alt:"Dark brown leather belt with brass buckle", sizes:[], colors:[]},
+  {id:"jb1", name:"Terra Bead Necklace",    cat:"jewellery",   price:55,  was:null, badge:"New",  alt:"Terracotta clay bead necklace on knotted cord", sizes:[], colors:[]},
+  {id:"jb2", name:"Coco Bead Earrings",     cat:"jewellery",   price:32,  was:null, badge:null,   alt:"Wooden bead drop earrings", sizes:[], colors:[]},
+  {id:"jb3", name:"Indigo Bead Bracelet",   cat:"jewellery",   price:38,  was:null, badge:null,   alt:"Indigo glass bead bracelet on cord", sizes:[], colors:[]},
+  {id:"jb4", name:"Meadow Bead Strand",     cat:"jewellery",   price:45,  was:null, badge:null,   alt:"Long sage and cream bead strand necklace", sizes:[], colors:[]},
+  {id:"jb5", name:"Ivory Knot Bracelet",    cat:"jewellery",   price:35,  was:null, badge:"New",  alt:"Cream bead bracelet with knotted cord detail", sizes:[], colors:[]},
 ];
 
 const money = n => "£" + n.toFixed(2);
@@ -534,13 +591,78 @@ function cardHTML(p){
         <span class="name">${p.name}</span>
         <div class="row">
           <span class="price">${p.was ? `<span class="was">${money(p.was)}</span>` : ""}${money(p.price)}</span>
-          <button class="add" data-id="${p.id}">Add to cart</button>
+          <button class="add" data-id="${p.id}">Select</button>
         </div>
       </div>
     </div>`;
 }
 document.querySelectorAll(".grid[data-cat]").forEach(g => {
   g.innerHTML = PRODUCTS.filter(p => p.cat === g.dataset.cat).map(cardHTML).join("");
+});
+
+// ---------- Product detail modal ----------
+let selectedProduct = null;
+let selectedOptions = {};
+
+const productModal = document.getElementById("productModal");
+
+function openProductModal(productId){
+  selectedProduct = PRODUCTS.find(p => p.id === productId);
+  selectedOptions = {};
+
+  document.getElementById("productName").textContent = selectedProduct.name;
+  document.getElementById("productPrice").textContent = money(selectedProduct.price);
+  document.getElementById("qty").value = 1;
+
+  const sizeGroup = document.getElementById("sizeGroup");
+  const colorGroup = document.getElementById("colorGroup");
+  const ageGroup = document.getElementById("ageGroup");
+
+  if(selectedProduct.sizes && selectedProduct.sizes.length > 0){
+    sizeGroup.style.display = "block";
+    document.getElementById("sizeOptions").innerHTML = selectedProduct.sizes.map(s =>
+      `<button class="opt-btn" data-opt="size" data-val="${s}">${s}</button>`
+    ).join("");
+  } else {
+    sizeGroup.style.display = "none";
+  }
+
+  if(selectedProduct.colors && selectedProduct.colors.length > 0){
+    colorGroup.style.display = "block";
+    document.getElementById("colorOptions").innerHTML = selectedProduct.colors.map(c =>
+      `<button class="opt-btn" data-opt="color" data-val="${c}">${c}</button>`
+    ).join("");
+  } else {
+    colorGroup.style.display = "none";
+  }
+
+  if(selectedProduct.ages && selectedProduct.ages.length > 0){
+    ageGroup.style.display = "block";
+    document.getElementById("ageOptions").innerHTML = selectedProduct.ages.map(a =>
+      `<button class="opt-btn" data-opt="age" data-val="${a}">${a}</button>`
+    ).join("");
+  } else {
+    ageGroup.style.display = "none";
+  }
+
+  productModal.classList.add("open");
+}
+
+document.getElementById("closeProduct").addEventListener("click", () => {
+  productModal.classList.remove("open");
+});
+
+productModal.addEventListener("click", e => {
+  if(e.target === productModal) productModal.classList.remove("open");
+});
+
+document.addEventListener("click", e => {
+  const optBtn = e.target.closest(".opt-btn");
+  if(!optBtn || !optBtn.closest(".product-detail")) return;
+
+  document.querySelectorAll(".opt-btn[data-opt='" + optBtn.dataset.opt + "']").forEach(b => b.classList.remove("active"));
+  optBtn.classList.add("active");
+  selectedOptions[optBtn.dataset.opt] = optBtn.dataset.val;
 });
 
 // ---------- Cart ----------
@@ -594,13 +716,17 @@ function renderCart(){
 document.querySelector("main").addEventListener("click", e => {
   const btn = e.target.closest(".add");
   if(!btn) return;
-  const id = btn.dataset.id;
+  openProductModal(btn.dataset.id);
+});
+
+document.getElementById("addToCartBtn").addEventListener("click", () => {
+  const qty = parseInt(document.getElementById("qty").value) || 1;
+  const id = selectedProduct.id;
   const line = cart.find(i => i.id === id);
-  if(line) line.qty++; else cart.push({id, qty:1});
+  if(line) line.qty += qty; else cart.push({id, qty, options: {...selectedOptions}});
   renderCart();
-  btn.textContent = "Added ✓"; btn.classList.add("added");
-  setTimeout(() => { btn.textContent = "Add to cart"; btn.classList.remove("added"); }, 1200);
-  showToast(PRODUCTS.find(p => p.id === id).name + " added to cart");
+  productModal.classList.remove("open");
+  showToast(selectedProduct.name + " × " + qty + " added to cart");
 });
 
 document.getElementById("cartItems").addEventListener("click", e => {
