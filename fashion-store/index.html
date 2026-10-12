@@ -64,6 +64,19 @@
     text-decoration: none;
   }
 
+  .logo-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+  }
+
+  .logo-center svg {
+    width: 80px;
+    height: 80px;
+  }
+
   .rust {
     color: #ff69b4;
   }
@@ -347,6 +360,15 @@
       font-size: 1.6rem;
     }
 
+    .logo-center {
+      height: 60px;
+    }
+
+    .logo-center svg {
+      width: 60px;
+      height: 60px;
+    }
+
     .auth-btns {
       gap: 0.5rem;
     }
@@ -401,6 +423,15 @@
       font-size: 1.3rem;
     }
 
+    .logo-center {
+      height: 50px;
+    }
+
+    .logo-center svg {
+      width: 50px;
+      height: 50px;
+    }
+
     .btn {
       padding: 0.6rem 0.8rem;
       font-size: 0.7rem;
@@ -423,6 +454,12 @@
     <a href="#" class="brand">
       <span class="brand-text"><span class="rust">O</span>DETTA</span>
     </a>
+    <div class="logo-center">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="60" cy="60" rx="55" ry="55" fill="none" stroke="#ff69b4" stroke-width="2"/>
+        <text x="60" y="75" font-family="'Fredoka', sans-serif" font-size="48" font-weight="700" fill="#ff69b4" text-anchor="middle" font-style="italic">TT</text>
+      </svg>
+    </div>
     <div class="auth-btns">
       <div class="account-menu">
         <button class="account-btn" id="authToggle" style="display:none">Account</button>
