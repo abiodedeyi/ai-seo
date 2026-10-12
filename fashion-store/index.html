@@ -456,7 +456,19 @@
     </a>
     <div class="logo-center">
       <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="60" cy="60" rx="55" ry="55" fill="none" stroke="#ff69b4" stroke-width="2"/>
+        <!-- Outer decorative oval -->
+        <ellipse cx="60" cy="60" rx="58" ry="58" fill="none" stroke="#ff69b4" stroke-width="1.5" opacity="0.6"/>
+        <!-- Main oval frame -->
+        <ellipse cx="60" cy="60" rx="55" ry="55" fill="none" stroke="#ff69b4" stroke-width="2.5"/>
+        <!-- Inner decorative oval -->
+        <ellipse cx="60" cy="60" rx="52" ry="52" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6"/>
+        <!-- Decorative dots at top and bottom -->
+        <circle cx="60" cy="8" r="2.5" fill="#ff69b4"/>
+        <circle cx="60" cy="112" r="2.5" fill="#ff69b4"/>
+        <!-- Decorative dots on sides -->
+        <circle cx="8" cy="60" r="2.5" fill="#ff69b4"/>
+        <circle cx="112" cy="60" r="2.5" fill="#ff69b4"/>
+        <!-- TT text -->
         <text x="60" y="75" font-family="'Fredoka', sans-serif" font-size="48" font-weight="700" fill="#ff69b4" text-anchor="middle" font-style="italic">TT</text>
       </svg>
     </div>
