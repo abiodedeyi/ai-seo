@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ODETTA — Fashion for the Whole Family</title>
+<style>
+  :root {
+    --paper: #fbfaf5;
+    --ink: #0f172a;
+    --rust: #bf5e2e;
+    --sage: #7d8a6a;
+    --muted: #475569;
+    --line: #e8e0d0;
+    --radius: 16px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* ---------- HEADER ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(251, 250, 245, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .brand .rust {
+    color: var(--rust);
+  }
+
+  .auth-btns {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+  }
+
+  .btn {
+    padding: 0.7rem 1.5rem;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .btn-primary {
+    background: var(--rust);
+    color: #fff8f0;
+    border-color: var(--rust);
+  }
+
+  .btn-primary:hover {
+    background: #9c4b22;
+    border-color: #9c4b22;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1.2rem;
+    line-height: 1.1;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 50ch;
+    margin: 0 auto 2rem;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- MODAL ---------- */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 1.5rem;
+  }
+
+  .modal.open {
+    display: flex;
+  }
+
+  .modal-box {
+    background: var(--paper);
+    border-radius: var(--radius);
+    padding: 2rem;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+    position: relative;
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .close-modal:hover {
+    color: var(--ink);
+  }
+
+  .modal-head {
+    margin-bottom: 1.8rem;
+  }
+
+  .modal-head h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-head p {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--rust);
+    box-shadow: 0 0 0 3px rgba(191, 94, 46, 0.1);
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 0.9rem;
+    background: var(--rust);
+    color: #fff8f0;
+    border: none;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-submit:hover {
+    background: #9c4b22;
+  }
+
+  .toggle-form {
+    margin-top: 1.2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .toggle-form button {
+    background: none;
+    border: none;
+    color: var(--rust);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  /* ---------- ACCOUNT MENU ---------- */
+  .account-menu {
+    position: relative;
+  }
+
+  .account-btn {
+    padding: 0.7rem 1.5rem;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .account-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .account-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    margin-top: 0.5rem;
+    min-width: 200px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+    display: none;
+    padding: 1rem;
+    z-index: 50;
+  }
+
+  .account-dropdown.open {
+    display: block;
+  }
+
+  .account-user {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logout-btn {
+    width: 100%;
+    padding: 0.6rem;
+    background: none;
+    border: 1.5px solid var(--rust);
+    color: var(--rust);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .logout-btn:hover {
+    background: var(--rust);
+    color: #fff8f0;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 768px) {
+    .nav {
+      padding: 1rem 1.2rem;
+    }
+
+    .brand {
+      font-size: 1.4rem;
+    }
+
+    .auth-btns {
+      gap: 0.5rem;
+    }
+
+    .btn {
+      padding: 0.6rem 1rem;
+      font-size: 0.75rem;
+    }
+
+    .hero {
+      padding: 2.5rem 1.2rem;
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+    }
+
+    .modal-box {
+      padding: 1.5rem;
+      max-width: 90%;
+    }
+
+    .modal-head h2 {
+      font-size: 1.3rem;
+    }
+
+    .hero-btns {
+      flex-direction: column;
+    }
+
+    .hero-btns .btn {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .auth-btns {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .brand {
+      font-size: 1.2rem;
+    }
+
+    .btn {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.7rem;
+    }
+
+    .hero h1 {
+      font-size: 1.5rem;
+    }
+
+    .modal-box {
+      padding: 1.2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand"><span class="rust">O</span>DETTA</div>
+    <div class="auth-btns">
+      <div class="account-menu">
+        <button class="account-btn" id="authToggle" style="display:none">Account</button>
+        <div class="account-dropdown" id="accountDropdown">
+          <div class="account-user" id="accountEmail"></div>
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+        <div id="authButtons" style="display:flex;gap:.6rem">
+          <button class="btn" id="signInBtn">Sign in</button>
+          <button class="btn btn-primary" id="signUpBtn">Sign up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Welcome to <span class="rust">ODETTA</span></h1>
+    <p>Timeless fashion for the whole family. Natural fabrics, made to last.</p>
+    <div class="hero-btns">
+      <button class="btn" id="shopBtn">Shop Collection</button>
+      <button class="btn btn-primary" id="learnBtn">Learn More</button>
+    </div>
+  </section>
+</main>
+
+<!-- SIGN UP MODAL -->
+<div class="modal" id="signUpModal">
+  <div class="modal-box">
+    <button class="close-modal" id="closeSignUp">×</button>
+    <div class="modal-head">
+      <h2>Create an account</h2>
+      <p>Join ODETTA for early access and 10% off your first order.</p>
+    </div>
+    <form id="signUpForm">
+      <div class="form-group">
+        <label for="signUpEmail">Email address</label>
+        <input type="email" id="signUpEmail" required placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label for="signUpPassword">Password</label>
+        <input type="password" id="signUpPassword" required placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn-submit">Create account</button>
+    </form>
+    <div class="toggle-form">
+      Already have an account? <button type="button" id="toSignIn">Sign in</button>
+    </div>
+  </div>
+</div>
+
+<!-- SIGN IN MODAL -->
+<div class="modal" id="signInModal">
+  <div class="modal-box">
+    <button class="close-modal" id="closeSignIn">×</button>
+    <div class="modal-head">
+      <h2>Sign in</h2>
+      <p>Welcome back to ODETTA</p>
+    </div>
+    <form id="signInForm">
+      <div class="form-group">
+        <label for="signInEmail">Email address</label>
+        <input type="email" id="signInEmail" required placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label for="signInPassword">Password</label>
+        <input type="password" id="signInPassword" required placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn-submit">Sign in</button>
+    </form>
+    <div class="toggle-form">
+      Don't have an account? <button type="button" id="toSignUp">Create one</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // AUTH STATE
+  let currentUser = localStorage.getItem('odettaUser');
+
+  const updateAuthUI = () => {
+    const authButtons = document.getElementById('authButtons');
+    const authToggle = document.getElementById('authToggle');
+    const accountDropdown = document.getElementById('accountDropdown');
+
+    if (currentUser) {
+      authButtons.style.display = 'none';
+      authToggle.style.display = 'block';
+      document.getElementById('accountEmail').textContent = currentUser;
+    } else {
+      authButtons.style.display = 'flex';
+      authToggle.style.display = 'none';
+      accountDropdown.classList.remove('open');
+    }
+  };
+
+  // MODAL CONTROLS
+  const signUpModal = document.getElementById('signUpModal');
+  const signInModal = document.getElementById('signInModal');
+
+  document.getElementById('signUpBtn').addEventListener('click', () => {
+    signUpModal.classList.add('open');
+  });
+
+  document.getElementById('signInBtn').addEventListener('click', () => {
+    signInModal.classList.add('open');
+  });
+
+  document.getElementById('closeSignUp').addEventListener('click', () => {
+    signUpModal.classList.remove('open');
+  });
+
+  document.getElementById('closeSignIn').addEventListener('click', () => {
+    signInModal.classList.remove('open');
+  });
+
+  // TOGGLE BETWEEN MODALS
+  document.getElementById('toSignIn').addEventListener('click', () => {
+    signUpModal.classList.remove('open');
+    signInModal.classList.add('open');
+  });
+
+  document.getElementById('toSignUp').addEventListener('click', () => {
+    signInModal.classList.remove('open');
+    signUpModal.classList.add('open');
+  });
+
+  // FORM SUBMISSIONS
+  document.getElementById('signUpForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('signUpEmail').value;
+    localStorage.setItem('odettaUser', email);
+    currentUser = email;
+    signUpModal.classList.remove('open');
+    updateAuthUI();
+    document.getElementById('signUpForm').reset();
+  });
+
+  document.getElementById('signInForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('signInEmail').value;
+    localStorage.setItem('odettaUser', email);
+    currentUser = email;
+    signInModal.classList.remove('open');
+    updateAuthUI();
+    document.getElementById('signInForm').reset();
+  });
+
+  // ACCOUNT DROPDOWN
+  document.getElementById('authToggle').addEventListener('click', () => {
+    document.getElementById('accountDropdown').classList.toggle('open');
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('odettaUser');
+    currentUser = null;
+    document.getElementById('accountDropdown').classList.remove('open');
+    updateAuthUI();
+  });
+
+  // CLOSE MODAL ON BACKGROUND CLICK
+  [signUpModal, signInModal].forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('open');
+      }
+    });
+  });
+
+  // INIT
+  updateAuthUI();
+</script>
+
+</body>
+</html>
