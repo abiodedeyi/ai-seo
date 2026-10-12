@@ -537,44 +537,7 @@
 
 <script>
 // ---------- Product data ----------
-const PRODUCTS = [
-  {id:"w1", name:"Ana Wrap Dress",          cat:"women",       price:89,  was:119,  badge:"Sale", alt:"Rust crepe wrap dress with waist tie", sizes:["XS","S","M","L","XL"], colors:[]},
-  {id:"w2", name:"Camden Wool Coat",        cat:"women",       price:189, was:null, badge:"New",  alt:"Camel double-breasted wool coat", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
-  {id:"w3", name:"Elm Pleated Skirt",       cat:"women",       price:69,  was:null, badge:null,   alt:"Olive pleated midi skirt", sizes:["XS","S","M","L","XL"], colors:[]},
-  {id:"w4", name:"Luna Rib Knit",           cat:"women",       price:75,  was:null, badge:null,   alt:"Dusty rose ribbed jumper", sizes:["XS","S","M","L","XL"], colors:[]},
-  {id:"w5", name:"Nora Shirt Dress",        cat:"women",       price:79,  was:null, badge:null,   alt:"Indigo belted shirt dress", sizes:["XS","S","M","L","XL"], colors:[]},
-  {id:"w6", name:"Ivy Wide-Leg Trousers",   cat:"women",       price:69,  was:null, badge:null,   alt:"Warm stone wide-leg trousers", sizes:["XS","S","M","L","XL"], colors:[]},
-  {id:"w7", name:"Sol Longline Cardigan",   cat:"women",       price:85,  was:null, badge:"New",  alt:"Oatmeal chunky-knit longline cardigan", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
-  {id:"w8", name:"Mixed Gown — Purple & Pink", cat:"women",    price:145, was:null, badge:"New",  alt:"Colorblock maxi gown", sizes:["XS","S","M","L","XL"], colors:["Purple & Pink","Forest & Teal","Navy & Sage"]},
-  {id:"w9", name:"Mixed Gown — Forest & Teal", cat:"women",    price:145, was:null, badge:"New",  alt:"Colorblock maxi gown", sizes:["XS","S","M","L","XL"], colors:["Purple & Pink","Forest & Teal","Navy & Sage"]},
-  {id:"w10", name:"Mixed Gown — Navy & Sage", cat:"women",     price:145, was:null, badge:"New",  alt:"Colorblock maxi gown", sizes:["XS","S","M","L","XL"], colors:["Purple & Pink","Forest & Teal","Navy & Sage"]},
-  {id:"m1", name:"Linen Everyday Shirt",    cat:"men",         price:59,  was:null, badge:null,   alt:"Sage linen camp-collar shirt", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
-  {id:"m2", name:"Tailored Twill Trousers", cat:"men",         price:79,  was:null, badge:null,   alt:"Charcoal tailored trousers", sizes:["28","30","32","34","36","38"], colors:[]},
-  {id:"m3", name:"Harbour Overshirt",       cat:"men",         price:99,  was:null, badge:"New",  alt:"Navy wool overshirt with chest pockets", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
-  {id:"m4", name:"Fell Merino Jumper",      cat:"men",         price:95,  was:null, badge:null,   alt:"Slate blue merino crew-neck jumper", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
-  {id:"m5", name:"Dune Chore Jacket",       cat:"men",         price:119, was:null, badge:"New",  alt:"Tobacco canvas chore jacket", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
-  {id:"m6", name:"Ash Heavy Tee",           cat:"men",         price:29,  was:null, badge:null,   alt:"Washed charcoal heavyweight tee", sizes:["XS","S","M","L","XL","XXL"], colors:[]},
-  {id:"g1", name:"Poppy Party Dress",       cat:"girls",       price:45,  was:null, badge:"New",  alt:"Dusty pink party dress with tulle skirt", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
-  {id:"g2", name:"Meadow Cardigan",         cat:"girls",       price:35,  was:null, badge:null,   alt:"Butter yellow cardigan with wooden buttons", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
-  {id:"g3", name:"Skye Denim Pinafore",     cat:"girls",       price:39,  was:null, badge:null,   alt:"Light-wash denim pinafore dress", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
-  {id:"g4", name:"Wren Cord Dress",         cat:"girls",       price:37,  was:null, badge:null,   alt:"Terracotta corduroy dress", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
-  {id:"g5", name:"Mixed Gown — Purple & Pink", cat:"girls",    price:65,  was:null, badge:"New",  alt:"Colorblock midi gown", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"], colors:["Purple & Pink","Forest & Teal","Navy & Sage"]},
-  {id:"g6", name:"Mixed Gown — Forest & Teal", cat:"girls",    price:65,  was:null, badge:"New",  alt:"Colorblock midi gown", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"], colors:["Purple & Pink","Forest & Teal","Navy & Sage"]},
-  {id:"g7", name:"Mixed Gown — Navy & Sage", cat:"girls",      price:65,  was:null, badge:"New",  alt:"Colorblock midi gown", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"], colors:["Purple & Pink","Forest & Teal","Navy & Sage"]},
-  {id:"b1", name:"Scout Hoodie",            cat:"boys",        price:35,  was:null, badge:null,   alt:"Forest green hoodie with kangaroo pocket", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
-  {id:"b2", name:"Finn Striped Tee",        cat:"boys",        price:19,  was:null, badge:null,   alt:"Navy and cream breton striped tee", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
-  {id:"b3", name:"Bear Dungarees",          cat:"boys",        price:42,  was:null, badge:"New",  alt:"Mid-wash denim dungarees with brass clasps", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
-  {id:"b4", name:"Cove Rain Mac",           cat:"boys",        price:44,  was:null, badge:null,   alt:"Mustard hooded rain mac with toggles", sizes:[], ages:["2-3y","4-5y","6-7y","8-9y","10-11y"]},
-  {id:"a1", name:"Sienna Leather Tote",     cat:"accessories", price:145, was:null, badge:null,   alt:"Tan pebbled leather tote with brass hardware", sizes:[], colors:[]},
-  {id:"a2", name:"Mara Silk Scarf",         cat:"accessories", price:45,  was:60,   badge:"Sale", alt:"Plum and rose silk scarf, loosely knotted", sizes:[], colors:[]},
-  {id:"a3", name:"Juno Sunglasses",         cat:"accessories", price:65,  was:null, badge:null,   alt:"Round tortoiseshell sunglasses", sizes:[], colors:[]},
-  {id:"a4", name:"Weald Leather Belt",      cat:"accessories", price:49,  was:null, badge:null,   alt:"Dark brown leather belt with brass buckle", sizes:[], colors:[]},
-  {id:"jb1", name:"Terra Bead Necklace",    cat:"jewellery",   price:55,  was:null, badge:"New",  alt:"Terracotta clay bead necklace on knotted cord", sizes:[], colors:[]},
-  {id:"jb2", name:"Coco Bead Earrings",     cat:"jewellery",   price:32,  was:null, badge:null,   alt:"Wooden bead drop earrings", sizes:[], colors:[]},
-  {id:"jb3", name:"Indigo Bead Bracelet",   cat:"jewellery",   price:38,  was:null, badge:null,   alt:"Indigo glass bead bracelet on cord", sizes:[], colors:[]},
-  {id:"jb4", name:"Meadow Bead Strand",     cat:"jewellery",   price:45,  was:null, badge:null,   alt:"Long sage and cream bead strand necklace", sizes:[], colors:[]},
-  {id:"jb5", name:"Ivory Knot Bracelet",    cat:"jewellery",   price:35,  was:null, badge:"New",  alt:"Cream bead bracelet with knotted cord detail", sizes:[], colors:[]},
-];
+const PRODUCTS = [];
 
 const money = n => "£" + n.toFixed(2);
 const imgFor = id => `images/${id}.svg`;
