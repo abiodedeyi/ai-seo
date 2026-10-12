@@ -50,8 +50,9 @@
   /* ---------- Header ---------- */
   header{position:sticky;top:0;z-index:50;background:rgba(251,250,245,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .nav{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.5rem;gap:1rem}
-  .brand{font-weight:700;font-size:1.5rem;letter-spacing:.32em;text-transform:uppercase}
+  .brand{font-weight:700;font-size:1.5rem;letter-spacing:.32em;text-transform:uppercase;display:flex;align-items:center;gap:.8rem}
   .brand .o{color:var(--rust)}
+  .logo-img{height:50px;width:auto;max-width:60px}
   .nav-links{display:flex;gap:1.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
   .nav-links a{position:relative;padding:.2rem 0;color:var(--muted);transition:color .2s}
   .nav-links a:hover{color:var(--ink)}
@@ -258,7 +259,7 @@
 
 <header>
   <div class="nav">
-    <a class="brand" href="#"><span class="o">O</span>DETTA</a>
+    <a class="brand" href="#"><img src="images/logo.png" alt="ODETTA" class="logo-img"><span style="display:none"><span class="o">O</span>DETTA</span></a>
     <nav class="nav-links" aria-label="Main">
       <a href="#s-women">Women</a>
       <a href="#s-men">Men</a>
