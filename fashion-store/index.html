@@ -135,6 +135,310 @@
     box-shadow: 0 5px 15px rgba(196, 135, 107, 0.3);
   }
 
+  /* ---------- CART ---------- */
+  .cart-btn {
+    padding: 0.7rem 1.5rem;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cart-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.35);
+  }
+
+  .cart-count {
+    background: #ff69b4;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  /* ---------- PRODUCTS SECTION ---------- */
+  .products {
+    max-width: 1240px;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+  }
+
+  .products h2 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: var(--ink);
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+  }
+
+  .product-image {
+    width: 100%;
+    height: 280px;
+    background: linear-gradient(135deg, #ff69b4 0%, #ffb6d9 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+  }
+
+  .product-info {
+    padding: 1.5rem;
+  }
+
+  .product-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-price {
+    font-size: 1.3rem;
+    color: #ff69b4;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .product-options {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .option-select {
+    flex: 1;
+    min-width: 100px;
+    padding: 0.6rem;
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .add-to-cart-btn:hover {
+    background: #ff469e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+  }
+
+  /* ---------- CART MODAL ---------- */
+  .cart-modal {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: var(--paper);
+    box-shadow: -4px 0 20px rgba(15, 23, 42, 0.15);
+    z-index: 99;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    padding: 2rem;
+  }
+
+  .cart-modal.open {
+    right: 0;
+  }
+
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--line);
+    padding-bottom: 1rem;
+  }
+
+  .cart-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .close-cart {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--muted);
+  }
+
+  .cart-items {
+    margin-bottom: 2rem;
+  }
+
+  .cart-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cart-item-img {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ff69b4 0%, #ffb6d9 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .cart-item-details {
+    flex: 1;
+  }
+
+  .cart-item-name {
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .cart-item-size {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .cart-item-price {
+    color: #ff69b4;
+    font-weight: 600;
+  }
+
+  .cart-item-quantity {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  .qty-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--line);
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .qty-btn:hover {
+    background: #ff69b4;
+    color: white;
+    border-color: #ff69b4;
+  }
+
+  .remove-btn {
+    background: none;
+    border: none;
+    color: #ff69b4;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: underline;
+  }
+
+  .cart-empty {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+  }
+
+  .cart-summary {
+    border-top: 2px solid var(--line);
+    padding-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+  }
+
+  .summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ff69b4;
+  }
+
+  .checkout-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .checkout-btn:hover {
+    background: #ff469e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.3);
+  }
+
+  .checkout-btn:disabled {
+    background: var(--muted);
+    cursor: not-allowed;
+    transform: none;
+  }
+
   /* ---------- HERO ---------- */
   .hero {
     max-width: 1240px;
@@ -536,6 +840,9 @@
       </svg>
     </div>
     <div class="auth-btns">
+      <button class="cart-btn" id="cartToggle">
+        🛒 <span id="cartCount" class="cart-count">0</span>
+      </button>
       <div class="account-menu">
         <button class="account-btn" id="authToggle" style="display:none">Account</button>
         <div class="account-dropdown" id="accountDropdown">
@@ -560,7 +867,41 @@
       <button class="btn btn-primary" id="learnBtn">Learn More</button>
     </div>
   </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section class="products">
+    <h2>Our Collection</h2>
+    <div class="products-grid" id="productsGrid">
+      <!-- Products will be generated here by JavaScript -->
+    </div>
+  </section>
 </main>
+
+<!-- SHOPPING CART MODAL -->
+<div class="cart-modal" id="cartModal">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button class="close-cart" id="closeCart">×</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">Your cart is empty</div>
+  </div>
+  <div class="cart-summary" id="cartSummary" style="display:none">
+    <div class="summary-row">
+      <span>Subtotal:</span>
+      <span id="subtotal">£0.00</span>
+    </div>
+    <div class="summary-row">
+      <span>Shipping:</span>
+      <span>Free</span>
+    </div>
+    <div class="summary-total">
+      <span>Total:</span>
+      <span id="total">£0.00</span>
+    </div>
+  </div>
+  <button class="checkout-btn" id="checkoutBtn" disabled>Proceed to Checkout</button>
+</div>
 
 <!-- SIGN UP MODAL -->
 <div class="modal" id="signUpModal">
@@ -613,8 +954,153 @@
 </div>
 
 <script>
-  // AUTH STATE
+  // PRODUCT DATA
+  const products = [
+    { id: 1, name: 'Classic Family Tee', price: 29.99, emoji: '👕', category: 'tops' },
+    { id: 2, name: 'Linen Dress', price: 49.99, emoji: '👗', category: 'dresses' },
+    { id: 3, name: 'Casual Shorts', price: 34.99, emoji: '🩳', category: 'bottoms' },
+    { id: 4, name: 'Comfort Sweater', price: 44.99, emoji: '🧶', category: 'tops' },
+    { id: 5, name: 'Summer Skirt', price: 39.99, emoji: '🎀', category: 'bottoms' },
+    { id: 6, name: 'Casual Jacket', price: 59.99, emoji: '🧥', category: 'outerwear' },
+  ];
+
+  const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+  const colors = ['Pink', 'Beige', 'Sage', 'Navy', 'White'];
+
+  // CART STATE
+  let cart = JSON.parse(localStorage.getItem('odettaCart')) || [];
   let currentUser = localStorage.getItem('odettaUser');
+
+  const renderProducts = () => {
+    const productsGrid = document.getElementById('productsGrid');
+    productsGrid.innerHTML = products.map(product => `
+      <div class="product-card">
+        <div class="product-image">${product.emoji}</div>
+        <div class="product-info">
+          <div class="product-name">${product.name}</div>
+          <div class="product-price">£${product.price.toFixed(2)}</div>
+          <div class="product-options">
+            <select class="option-select size-select-${product.id}" required>
+              <option value="">Size</option>
+              ${sizes.map(s => `<option value="${s}">${s}</option>`).join('')}
+            </select>
+            <select class="option-select color-select-${product.id}" required>
+              <option value="">Color</option>
+              ${colors.map(c => `<option value="${c}">${c}</option>`).join('')}
+            </select>
+            <select class="option-select qty-select-${product.id}">
+              ${[1, 2, 3, 4, 5].map(q => `<option value="${q}">${q}</option>`).join('')}
+            </select>
+          </div>
+          <button class="add-to-cart-btn" data-product-id="${product.id}">Add to Cart</button>
+        </div>
+      </div>
+    `).join('');
+
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+      btn.addEventListener('click', () => addToCart(btn));
+    });
+  };
+
+  const addToCart = (btn) => {
+    const productId = parseInt(btn.dataset.productId);
+    const product = products.find(p => p.id === productId);
+    const sizeSelect = document.querySelector(`.size-select-${productId}`);
+    const colorSelect = document.querySelector(`.color-select-${productId}`);
+    const qtySelect = document.querySelector(`.qty-select-${productId}`);
+
+    if (!sizeSelect.value || !colorSelect.value) {
+      alert('Please select size and color');
+      return;
+    }
+
+    const quantity = parseInt(qtySelect.value);
+    const cartItem = {
+      id: productId,
+      name: product.name,
+      price: product.price,
+      size: sizeSelect.value,
+      color: colorSelect.value,
+      quantity: quantity,
+      emoji: product.emoji
+    };
+
+    const existing = cart.find(item =>
+      item.id === productId && item.size === sizeSelect.value && item.color === colorSelect.value
+    );
+
+    if (existing) {
+      existing.quantity += quantity;
+    } else {
+      cart.push(cartItem);
+    }
+
+    localStorage.setItem('odettaCart', JSON.stringify(cart));
+    updateCartUI();
+    alert('Added to cart!');
+  };
+
+  const updateCartUI = () => {
+    const cartCount = document.getElementById('cartCount');
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
+
+    const cartItemsContainer = document.getElementById('cartItems');
+    const cartSummary = document.getElementById('cartSummary');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+      cartSummary.style.display = 'none';
+      checkoutBtn.disabled = true;
+    } else {
+      cartItemsContainer.innerHTML = cart.map((item, idx) => `
+        <div class="cart-item">
+          <div class="cart-item-img">${item.emoji}</div>
+          <div class="cart-item-details">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-size">${item.size} / ${item.color}</div>
+            <div class="cart-item-price">£${(item.price * item.quantity).toFixed(2)}</div>
+            <div class="cart-item-quantity">
+              <button class="qty-btn" data-action="decrease" data-index="${idx}">−</button>
+              <span>${item.quantity}</span>
+              <button class="qty-btn" data-action="increase" data-index="${idx}">+</button>
+              <button class="remove-btn" data-index="${idx}">Remove</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      document.querySelectorAll('.qty-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = parseInt(btn.dataset.index);
+          const action = btn.dataset.action;
+          if (action === 'increase') {
+            cart[idx].quantity++;
+          } else if (action === 'decrease' && cart[idx].quantity > 1) {
+            cart[idx].quantity--;
+          }
+          localStorage.setItem('odettaCart', JSON.stringify(cart));
+          updateCartUI();
+        });
+      });
+
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt(btn.dataset.index);
+          cart.splice(idx, 1);
+          localStorage.setItem('odettaCart', JSON.stringify(cart));
+          updateCartUI();
+        });
+      });
+
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      document.getElementById('subtotal').textContent = '£' + subtotal.toFixed(2);
+      document.getElementById('total').textContent = '£' + subtotal.toFixed(2);
+      cartSummary.style.display = 'block';
+      checkoutBtn.disabled = false;
+    }
+  };
 
   const updateAuthUI = () => {
     const authButtons = document.getElementById('authButtons');
@@ -705,7 +1191,42 @@
     });
   });
 
+  // CART CONTROLS
+  const cartModal = document.getElementById('cartModal');
+  const cartToggle = document.getElementById('cartToggle');
+  const closeCart = document.getElementById('closeCart');
+  const shopBtn = document.getElementById('shopBtn');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+
+  cartToggle.addEventListener('click', () => {
+    cartModal.classList.toggle('open');
+  });
+
+  closeCart.addEventListener('click', () => {
+    cartModal.classList.remove('open');
+  });
+
+  cartModal.addEventListener('click', (e) => {
+    if (e.target === cartModal) {
+      cartModal.classList.remove('open');
+    }
+  });
+
+  shopBtn.addEventListener('click', () => {
+    document.querySelector('.products').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  checkoutBtn.addEventListener('click', () => {
+    alert('Thank you for shopping at ODETTA! Checkout coming soon.');
+    cart = [];
+    localStorage.setItem('odettaCart', JSON.stringify(cart));
+    updateCartUI();
+    cartModal.classList.remove('open');
+  });
+
   // INIT
+  renderProducts();
+  updateCartUI();
   updateAuthUI();
 </script>
 
