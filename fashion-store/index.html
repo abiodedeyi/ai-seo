@@ -53,15 +53,25 @@
   }
 
   .brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+  }
+
+  .logo {
+    height: 70px;
+    width: auto;
+    max-width: 90px;
+    object-fit: contain;
+  }
+
+  .brand-text {
     font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--ink);
-  }
-
-  .brand .rust {
-    color: var(--rust);
   }
 
   .auth-btns {
@@ -339,7 +349,12 @@
       padding: 1rem 1.2rem;
     }
 
-    .brand {
+    .logo {
+      height: 60px;
+      max-width: 75px;
+    }
+
+    .brand-text {
       font-size: 1.4rem;
     }
 
@@ -393,7 +408,12 @@
       justify-content: center;
     }
 
-    .brand {
+    .logo {
+      height: 50px;
+      max-width: 65px;
+    }
+
+    .brand-text {
       font-size: 1.2rem;
     }
 
@@ -416,7 +436,10 @@
 
 <header>
   <div class="nav">
-    <div class="brand"><span class="rust">O</span>DETTA</div>
+    <a href="#" class="brand">
+      <img src="images/odetta-logo.jpg" alt="ODETTA" class="logo">
+      <span class="brand-text">ODETTA</span>
+    </a>
     <div class="auth-btns">
       <div class="account-menu">
         <button class="account-btn" id="authToggle" style="display:none">Account</button>
