@@ -181,9 +181,41 @@
 
   .products h2 {
     font-size: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     text-align: center;
     color: var(--ink);
+  }
+
+  /* ---------- CATEGORY TABS ---------- */
+  .category-tabs {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .category-tab {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--line);
+    background: transparent;
+    color: var(--ink);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .category-tab:hover {
+    border-color: #ff69b4;
+    color: #ff69b4;
+  }
+
+  .category-tab.active {
+    background: #ff69b4;
+    color: white;
+    border-color: #ff69b4;
   }
 
   .products-grid {
@@ -199,11 +231,30 @@
     box-shadow: 0 4px 15px rgba(15, 23, 42, 0.1);
     transition: all 0.3s ease;
     cursor: pointer;
+    position: relative;
   }
 
   .product-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+  }
+
+  .product-card.out-of-stock {
+    opacity: 0.7;
+  }
+
+  .stock-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #ff6b6b;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    z-index: 10;
   }
 
   .product-image {
@@ -235,6 +286,27 @@
     margin-bottom: 1rem;
   }
 
+  .product-colors {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .color-swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .color-swatch:hover {
+    transform: scale(1.1);
+    border-color: var(--ink);
+  }
+
   .product-options {
     display: flex;
     gap: 0.5rem;
@@ -250,6 +322,12 @@
     border-radius: 6px;
     font-size: 0.85rem;
     cursor: pointer;
+  }
+
+  .option-select:disabled {
+    background: #f0f0f0;
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 
   .add-to-cart-btn {
@@ -871,6 +949,15 @@
   <!-- PRODUCTS SECTION -->
   <section class="products">
     <h2>Our Collection</h2>
+
+    <!-- CATEGORY TABS -->
+    <div class="category-tabs">
+      <button class="category-tab active" data-category="women">Women</button>
+      <button class="category-tab" data-category="men">Men</button>
+      <button class="category-tab" data-category="girl">Girl</button>
+      <button class="category-tab" data-category="boy">Boy</button>
+    </div>
+
     <div class="products-grid" id="productsGrid">
       <!-- Products will be generated here by JavaScript -->
     </div>
@@ -954,18 +1041,37 @@
 </div>
 
 <script>
-  // PRODUCT DATA
+  // PRODUCT DATA WITH CATEGORIES
   const products = [
-    { id: 1, name: 'Classic Family Tee', price: 29.99, emoji: '👕', category: 'tops' },
-    { id: 2, name: 'Linen Dress', price: 49.99, emoji: '👗', category: 'dresses' },
-    { id: 3, name: 'Casual Shorts', price: 34.99, emoji: '🩳', category: 'bottoms' },
-    { id: 4, name: 'Comfort Sweater', price: 44.99, emoji: '🧶', category: 'tops' },
-    { id: 5, name: 'Summer Skirt', price: 39.99, emoji: '🎀', category: 'bottoms' },
-    { id: 6, name: 'Casual Jacket', price: 59.99, emoji: '🧥', category: 'outerwear' },
+    // WOMEN
+    { id: 1, name: 'Linen Dress', price: 49.99, emoji: '👗', category: 'women', inStock: false, colors: ['Pink', 'Beige', 'Sage', 'Navy', 'White'] },
+    { id: 2, name: 'Summer Blouse', price: 39.99, emoji: '👔', category: 'women', inStock: false, colors: ['Beige', 'White', 'Pink', 'Sage'] },
+    { id: 3, name: 'Casual Trousers', price: 54.99, emoji: '👖', category: 'women', inStock: false, colors: ['Navy', 'Beige', 'White'] },
+    { id: 4, name: 'Linen Shirt', price: 44.99, emoji: '👚', category: 'women', inStock: false, colors: ['White', 'Beige', 'Sage', 'Pink'] },
+    // MEN
+    { id: 5, name: 'Oxford Shirt', price: 49.99, emoji: '👔', category: 'men', inStock: false, colors: ['White', 'Navy', 'Beige', 'Sage'] },
+    { id: 6, name: 'Chino Trousers', price: 54.99, emoji: '👖', category: 'men', inStock: false, colors: ['Navy', 'Beige', 'White', 'Sage'] },
+    { id: 7, name: 'Casual Tee', price: 29.99, emoji: '👕', category: 'men', inStock: false, colors: ['White', 'Navy', 'Beige', 'Pink'] },
+    { id: 8, name: 'Linen Jacket', price: 79.99, emoji: '🧥', category: 'men', inStock: false, colors: ['Beige', 'Navy', 'White'] },
+    // GIRL
+    { id: 9, name: 'Girls Dress', price: 34.99, emoji: '👗', category: 'girl', inStock: false, colors: ['Pink', 'Beige', 'White', 'Sage'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    { id: 10, name: 'Girls Skirt', price: 29.99, emoji: '🎀', category: 'girl', inStock: false, colors: ['Pink', 'White', 'Beige', 'Navy'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    { id: 11, name: 'Girls Blouse', price: 24.99, emoji: '👚', category: 'girl', inStock: false, colors: ['White', 'Pink', 'Beige', 'Sage'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    // BOY
+    { id: 12, name: 'Boys Shirt', price: 29.99, emoji: '👕', category: 'boy', inStock: false, colors: ['Navy', 'White', 'Beige', 'Sage'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    { id: 13, name: 'Boys Trousers', price: 34.99, emoji: '👖', category: 'boy', inStock: false, colors: ['Navy', 'Beige', 'White', 'Sage'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    { id: 14, name: 'Boys Jumper', price: 39.99, emoji: '🧶', category: 'boy', inStock: false, colors: ['Navy', 'Beige', 'White', 'Sage'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
   ];
 
-  const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
-  const colors = ['Pink', 'Beige', 'Sage', 'Navy', 'White'];
+  const colorHexMap = {
+    'Pink': '#ff69b4',
+    'Beige': '#d4b896',
+    'Sage': '#7d8a6a',
+    'Navy': '#1a3a52',
+    'White': '#ffffff'
+  };
+
+  let currentCategory = 'women';
 
   // CART STATE
   let cart = JSON.parse(localStorage.getItem('odettaCart')) || [];
@@ -973,34 +1079,68 @@
 
   const renderProducts = () => {
     const productsGrid = document.getElementById('productsGrid');
-    productsGrid.innerHTML = products.map(product => `
-      <div class="product-card">
+    const filtered = products.filter(p => p.category === currentCategory);
+
+    productsGrid.innerHTML = filtered.map(product => `
+      <div class="product-card ${!product.inStock ? 'out-of-stock' : ''}">
+        ${!product.inStock ? '<div class="stock-badge">Out of Stock</div>' : ''}
         <div class="product-image">${product.emoji}</div>
         <div class="product-info">
           <div class="product-name">${product.name}</div>
           <div class="product-price">£${product.price.toFixed(2)}</div>
+
+          <div class="product-colors">
+            ${product.colors.map(color => `
+              <div class="color-swatch" style="background-color: ${colorHexMap[color]}" title="${color}"></div>
+            `).join('')}
+          </div>
+
           <div class="product-options">
-            <select class="option-select size-select-${product.id}" required>
-              <option value="">Size</option>
-              ${sizes.map(s => `<option value="${s}">${s}</option>`).join('')}
-            </select>
-            <select class="option-select color-select-${product.id}" required>
+            ${product.ages ? `
+              <select class="option-select size-select-${product.id}" ${!product.inStock ? 'disabled' : ''} required>
+                <option value="">Age</option>
+                ${product.ages.map(a => `<option value="${a}">${a} years</option>`).join('')}
+              </select>
+            ` : `
+              <select class="option-select size-select-${product.id}" ${!product.inStock ? 'disabled' : ''} required>
+                <option value="">Size</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+              </select>
+            `}
+            <select class="option-select color-select-${product.id}" ${!product.inStock ? 'disabled' : ''} required>
               <option value="">Color</option>
-              ${colors.map(c => `<option value="${c}">${c}</option>`).join('')}
+              ${product.colors.map(c => `<option value="${c}">${c}</option>`).join('')}
             </select>
-            <select class="option-select qty-select-${product.id}">
+            <select class="option-select qty-select-${product.id}" ${!product.inStock ? 'disabled' : ''}>
               ${[1, 2, 3, 4, 5].map(q => `<option value="${q}">${q}</option>`).join('')}
             </select>
           </div>
-          <button class="add-to-cart-btn" data-product-id="${product.id}">Add to Cart</button>
+          <button class="add-to-cart-btn" data-product-id="${product.id}" ${!product.inStock ? 'disabled' : ''} style="${!product.inStock ? 'opacity: 0.5; cursor: not-allowed;' : ''}">
+            ${product.inStock ? 'Add to Cart' : 'Out of Stock'}
+          </button>
         </div>
       </div>
     `).join('');
 
-    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    document.querySelectorAll('.add-to-cart-btn:not(:disabled)').forEach(btn => {
       btn.addEventListener('click', () => addToCart(btn));
     });
   };
+
+  // CATEGORY FILTERING
+  document.querySelectorAll('.category-tab').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+      e.target.classList.add('active');
+      currentCategory = e.target.dataset.category;
+      renderProducts();
+    });
+  });
 
   const addToCart = (btn) => {
     const productId = parseInt(btn.dataset.productId);
