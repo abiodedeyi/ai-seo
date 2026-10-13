@@ -92,12 +92,23 @@
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
+    padding: 0.7rem 1.2rem;
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
     color: var(--ink);
-    transition: color 0.2s;
+    background: transparent;
+    transition: all 0.2s;
   }
 
   .nav-item:hover {
+    border-color: #ff69b4;
     color: #ff69b4;
+  }
+
+  .nav-item.active {
+    background: #ff69b4;
+    color: white;
+    border-color: #ff69b4;
   }
 
   .nav-dropdown {
@@ -244,7 +255,7 @@
 
   /* ---------- CATEGORY TABS ---------- */
   .category-tabs {
-    display: flex;
+    display: none;
     gap: 1rem;
     justify-content: center;
     margin-bottom: 3rem;
@@ -1287,13 +1298,41 @@
     });
   };
 
-  // CATEGORY FILTERING
+  // CATEGORY FILTERING (OLD TABS - NO LONGER USED)
   document.querySelectorAll('.category-tab').forEach(tab => {
     tab.addEventListener('click', (e) => {
       document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
       e.target.classList.add('active');
       currentCategory = e.target.dataset.category;
+      currentType = null;
       renderProducts();
+    });
+  });
+
+  // HEADER NAVIGATION CATEGORY BUTTONS
+  document.querySelectorAll('.category-nav .nav-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      // Only handle direct clicks on the nav-item, not on dropdown items
+      if (e.target.classList.contains('nav-item')) {
+        const navText = e.target.textContent.trim().split('\n')[0].toLowerCase();
+        const categoryMap = {
+          'woman': 'women',
+          'man': 'men',
+          'girl': 'girl',
+          'boy': 'boy'
+        };
+
+        currentCategory = categoryMap[navText];
+        currentType = null;
+
+        // Update active button
+        document.querySelectorAll('.category-nav .nav-item').forEach(n => {
+          n.classList.remove('active');
+        });
+        e.target.classList.add('active');
+
+        renderProducts();
+      }
     });
   });
 
@@ -1528,20 +1567,27 @@
       currentCategory = category;
       currentType = type.charAt(0).toUpperCase() + type.slice(1);
 
-      // Update active tab
-      document.querySelectorAll('.category-tab').forEach(tab => {
-        tab.classList.remove('active');
+      // Update active button in nav
+      document.querySelectorAll('.category-nav .nav-item').forEach(navItem => {
+        navItem.classList.remove('active');
       });
-      const activeTab = document.querySelector(`[data-category="${category}"]`);
-      if (activeTab) {
-        activeTab.classList.add('active');
+      const categoryMap = {
+        'women': 0,
+        'men': 1,
+        'girl': 2,
+        'boy': 3
+      };
+      const navItems = document.querySelectorAll('.category-nav .nav-item');
+      if (navItems[categoryMap[category]]) {
+        navItems[categoryMap[category]].classList.add('active');
       }
 
       renderProducts();
     });
   });
 
-  // INIT
+  // INIT - Set Woman as default active
+  document.querySelectorAll('.category-nav .nav-item')[0].classList.add('active');
   renderProducts();
   updateCartUI();
   updateAuthUI();
