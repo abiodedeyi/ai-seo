@@ -1062,7 +1062,7 @@
     { id: 3, name: 'Casual Trousers', price: 54.99, emoji: '👖', category: 'women', gender: 'Female', inStock: false, colors: ['Navy', 'Beige', 'White'] },
     { id: 4, name: 'Linen Shirt', price: 44.99, emoji: '👚', category: 'women', gender: 'Female', inStock: false, colors: ['White', 'Beige', 'Sage', 'Pink'] },
     // MEN
-    { id: 5, name: 'Oxford Shirt', price: 49.99, emoji: '👔', category: 'men', gender: 'Male', inStock: false, colors: ['White', 'Navy', 'Beige', 'Sage'] },
+    { id: 5, name: 'Oxford Shirt', price: 49.99, emoji: '👔', image: 'polo-navy.png', category: 'men', gender: 'Male', inStock: false, colors: ['White', 'Navy', 'Beige', 'Sage'] },
     { id: 6, name: 'Chino Trousers', price: 54.99, emoji: '👖', category: 'men', gender: 'Male', inStock: false, colors: ['Navy', 'Beige', 'White', 'Sage'] },
     { id: 7, name: 'Casual Tee', price: 29.99, emoji: '👕', category: 'men', gender: 'Male', inStock: false, colors: ['White', 'Navy', 'Beige', 'Pink'] },
     { id: 8, name: 'Linen Jacket', price: 79.99, emoji: '🧥', category: 'men', gender: 'Male', inStock: false, colors: ['Beige', 'Navy', 'White'] },
@@ -1071,7 +1071,7 @@
     { id: 10, name: 'Girls Skirt', price: 29.99, emoji: '🎀', category: 'girl', gender: 'Female', inStock: false, colors: ['Pink', 'White', 'Beige', 'Navy'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
     { id: 11, name: 'Girls Blouse', price: 24.99, emoji: '👚', category: 'girl', gender: 'Female', inStock: false, colors: ['White', 'Pink', 'Beige', 'Sage'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
     // BOY
-    { id: 12, name: 'Boys Shirt', price: 29.99, emoji: '👕', category: 'boy', gender: 'Male', inStock: false, colors: ['Navy', 'White', 'Beige', 'Sage'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    { id: 12, name: 'Boys Shirt', price: 29.99, emoji: '👕', image: 'polo-navy.png', category: 'boy', gender: 'Male', inStock: false, colors: ['Navy', 'White', 'Beige', 'Sage'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
     { id: 13, name: 'Boys Trousers', price: 34.99, emoji: '👖', category: 'boy', gender: 'Male', inStock: false, colors: ['Navy', 'Beige', 'White', 'Sage'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
     { id: 14, name: 'Boys Jumper', price: 39.99, emoji: '🧶', category: 'boy', gender: 'Male', inStock: false, colors: ['Navy', 'Beige', 'White', 'Sage'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
   ];
@@ -1098,7 +1098,7 @@
       <div class="product-card ${!product.inStock ? 'out-of-stock' : ''}">
         <div class="gender-badge">${product.gender}</div>
         ${!product.inStock ? '<div class="stock-badge">Out of Stock</div>' : ''}
-        <div class="product-image">${product.emoji}</div>
+        <div class="product-image" ${product.image ? `style="background-image: url('${product.image}'); background-size: contain; background-position: center; background-repeat: no-repeat;"` : ''}>${!product.image ? product.emoji : ''}</div>
         <div class="product-info">
           <div class="product-name">${product.name}</div>
           <div class="product-price">£${product.price.toFixed(2)}</div>
