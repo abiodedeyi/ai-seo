@@ -1176,6 +1176,44 @@
   </div>
 </div>
 
+<!-- CHECKOUT ADDRESS MODAL -->
+<div class="modal" id="checkoutModal">
+  <div class="modal-box">
+    <button class="close-modal" id="closeCheckout">×</button>
+    <div class="modal-head">
+      <h2>Shipping Address</h2>
+      <p>Enter your delivery address</p>
+    </div>
+    <form id="checkoutForm">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" required placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label for="addressLine1">Address Line 1</label>
+        <input type="text" id="addressLine1" required placeholder="Street address">
+      </div>
+      <div class="form-group">
+        <label for="addressLine2">Address Line 2 (Optional)</label>
+        <input type="text" id="addressLine2" placeholder="Apartment, suite, etc.">
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" required placeholder="City">
+      </div>
+      <div class="form-group">
+        <label for="postcode">Postcode</label>
+        <input type="text" id="postcode" required placeholder="Postcode">
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" id="country" required placeholder="Country">
+      </div>
+      <button type="submit" class="btn-submit">Complete Order</button>
+    </form>
+  </div>
+</div>
+
 <script>
   // PRODUCT DATA WITH CATEGORIES
   const products = [
@@ -1458,6 +1496,7 @@
   // MODAL CONTROLS
   const signUpModal = document.getElementById('signUpModal');
   const signInModal = document.getElementById('signInModal');
+  const checkoutModal = document.getElementById('checkoutModal');
 
   document.getElementById('signUpBtn').addEventListener('click', () => {
     signUpModal.classList.add('open');
@@ -1473,6 +1512,10 @@
 
   document.getElementById('closeSignIn').addEventListener('click', () => {
     signInModal.classList.remove('open');
+  });
+
+  document.getElementById('closeCheckout').addEventListener('click', () => {
+    checkoutModal.classList.remove('open');
   });
 
   // TOGGLE BETWEEN MODALS
@@ -1520,7 +1563,7 @@
   });
 
   // CLOSE MODAL ON BACKGROUND CLICK
-  [signUpModal, signInModal].forEach(modal => {
+  [signUpModal, signInModal, checkoutModal].forEach(modal => {
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         modal.classList.remove('open');
@@ -1554,11 +1597,24 @@
   });
 
   checkoutBtn.addEventListener('click', () => {
-    alert('Thank you for shopping at ODETTA! Checkout coming soon.');
+    checkoutModal.classList.add('open');
+  });
+
+  document.getElementById('checkoutForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fullName = document.getElementById('fullName').value;
+    const addressLine1 = document.getElementById('addressLine1').value;
+    const city = document.getElementById('city').value;
+    const postcode = document.getElementById('postcode').value;
+    const country = document.getElementById('country').value;
+
+    alert(`Thank you for your order!\n\nDelivering to:\n${fullName}\n${addressLine1}\n${city} ${postcode}\n${country}\n\nYour ODETTA items are on their way!`);
     cart = [];
     localStorage.setItem('odettaCart', JSON.stringify(cart));
     updateCartUI();
     cartModal.classList.remove('open');
+    checkoutModal.classList.remove('open');
+    document.getElementById('checkoutForm').reset();
   });
 
   // DROPDOWN NAVIGATION FILTERING
