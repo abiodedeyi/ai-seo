@@ -56,25 +56,81 @@
 
   .brand {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #ff69b4;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 
   .logo-center {
-    flex: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 80px;
+    height: 60px;
   }
 
   .logo-center svg {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
+  }
+
+  /* ---------- CATEGORY NAVIGATION ---------- */
+  .category-nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-item {
+    position: relative;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+
+  .nav-item:hover {
+    color: #ff69b4;
+  }
+
+  .nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    min-width: 160px;
+    display: none;
+    flex-direction: column;
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.1);
+    z-index: 40;
+    margin-top: 0.5rem;
+  }
+
+  .nav-item:hover .nav-dropdown {
+    display: flex;
+  }
+
+  .nav-dropdown-item {
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--ink);
+    transition: all 0.2s;
+  }
+
+  .nav-dropdown-item:hover {
+    background: #fff0f6;
+    color: #ff69b4;
   }
 
   .rust {
@@ -775,19 +831,33 @@
   @media (max-width: 768px) {
     .nav {
       padding: 1rem 1.2rem;
+      flex-wrap: wrap;
     }
 
     .brand {
-      font-size: 1.6rem;
+      font-size: 0.8rem;
+      gap: 0.8rem;
     }
 
     .logo-center {
-      height: 60px;
+      height: 50px;
     }
 
     .logo-center svg {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
+    }
+
+    .category-nav {
+      gap: 1rem;
+      order: 3;
+      width: 100%;
+      justify-content: center;
+      margin-top: 0.8rem;
+    }
+
+    .nav-item {
+      font-size: 0.85rem;
     }
 
     .auth-btns {
@@ -872,64 +942,106 @@
 
 <header>
   <div class="nav">
-    <a href="#" class="brand">
+    <div class="brand">
+      <div class="logo-center">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Outer decorative oval -->
+          <ellipse cx="60" cy="60" rx="58" ry="58" fill="none" stroke="#ff69b4" stroke-width="1.5" opacity="0.6"/>
+          <!-- Main oval frame -->
+          <ellipse cx="60" cy="60" rx="55" ry="55" fill="none" stroke="#ff69b4" stroke-width="2.5"/>
+          <!-- Inner decorative oval -->
+          <ellipse cx="60" cy="60" rx="52" ry="52" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6"/>
+
+          <!-- Top ornamental curves -->
+          <path d="M 50 5 Q 60 0 70 5" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M 48 8 Q 60 2 72 8" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+
+          <!-- Bottom ornamental curves -->
+          <path d="M 50 115 Q 60 120 70 115" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M 48 112 Q 60 118 72 112" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+
+          <!-- Left ornamental curves -->
+          <path d="M 5 50 Q 0 60 5 70" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M 8 48 Q 2 60 8 72" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+
+          <!-- Right ornamental curves -->
+          <path d="M 115 50 Q 120 60 115 70" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M 112 48 Q 118 60 112 72" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+
+          <!-- Diagonal top-left curves -->
+          <path d="M 25 20 Q 28 15 32 18" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
+
+          <!-- Diagonal top-right curves -->
+          <path d="M 95 20 Q 92 15 88 18" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
+
+          <!-- Diagonal bottom-left curves -->
+          <path d="M 25 100 Q 28 105 32 102" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
+
+          <!-- Diagonal bottom-right curves -->
+          <path d="M 95 100 Q 92 105 88 102" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
+
+          <!-- Decorative dots at cardinal points -->
+          <circle cx="60" cy="8" r="2.5" fill="#ff69b4"/>
+          <circle cx="60" cy="112" r="2.5" fill="#ff69b4"/>
+          <circle cx="8" cy="60" r="2.5" fill="#ff69b4"/>
+          <circle cx="112" cy="60" r="2.5" fill="#ff69b4"/>
+
+          <!-- Flick at start of first T -->
+          <path d="M 35 65 Q 28 62 25 70 Q 28 75 35 72" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          <path d="M 35 60 Q 25 55 20 65" fill="none" stroke="#ff69b4" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+
+          <!-- Flick at end of second T -->
+          <path d="M 85 65 Q 92 62 95 70 Q 92 75 85 72" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          <path d="M 85 60 Q 95 55 100 65" fill="none" stroke="#ff69b4" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+
+          <!-- TT text -->
+          <text x="60" y="75" font-family="'Playfair Display', serif" font-size="48" font-weight="700" fill="#ff69b4" text-anchor="middle">TT</text>
+        </svg>
+      </div>
       <span class="brand-text"><span class="rust">O</span>DETTA</span>
-    </a>
-    <div class="logo-center">
-      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-        <!-- Outer decorative oval -->
-        <ellipse cx="60" cy="60" rx="58" ry="58" fill="none" stroke="#ff69b4" stroke-width="1.5" opacity="0.6"/>
-        <!-- Main oval frame -->
-        <ellipse cx="60" cy="60" rx="55" ry="55" fill="none" stroke="#ff69b4" stroke-width="2.5"/>
-        <!-- Inner decorative oval -->
-        <ellipse cx="60" cy="60" rx="52" ry="52" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6"/>
-
-        <!-- Top ornamental curves -->
-        <path d="M 50 5 Q 60 0 70 5" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M 48 8 Q 60 2 72 8" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
-
-        <!-- Bottom ornamental curves -->
-        <path d="M 50 115 Q 60 120 70 115" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M 48 112 Q 60 118 72 112" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
-
-        <!-- Left ornamental curves -->
-        <path d="M 5 50 Q 0 60 5 70" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M 8 48 Q 2 60 8 72" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
-
-        <!-- Right ornamental curves -->
-        <path d="M 115 50 Q 120 60 115 70" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M 112 48 Q 118 60 112 72" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
-
-        <!-- Diagonal top-left curves -->
-        <path d="M 25 20 Q 28 15 32 18" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
-
-        <!-- Diagonal top-right curves -->
-        <path d="M 95 20 Q 92 15 88 18" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
-
-        <!-- Diagonal bottom-left curves -->
-        <path d="M 25 100 Q 28 105 32 102" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
-
-        <!-- Diagonal bottom-right curves -->
-        <path d="M 95 100 Q 92 105 88 102" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
-
-        <!-- Decorative dots at cardinal points -->
-        <circle cx="60" cy="8" r="2.5" fill="#ff69b4"/>
-        <circle cx="60" cy="112" r="2.5" fill="#ff69b4"/>
-        <circle cx="8" cy="60" r="2.5" fill="#ff69b4"/>
-        <circle cx="112" cy="60" r="2.5" fill="#ff69b4"/>
-
-        <!-- Flick at start of first T -->
-        <path d="M 35 65 Q 28 62 25 70 Q 28 75 35 72" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
-        <path d="M 35 60 Q 25 55 20 65" fill="none" stroke="#ff69b4" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
-
-        <!-- Flick at end of second T -->
-        <path d="M 85 65 Q 92 62 95 70 Q 92 75 85 72" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
-        <path d="M 85 60 Q 95 55 100 65" fill="none" stroke="#ff69b4" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
-
-        <!-- TT text -->
-        <text x="60" y="75" font-family="'Playfair Display', serif" font-size="48" font-weight="700" fill="#ff69b4" text-anchor="middle">TT</text>
-      </svg>
     </div>
+
+    <!-- CATEGORY NAVIGATION -->
+    <div class="category-nav">
+      <div class="nav-item">
+        Woman
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-item" data-filter="women-shirts">Shirts</div>
+          <div class="nav-dropdown-item" data-filter="women-bottoms">Bottoms</div>
+          <div class="nav-dropdown-item" data-filter="women-skirts">Skirts</div>
+          <div class="nav-dropdown-item" data-filter="women-accessories">Accessories</div>
+          <div class="nav-dropdown-item" data-filter="women-jewelry">Jewelry</div>
+        </div>
+      </div>
+      <div class="nav-item">
+        Man
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-item" data-filter="men-shirts">Shirts</div>
+          <div class="nav-dropdown-item" data-filter="men-bottoms">Bottoms</div>
+          <div class="nav-dropdown-item" data-filter="men-accessories">Accessories</div>
+          <div class="nav-dropdown-item" data-filter="men-jewelry">Jewelry</div>
+        </div>
+      </div>
+      <div class="nav-item">
+        Girl
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-item" data-filter="girl-shirts">Shirts</div>
+          <div class="nav-dropdown-item" data-filter="girl-skirts">Skirts</div>
+          <div class="nav-dropdown-item" data-filter="girl-accessories">Accessories</div>
+          <div class="nav-dropdown-item" data-filter="girl-jewelry">Jewelry</div>
+        </div>
+      </div>
+      <div class="nav-item">
+        Boy
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-item" data-filter="boy-shirts">Shirts</div>
+          <div class="nav-dropdown-item" data-filter="boy-bottoms">Bottoms</div>
+          <div class="nav-dropdown-item" data-filter="boy-accessories">Accessories</div>
+          <div class="nav-dropdown-item" data-filter="boy-jewelry">Jewelry</div>
+        </div>
+      </div>
+    </div>
+
     <div class="auth-btns">
       <button class="cart-btn" id="cartToggle">
         🛒 <span id="cartCount" class="cart-count">0</span>
@@ -1109,6 +1221,7 @@
   };
 
   let currentCategory = 'women';
+  let currentType = null;
 
   // CART STATE
   let cart = JSON.parse(localStorage.getItem('odettaCart')) || [];
@@ -1116,7 +1229,11 @@
 
   const renderProducts = () => {
     const productsGrid = document.getElementById('productsGrid');
-    const filtered = products.filter(p => p.category === currentCategory);
+    let filtered = products.filter(p => p.category === currentCategory);
+
+    if (currentType) {
+      filtered = filtered.filter(p => p.type === currentType);
+    }
 
     productsGrid.innerHTML = filtered.map(product => `
       <div class="product-card ${!product.inStock ? 'out-of-stock' : ''}">
@@ -1400,6 +1517,28 @@
     localStorage.setItem('odettaCart', JSON.stringify(cart));
     updateCartUI();
     cartModal.classList.remove('open');
+  });
+
+  // DROPDOWN NAVIGATION FILTERING
+  document.querySelectorAll('.nav-dropdown-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      const filter = e.target.dataset.filter;
+      const [category, type] = filter.split('-');
+
+      currentCategory = category;
+      currentType = type.charAt(0).toUpperCase() + type.slice(1);
+
+      // Update active tab
+      document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      const activeTab = document.querySelector(`[data-category="${category}"]`);
+      if (activeTab) {
+        activeTab.classList.add('active');
+      }
+
+      renderProducts();
+    });
   });
 
   // INIT
