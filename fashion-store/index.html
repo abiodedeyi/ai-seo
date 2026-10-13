@@ -239,6 +239,26 @@
     font-weight: 700;
   }
 
+  /* ---------- DEVICE TOGGLE ---------- */
+  .device-toggle {
+    padding: 0.7rem 1.5rem;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .device-toggle:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.35);
+  }
+
   /* ---------- PRODUCTS SECTION ---------- */
   .products {
     max-width: 1240px;
@@ -1054,6 +1074,9 @@
     </div>
 
     <div class="auth-btns">
+      <button class="device-toggle" id="deviceToggle">
+        <span id="deviceText">📱 Mobile</span>
+      </button>
       <button class="cart-btn" id="cartToggle">
         🛒 <span id="cartCount" class="cart-count">0</span>
       </button>
@@ -1569,6 +1592,31 @@
         modal.classList.remove('open');
       }
     });
+  });
+
+  // DEVICE VIEW TOGGLE
+  let isMobileView = window.innerWidth < 768;
+  const deviceToggle = document.getElementById('deviceToggle');
+  const deviceText = document.getElementById('deviceText');
+
+  const updateDeviceText = () => {
+    deviceText.textContent = isMobileView ? '📱 Mobile' : '🖥️ Desktop';
+  };
+
+  updateDeviceText();
+
+  deviceToggle.addEventListener('click', () => {
+    isMobileView = !isMobileView;
+    updateDeviceText();
+    if (isMobileView) {
+      document.documentElement.style.setProperty('--viewport-width', '375px');
+      document.body.style.maxWidth = '375px';
+      document.body.style.margin = '0 auto';
+    } else {
+      document.documentElement.style.removeProperty('--viewport-width');
+      document.body.style.maxWidth = '';
+      document.body.style.margin = '';
+    }
   });
 
   // CART CONTROLS
