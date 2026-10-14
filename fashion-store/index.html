@@ -1234,8 +1234,43 @@
         <label for="country">Country</label>
         <input type="text" id="country" required placeholder="Country">
       </div>
-      <button type="submit" class="btn-submit">Complete Order</button>
+      <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--line);">
+      <div class="form-group">
+        <label for="cardName">Name on Card</label>
+        <input type="text" id="cardName" required placeholder="John Doe">
+      </div>
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" required placeholder="1234 5678 9012 3456" maxlength="19">
+      </div>
+      <div style="display:flex;gap:1rem">
+        <div class="form-group" style="flex:1">
+          <label for="expiry">Expiry Date</label>
+          <input type="text" id="expiry" required placeholder="MM/YY" maxlength="5">
+        </div>
+        <div class="form-group" style="flex:1">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" required placeholder="123" maxlength="4">
+        </div>
+      </div>
+      <button type="submit" class="btn-submit">Pay Now</button>
     </form>
+  </div>
+</div>
+
+<!-- ORDER SUCCESS MODAL -->
+<div class="modal" id="successModal">
+  <div class="modal-box" style="text-align:center">
+    <button class="close-modal" id="closeSuccess">×</button>
+    <div style="font-size:4rem;margin:1rem 0">📦✨</div>
+    <h2 style="font-size:1.8rem;margin:1rem 0">Order Confirmed!</h2>
+    <p style="font-size:1.1rem;color:var(--muted);margin:1rem 0">Thank you for shopping at ODETTA!</p>
+    <div style="background:#fff0f6;padding:1.5rem;border-radius:8px;margin:1.5rem 0">
+      <p style="font-size:0.9rem;color:var(--muted);margin-bottom:0.5rem">Your package will arrive in:</p>
+      <p style="font-size:1.5rem;font-weight:700;color:#ff69b4;margin:0" id="deliveryTime">3-5 Business Days</p>
+    </div>
+    <p style="color:var(--muted);font-size:0.9rem;margin:1rem 0">Order confirmation sent to your email</p>
+    <button class="btn-submit" id="continueShoppingBtn" style="margin-top:1rem">Continue Shopping</button>
   </div>
 </div>
 
@@ -1522,6 +1557,7 @@
   const signUpModal = document.getElementById('signUpModal');
   const signInModal = document.getElementById('signInModal');
   const checkoutModal = document.getElementById('checkoutModal');
+  const successModal = document.getElementById('successModal');
 
   document.getElementById('signUpBtn').addEventListener('click', () => {
     signUpModal.classList.add('open');
@@ -1541,6 +1577,15 @@
 
   document.getElementById('closeCheckout').addEventListener('click', () => {
     checkoutModal.classList.remove('open');
+  });
+
+  document.getElementById('closeSuccess').addEventListener('click', () => {
+    successModal.classList.remove('open');
+  });
+
+  document.getElementById('continueShoppingBtn').addEventListener('click', () => {
+    successModal.classList.remove('open');
+    cartModal.classList.remove('open');
   });
 
   // TOGGLE BETWEEN MODALS
@@ -1657,14 +1702,24 @@
     const city = document.getElementById('city').value;
     const postcode = document.getElementById('postcode').value;
     const country = document.getElementById('country').value;
+    const cardName = document.getElementById('cardName').value;
+    const cardNumber = document.getElementById('cardNumber').value;
+    const expiry = document.getElementById('expiry').value;
+    const cvv = document.getElementById('cvv').value;
 
-    alert(`Thank you for your order!\n\nDelivering to:\n${fullName}\n${addressLine1}\n${city} ${postcode}\n${country}\n\nYour ODETTA items are on their way!`);
-    cart = [];
-    localStorage.setItem('odettaCart', JSON.stringify(cart));
-    updateCartUI();
-    cartModal.classList.remove('open');
     checkoutModal.classList.remove('open');
-    document.getElementById('checkoutForm').reset();
+    successModal.classList.add('open');
+
+    const deliveryDays = Math.floor(Math.random() * 5) + 3;
+    document.getElementById('deliveryTime').textContent = `${deliveryDays}-${deliveryDays + 2} Business Days`;
+
+    setTimeout(() => {
+      cart = [];
+      localStorage.setItem('odettaCart', JSON.stringify(cart));
+      updateCartUI();
+      cartModal.classList.remove('open');
+      document.getElementById('checkoutForm').reset();
+    }, 500);
   });
 
   // DROPDOWN NAVIGATION FILTERING
