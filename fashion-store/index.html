@@ -259,6 +259,71 @@
     box-shadow: 0 8px 25px rgba(15, 23, 42, 0.35);
   }
 
+  /* ---------- LANGUAGE & CURRENCY SELECTORS ---------- */
+  .language-currency-selectors {
+    position: relative;
+  }
+
+  .selector-btn {
+    padding: 0.7rem 1rem;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .selector-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.35);
+  }
+
+  .selector-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    min-width: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.1);
+    z-index: 40;
+    margin-top: 0.5rem;
+  }
+
+  .selector-dropdown.open {
+    display: flex;
+  }
+
+  .dropdown-item {
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--ink);
+    transition: all 0.2s;
+  }
+
+  .dropdown-item:hover {
+    background: #fff0f6;
+    color: #ff69b4;
+  }
+
+  #currencyDropdown {
+    right: 0;
+    left: auto;
+  }
+
   /* ---------- PRODUCTS SECTION ---------- */
   .products {
     max-width: 1240px;
@@ -1079,6 +1144,44 @@
       <button class="device-toggle" id="deviceToggle">
         <span id="deviceText">📱 Mobile</span>
       </button>
+      <div class="language-currency-selectors">
+        <button class="selector-btn" id="languageBtn">🌐 Language</button>
+        <div class="selector-dropdown" id="languageDropdown">
+          <div class="dropdown-item" data-lang="en">English</div>
+          <div class="dropdown-item" data-lang="es">Español</div>
+          <div class="dropdown-item" data-lang="fr">Français</div>
+          <div class="dropdown-item" data-lang="de">Deutsch</div>
+          <div class="dropdown-item" data-lang="it">Italiano</div>
+          <div class="dropdown-item" data-lang="pt">Português</div>
+          <div class="dropdown-item" data-lang="zh">中文</div>
+          <div class="dropdown-item" data-lang="ja">日本語</div>
+          <div class="dropdown-item" data-lang="ko">한국어</div>
+          <div class="dropdown-item" data-lang="ar">العربية</div>
+          <div class="dropdown-item" data-lang="hi">हिन्दी</div>
+          <div class="dropdown-item" data-lang="ru">Русский</div>
+          <div class="dropdown-item" data-lang="nl">Nederlands</div>
+          <div class="dropdown-item" data-lang="sv">Svenska</div>
+          <div class="dropdown-item" data-lang="pl">Polski</div>
+        </div>
+      </div>
+      <button class="selector-btn" id="currencyBtn">💱 GBP</button>
+      <div class="selector-dropdown" id="currencyDropdown">
+        <div class="dropdown-item" data-currency="GBP">GBP - £ British Pound</div>
+        <div class="dropdown-item" data-currency="USD">USD - $ US Dollar</div>
+        <div class="dropdown-item" data-currency="EUR">EUR - € Euro</div>
+        <div class="dropdown-item" data-currency="JPY">JPY - ¥ Japanese Yen</div>
+        <div class="dropdown-item" data-currency="CNY">CNY - ¥ Chinese Yuan</div>
+        <div class="dropdown-item" data-currency="INR">INR - ₹ Indian Rupee</div>
+        <div class="dropdown-item" data-currency="AUD">AUD - A$ Australian Dollar</div>
+        <div class="dropdown-item" data-currency="CAD">CAD - C$ Canadian Dollar</div>
+        <div class="dropdown-item" data-currency="CHF">CHF - Fr Swiss Franc</div>
+        <div class="dropdown-item" data-currency="SEK">SEK - kr Swedish Krona</div>
+        <div class="dropdown-item" data-currency="NOK">NOK - kr Norwegian Krone</div>
+        <div class="dropdown-item" data-currency="NZD">NZD - NZ$ New Zealand Dollar</div>
+        <div class="dropdown-item" data-currency="SGD">SGD - S$ Singapore Dollar</div>
+        <div class="dropdown-item" data-currency="HKD">HKD - HK$ Hong Kong Dollar</div>
+        <div class="dropdown-item" data-currency="MXN">MXN - $ Mexican Peso</div>
+      </div>
       <button class="cart-btn" id="cartToggle">
         🛒 <span id="cartCount" class="cart-count">0</span>
       </button>
@@ -1334,6 +1437,50 @@
 
   let currentCategory = 'women';
   let currentType = null;
+  let currentCurrency = 'GBP';
+  let currentLanguage = 'en';
+
+  // CURRENCY CONVERSION RATES (to GBP)
+  const currencyRates = {
+    'GBP': 1,
+    'USD': 1.27,
+    'EUR': 0.85,
+    'JPY': 190,
+    'CNY': 9.2,
+    'INR': 105,
+    'AUD': 1.95,
+    'CAD': 1.72,
+    'CHF': 1.13,
+    'SEK': 13.5,
+    'NOK': 13.8,
+    'NZD': 2.1,
+    'SGD': 1.7,
+    'HKD': 9.9,
+    'MXN': 21.5
+  };
+
+  const currencySymbols = {
+    'GBP': '£',
+    'USD': '$',
+    'EUR': '€',
+    'JPY': '¥',
+    'CNY': '¥',
+    'INR': '₹',
+    'AUD': 'A$',
+    'CAD': 'C$',
+    'CHF': 'Fr',
+    'SEK': 'kr',
+    'NOK': 'kr',
+    'NZD': 'NZ$',
+    'SGD': 'S$',
+    'HKD': 'HK$',
+    'MXN': '$'
+  };
+
+  const convertPrice = (priceInGBP) => {
+    const converted = priceInGBP * currencyRates[currentCurrency];
+    return currentCurrency === 'JPY' ? Math.round(converted) : converted.toFixed(2);
+  };
 
   // CART STATE
   let cart = JSON.parse(localStorage.getItem('odettaCart')) || [];
@@ -1354,7 +1501,7 @@
         <div class="product-image" ${product.image ? `style="background-image: url('${product.image}'); background-size: contain; background-position: center; background-repeat: no-repeat;"` : ''}>${!product.image ? product.emoji : ''}</div>
         <div class="product-info">
           <div class="product-name">${product.name}</div>
-          <div class="product-price">£${product.price.toFixed(2)}</div>
+          <div class="product-price">${currencySymbols[currentCurrency]}${convertPrice(product.price)}</div>
 
           <div class="product-colors">
             ${product.colors.map(color => `
@@ -1495,7 +1642,7 @@
           <div class="cart-item-details">
             <div class="cart-item-name">${item.name}</div>
             <div class="cart-item-size">${item.size} / ${item.color}</div>
-            <div class="cart-item-price">£${(item.price * item.quantity).toFixed(2)}</div>
+            <div class="cart-item-price">${currencySymbols[currentCurrency]}${convertPrice(item.price * item.quantity)}</div>
             <div class="cart-item-quantity">
               <button class="qty-btn" data-action="decrease" data-index="${idx}">−</button>
               <span>${item.quantity}</span>
@@ -1530,8 +1677,9 @@
       });
 
       const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      document.getElementById('subtotal').textContent = '£' + subtotal.toFixed(2);
-      document.getElementById('total').textContent = '£' + subtotal.toFixed(2);
+      const convertedSubtotal = convertPrice(subtotal);
+      document.getElementById('subtotal').textContent = currencySymbols[currentCurrency] + convertedSubtotal;
+      document.getElementById('total').textContent = currencySymbols[currentCurrency] + convertedSubtotal;
       cartSummary.style.display = 'block';
       checkoutBtn.disabled = false;
     }
@@ -1751,6 +1899,47 @@
   });
 
   // INIT - Set Woman as default active
+  // LANGUAGE & CURRENCY SELECTORS
+  const languageBtn = document.getElementById('languageBtn');
+  const languageDropdown = document.getElementById('languageDropdown');
+  const currencyBtn = document.getElementById('currencyBtn');
+  const currencyDropdown = document.getElementById('currencyDropdown');
+
+  languageBtn.addEventListener('click', () => {
+    languageDropdown.classList.toggle('open');
+    currencyDropdown.classList.remove('open');
+  });
+
+  currencyBtn.addEventListener('click', () => {
+    currencyDropdown.classList.toggle('open');
+    languageDropdown.classList.remove('open');
+  });
+
+  document.querySelectorAll('#languageDropdown .dropdown-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      currentLanguage = e.target.dataset.lang;
+      languageDropdown.classList.remove('open');
+    });
+  });
+
+  document.querySelectorAll('#currencyDropdown .dropdown-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      currentCurrency = e.target.dataset.currency;
+      currencyBtn.textContent = `💱 ${currentCurrency}`;
+      currencyDropdown.classList.remove('open');
+      renderProducts();
+      updateCartUI();
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.language-currency-selectors') && !e.target.closest('#currencyBtn')) {
+      languageDropdown.classList.remove('open');
+      currencyDropdown.classList.remove('open');
+    }
+  });
+
   document.querySelectorAll('.category-nav .nav-item')[0].classList.add('active');
   renderProducts();
   updateCartUI();
