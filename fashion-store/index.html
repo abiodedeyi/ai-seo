@@ -1347,6 +1347,7 @@
   }
 
 </style>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/build/es5/email.min.js"></script>
 </head>
 <body>
 
@@ -1883,6 +1884,32 @@
 </div>
 
 <script>
+  // ========== EMAILJS SETUP ==========
+  // Initialize EmailJS - Replace with your Public Key from EmailJS
+  emailjs.init('YOUR_PUBLIC_KEY_HERE');
+
+  const sendConfirmationEmail = async (customerEmail, orderDetails) => {
+    try {
+      const response = await emailjs.send(
+        'gmail',  // Service ID - configure in EmailJS dashboard
+        'odetta_order_confirmation',  // Template ID - create in EmailJS dashboard
+        {
+          to_email: customerEmail,
+          customer_name: orderDetails.fullName,
+          order_items: orderDetails.items,
+          order_total: orderDetails.total,
+          delivery_time: orderDetails.deliveryTime,
+          order_date: new Date().toLocaleDateString()
+        }
+      );
+      console.log('Email sent successfully:', response);
+      return true;
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      return false;
+    }
+  };
+
   // PRODUCT DATA WITH CATEGORIES
   const products = [
     // WOMEN - SHIRTS (£5-10)
@@ -2322,7 +2349,7 @@
     checkoutModal.classList.add('open');
   });
 
-  document.getElementById('checkoutForm').addEventListener('submit', (e) => {
+  document.getElementById('checkoutForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const fullName = document.getElementById('fullName').value;
     const addressLine1 = document.getElementById('addressLine1').value;
@@ -2338,7 +2365,23 @@
     successModal.classList.add('open');
 
     const deliveryDays = Math.floor(Math.random() * 5) + 3;
-    document.getElementById('deliveryTime').textContent = `${deliveryDays}-${deliveryDays + 2} Business Days`;
+    const deliveryTime = `${deliveryDays}-${deliveryDays + 2} Business Days`;
+    document.getElementById('deliveryTime').textContent = deliveryTime;
+
+    // Prepare order details for email
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const convertedSubtotal = convertPrice(subtotal);
+    const orderDetails = {
+      fullName: fullName,
+      items: cart.map(item => `${item.name} (${item.quantity}x) - ${currencySymbols[currentCurrency]}${convertPrice(item.price)}`).join(', '),
+      total: `${currencySymbols[currentCurrency]}${convertedSubtotal}`,
+      deliveryTime: deliveryTime
+    };
+
+    // Send confirmation email if user is logged in
+    if (currentUser) {
+      await sendConfirmationEmail(currentUser, orderDetails);
+    }
 
     setTimeout(() => {
       cart = [];
