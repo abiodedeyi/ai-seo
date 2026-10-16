@@ -1297,12 +1297,13 @@
   <section class="products">
     <h2>Our Collection</h2>
 
-    <!-- CATEGORY TABS -->
-    <div class="category-tabs">
-      <button class="category-tab active" data-category="women">Women</button>
-      <button class="category-tab" data-category="men">Men</button>
-      <button class="category-tab" data-category="girl">Girl</button>
-      <button class="category-tab" data-category="boy">Boy</button>
+    <!-- TYPE FILTER TABS -->
+    <div class="category-tabs" id="typeFilters">
+      <button class="category-tab active" data-type="">All Products</button>
+      <button class="category-tab" data-type="Shirt">Shirts</button>
+      <button class="category-tab" data-type="Bottoms">Bottoms</button>
+      <button class="category-tab" data-type="Jewelry">Jewelry</button>
+      <button class="category-tab" data-type="Accessories">Accessories</button>
     </div>
 
     <div class="products-grid" id="productsGrid">
@@ -1604,13 +1605,12 @@
     });
   };
 
-  // CATEGORY FILTERING (OLD TABS - NO LONGER USED)
-  document.querySelectorAll('.category-tab').forEach(tab => {
+  // TYPE FILTERING TABS
+  document.querySelectorAll('#typeFilters .category-tab').forEach(tab => {
     tab.addEventListener('click', (e) => {
-      document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('#typeFilters .category-tab').forEach(t => t.classList.remove('active'));
       e.target.classList.add('active');
-      currentCategory = e.target.dataset.category;
-      currentType = null;
+      currentType = e.target.dataset.type || null;
       renderProducts();
     });
   });
