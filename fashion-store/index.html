@@ -1885,20 +1885,20 @@
 
 <script>
   // ========== EMAILJS SETUP ==========
-  // Initialize EmailJS - Replace with your Public Key from EmailJS
+  // Initialize EmailJS with your credentials
   if (typeof emailjs !== 'undefined') {
-    emailjs.init('YOUR_PUBLIC_KEY_HERE');
+    emailjs.init('vSxdzef8XDzlucZTf');
   }
 
   const sendConfirmationEmail = async (customerEmail, orderDetails) => {
     if (typeof emailjs === 'undefined') {
-      console.log('EmailJS not loaded - email not sent. Please add your Public Key.');
+      console.log('EmailJS not loaded - email not sent.');
       return false;
     }
     try {
       const response = await emailjs.send(
-        'gmail',  // Service ID - configure in EmailJS dashboard
-        'odetta_order_confirmation',  // Template ID - create in EmailJS dashboard
+        'service_4m7ak5i',  // Your Gmail Service ID
+        'template_4anrcn9',  // Your Order Confirmation Template ID
         {
           to_email: customerEmail,
           customer_name: orderDetails.fullName,
