@@ -1886,9 +1886,15 @@
 <script>
   // ========== EMAILJS SETUP ==========
   // Initialize EmailJS - Replace with your Public Key from EmailJS
-  emailjs.init('YOUR_PUBLIC_KEY_HERE');
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init('YOUR_PUBLIC_KEY_HERE');
+  }
 
   const sendConfirmationEmail = async (customerEmail, orderDetails) => {
+    if (typeof emailjs === 'undefined') {
+      console.log('EmailJS not loaded - email not sent. Please add your Public Key.');
+      return false;
+    }
     try {
       const response = await emailjs.send(
         'gmail',  // Service ID - configure in EmailJS dashboard
