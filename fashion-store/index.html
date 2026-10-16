@@ -928,40 +928,55 @@
   /* ========== MOBILE RESPONSIVE ========== */
   @media (max-width: 768px) {
     .nav {
-      padding: 1rem;
+      padding: 0.8rem;
       gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .brand {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
+      order: 2;
+      flex-basis: 100%;
+      text-align: center;
+      margin: 0.5rem 0;
     }
 
     .logo-center {
-      height: 50px;
+      height: 40px;
     }
 
     .logo-center svg {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
     }
 
     .category-nav {
-      gap: 0.8rem;
+      gap: 0.6rem;
       flex-wrap: wrap;
+      order: 3;
+      flex-basis: 100%;
+      justify-content: center;
     }
 
     .nav-item {
-      padding: 0.5rem 0.8rem;
-      font-size: 0.8rem;
+      padding: 0.5rem 0.7rem;
+      font-size: 0.75rem;
     }
 
     .auth-btns {
-      gap: 0.5rem;
+      gap: 0.4rem;
+      order: 1;
     }
 
     .btn {
-      padding: 0.5rem 1rem;
-      font-size: 0.75rem;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.7rem;
+    }
+
+    #languageBtn, #currencyBtn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.65rem;
     }
 
     .hero {
@@ -1036,17 +1051,18 @@
 
   @media (max-width: 600px) {
     .nav {
-      padding: 0.8rem;
+      padding: 0.6rem;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-around;
+      gap: 0.3rem;
     }
 
     .brand {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       order: 3;
       flex-basis: 100%;
       text-align: center;
-      margin-top: 0.5rem;
+      margin: 0.4rem 0 0 0;
     }
 
     .logo-center {
@@ -1056,27 +1072,36 @@
     .category-nav {
       order: 2;
       justify-content: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       flex-basis: 100%;
+      margin: 0.4rem 0;
     }
 
     .nav-item {
-      padding: 0.4rem 0.6rem;
-      font-size: 0.7rem;
+      padding: 0.35rem 0.5rem;
+      font-size: 0.65rem;
+      border-radius: 4px;
     }
 
     .auth-btns {
       order: 1;
-      gap: 0.3rem;
+      gap: 0.2rem;
+      flex-basis: auto;
     }
 
     .btn {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.65rem;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.6rem;
+    }
+
+    #languageBtn, #currencyBtn {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.6rem;
     }
 
     #cartToggle {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
+      padding: 0.3rem 0.5rem;
     }
 
     .hero {
@@ -1188,33 +1213,44 @@
 
   @media (max-width: 480px) {
     .nav {
-      padding: 0.6rem;
-    }
-
-    .brand {
-      font-size: 0.6rem;
-    }
-
-    .category-nav {
-      gap: 0.4rem;
-    }
-
-    .nav-item {
-      padding: 0.3rem 0.5rem;
-      font-size: 0.65rem;
-    }
-
-    .auth-btns {
+      padding: 0.5rem;
       gap: 0.2rem;
     }
 
-    .btn {
-      padding: 0.3rem 0.6rem;
+    .brand {
+      font-size: 0.55rem;
+      margin: 0.3rem 0 0 0;
+    }
+
+    .category-nav {
+      gap: 0.3rem;
+      margin: 0.3rem 0;
+    }
+
+    .nav-item {
+      padding: 0.25rem 0.4rem;
       font-size: 0.6rem;
+      border-radius: 3px;
+      border-width: 1px;
+    }
+
+    .auth-btns {
+      gap: 0.15rem;
+    }
+
+    .btn {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.55rem;
+    }
+
+    #languageBtn, #currencyBtn {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.55rem;
     }
 
     #cartToggle {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
+      padding: 0.25rem 0.4rem;
     }
 
     .hero {
