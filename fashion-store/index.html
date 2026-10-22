@@ -1,0 +1,2527 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ODETTA — Fashion for the Whole Family</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #fbfaf5;
+    --ink: #0f172a;
+    --rose-gold: #C4876B;
+    --rose-gold-dark: #9D6B56;
+    --sage: #7d8a6a;
+    --muted: #475569;
+    --line: #e8e0d0;
+    --radius: 16px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* ---------- HEADER ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(251, 250, 245, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ff69b4;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .logo-center {
+    display: flex;
+    align-items: center;
+    height: 60px;
+  }
+
+  .logo-center svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* ---------- CATEGORY NAVIGATION ---------- */
+  .category-nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-item {
+    position: relative;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 0.7rem 1.2rem;
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    color: var(--ink);
+    background: transparent;
+    transition: all 0.2s;
+  }
+
+  .nav-item:hover {
+    border-color: #ff69b4;
+    color: #ff69b4;
+  }
+
+  .nav-item.active {
+    background: #ff69b4;
+    color: white;
+    border-color: #ff69b4;
+  }
+
+  .nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    min-width: 160px;
+    display: none;
+    flex-direction: column;
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.1);
+    z-index: 40;
+    margin-top: 0.5rem;
+  }
+
+  .nav-item:hover .nav-dropdown {
+    display: flex;
+  }
+
+  .nav-dropdown-item {
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--ink);
+    transition: all 0.2s;
+  }
+
+  .nav-dropdown-item:hover {
+    background: #fff0f6;
+    color: #ff69b4;
+  }
+
+  .rust {
+    color: #ff69b4;
+  }
+
+  .auth-btns {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+  }
+
+  .btn {
+    padding: 0.7rem 1.5rem;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);
+    transform: translateY(0);
+  }
+
+  .btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.35), inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+  }
+
+  .btn-primary {
+    background: var(--rose-gold);
+    color: #fff8f0;
+    border-color: var(--rose-gold);
+    box-shadow: 0 6px 20px rgba(196, 135, 107, 0.3);
+  }
+
+  .btn-primary:hover {
+    background: var(--rose-gold-dark);
+    border-color: var(--rose-gold-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(196, 135, 107, 0.5), inset 0 -3px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-primary:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(196, 135, 107, 0.3);
+  }
+
+  /* ---------- CART ---------- */
+  .cart-btn {
+    padding: 0.7rem 1.5rem;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cart-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.35);
+  }
+
+  .cart-count {
+    background: #ff69b4;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  /* ---------- DEVICE TOGGLE ---------- */
+  .device-toggle {
+    padding: 0.7rem 1.5rem;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .device-toggle:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.35);
+  }
+
+  /* ---------- LANGUAGE & CURRENCY SELECTORS ---------- */
+  .language-currency-selectors {
+    position: relative;
+  }
+
+  .selector-btn {
+    padding: 0.7rem 1rem;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .selector-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.35);
+  }
+
+  .selector-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    min-width: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.1);
+    z-index: 40;
+    margin-top: 0.5rem;
+  }
+
+  .selector-dropdown.open {
+    display: flex;
+  }
+
+  .dropdown-item {
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--ink);
+    transition: all 0.2s;
+  }
+
+  .dropdown-item:hover {
+    background: #fff0f6;
+    color: #ff69b4;
+  }
+
+  #currencyDropdown {
+    right: 0;
+    left: auto;
+  }
+
+  /* ---------- PRODUCTS SECTION ---------- */
+  .products {
+    max-width: 1240px;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+  }
+
+  .products h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--ink);
+  }
+
+  /* ---------- CATEGORY TABS ---------- */
+  .category-tabs {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .category-tab {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--line);
+    background: transparent;
+    color: var(--ink);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .category-tab:hover {
+    border-color: #ff69b4;
+    color: #ff69b4;
+  }
+
+  .category-tab.active {
+    background: #ff69b4;
+    color: white;
+    border-color: #ff69b4;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+  }
+
+  .product-card.out-of-stock {
+    opacity: 0.7;
+  }
+
+  .stock-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #ff6b6b;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    z-index: 10;
+  }
+
+  .gender-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: #ff69b4;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 10;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 280px;
+    background: linear-gradient(135deg, #ff69b4 0%, #ffb6d9 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+  }
+
+  .product-info {
+    padding: 1.5rem;
+  }
+
+  .product-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-price {
+    font-size: 1.3rem;
+    color: #ff69b4;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .product-colors {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .color-swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .color-swatch:hover {
+    transform: scale(1.1);
+    border-color: var(--ink);
+  }
+
+  .product-options {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .option-select {
+    flex: 1;
+    min-width: 100px;
+    padding: 0.6rem;
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .option-select:disabled {
+    background: #f0f0f0;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .add-to-cart-btn:hover {
+    background: #ff469e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+  }
+
+  /* ---------- CART MODAL ---------- */
+  .cart-modal {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: var(--paper);
+    box-shadow: -4px 0 20px rgba(15, 23, 42, 0.15);
+    z-index: 99;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    padding: 2rem;
+  }
+
+  .cart-modal.open {
+    right: 0;
+  }
+
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--line);
+    padding-bottom: 1rem;
+  }
+
+  .cart-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .close-cart {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--muted);
+  }
+
+  .cart-items {
+    margin-bottom: 2rem;
+  }
+
+  .cart-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cart-item-img {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ff69b4 0%, #ffb6d9 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .cart-item-details {
+    flex: 1;
+  }
+
+  .cart-item-name {
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .cart-item-size {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .cart-item-price {
+    color: #ff69b4;
+    font-weight: 600;
+  }
+
+  .cart-item-quantity {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  .qty-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--line);
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .qty-btn:hover {
+    background: #ff69b4;
+    color: white;
+    border-color: #ff69b4;
+  }
+
+  .remove-btn {
+    background: none;
+    border: none;
+    color: #ff69b4;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: underline;
+  }
+
+  .cart-empty {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+  }
+
+  .cart-summary {
+    border-top: 2px solid var(--line);
+    padding-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+  }
+
+  .summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ff69b4;
+  }
+
+  .checkout-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .checkout-btn:hover {
+    background: #ff469e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.3);
+  }
+
+  .checkout-btn:disabled {
+    background: var(--muted);
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(rgba(251, 250, 245, 0.8), rgba(251, 250, 245, 0.8)), url('family-background-opt.png') center/cover no-repeat;
+    background-attachment: fixed;
+    border-radius: 12px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1.2rem;
+    line-height: 1.1;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 50ch;
+    margin: 0 auto 2rem;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- MODAL ---------- */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 1.5rem;
+  }
+
+  .modal.open {
+    display: flex;
+  }
+
+  .modal-box {
+    background: var(--paper);
+    border-radius: var(--radius);
+    padding: 2rem;
+    max-width: 420px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+    position: relative;
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .close-modal:hover {
+    color: var(--ink);
+  }
+
+  .modal-head {
+    margin-bottom: 1.8rem;
+  }
+
+  .modal-head h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-head p {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--rose-gold);
+    box-shadow: 0 0 0 3px rgba(196, 135, 107, 0.1);
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 0.9rem;
+    background: var(--rose-gold);
+    color: #fff8f0;
+    border: none;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-submit:hover {
+    background: var(--rose-gold-dark);
+  }
+
+  .toggle-form {
+    margin-top: 1.2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .toggle-form button {
+    background: none;
+    border: none;
+    color: var(--rose-gold);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  /* ---------- ACCOUNT MENU ---------- */
+  .account-menu {
+    position: relative;
+  }
+
+  .account-btn {
+    padding: 0.7rem 1.5rem;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .account-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .account-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    margin-top: 0.5rem;
+    min-width: 200px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+    display: none;
+    padding: 1rem;
+    z-index: 50;
+  }
+
+  .account-dropdown.open {
+    display: block;
+  }
+
+  .account-user {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logout-btn {
+    width: 100%;
+    padding: 0.6rem;
+    background: none;
+    border: 1.5px solid var(--rose-gold);
+    color: var(--rose-gold);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .logout-btn:hover {
+    background: var(--rose-gold);
+    color: #fff8f0;
+  }
+
+  /* ========== MOBILE RESPONSIVE ========== */
+  @media (max-width: 768px) {
+    .nav {
+      padding: 0.8rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .brand {
+      font-size: 0.7rem;
+      order: 2;
+      flex-basis: 100%;
+      text-align: center;
+      margin: 0.5rem 0;
+    }
+
+    .logo-center {
+      height: 40px;
+    }
+
+    .logo-center svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    .category-nav {
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      order: 3;
+      flex-basis: 100%;
+      justify-content: center;
+    }
+
+    .nav-item {
+      padding: 0.5rem 0.7rem;
+      font-size: 0.75rem;
+    }
+
+    .auth-btns {
+      gap: 0.4rem;
+      order: 1;
+    }
+
+    .btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.7rem;
+    }
+
+    #languageBtn, #currencyBtn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.65rem;
+    }
+
+    .hero {
+      padding: 2rem 1rem;
+    }
+
+    .hero-content {
+      max-width: 90%;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero p {
+      font-size: 0.95rem;
+    }
+
+    .products-grid {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+
+    .product-card {
+      padding: 0.8rem;
+    }
+
+    .product-image {
+      height: 140px;
+    }
+
+    .product-name {
+      font-size: 0.8rem;
+    }
+
+    .product-price {
+      font-size: 0.85rem;
+    }
+
+    .color-swatch {
+      width: 24px;
+      height: 24px;
+    }
+
+    .cartModal, .signUpModal, .signInModal, .checkoutModal, .successModal {
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-size: 16px;
+    }
+
+    .type-filter-tabs {
+      gap: 0.5rem;
+      padding: 0.8rem 1rem;
+    }
+
+    .type-filter-btn {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.75rem;
+    }
+
+    #deviceToggle {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .nav {
+      padding: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 0.3rem;
+    }
+
+    .brand {
+      font-size: 0.6rem;
+      order: 3;
+      flex-basis: 100%;
+      text-align: center;
+      margin: 0.4rem 0 0 0;
+    }
+
+    .logo-center {
+      display: none;
+    }
+
+    .category-nav {
+      order: 2;
+      justify-content: center;
+      gap: 0.4rem;
+      flex-basis: 100%;
+      margin: 0.4rem 0;
+    }
+
+    .nav-item {
+      padding: 0.35rem 0.5rem;
+      font-size: 0.65rem;
+      border-radius: 4px;
+    }
+
+    .auth-btns {
+      order: 1;
+      gap: 0.2rem;
+      flex-basis: auto;
+    }
+
+    .btn {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.6rem;
+    }
+
+    #languageBtn, #currencyBtn {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.6rem;
+    }
+
+    #cartToggle {
+      font-size: 0.7rem;
+      padding: 0.3rem 0.5rem;
+    }
+
+    .hero {
+      padding: 1.5rem 1rem;
+    }
+
+    .hero-content {
+      max-width: 95%;
+    }
+
+    .hero h1 {
+      font-size: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 0.85rem;
+    }
+
+    .shop-btn, .learn-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+    }
+
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+      padding: 1rem;
+    }
+
+    .product-card {
+      padding: 0.6rem;
+    }
+
+    .product-image {
+      height: 120px;
+    }
+
+    .product-name {
+      font-size: 0.75rem;
+    }
+
+    .product-price {
+      font-size: 0.8rem;
+    }
+
+    .color-swatch {
+      width: 20px;
+      height: 20px;
+    }
+
+    .cartModal, .signUpModal, .signInModal, .checkoutModal, .successModal {
+      width: 95%;
+      max-width: 100%;
+      padding: 1.5rem;
+    }
+
+    .modal-header {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 0.8rem;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-size: 16px;
+      padding: 0.6rem;
+    }
+
+    .type-filter-tabs {
+      gap: 0.4rem;
+      padding: 0.6rem;
+      overflow-x: auto;
+    }
+
+    .type-filter-btn {
+      padding: 0.4rem 0.6rem;
+      font-size: 0.7rem;
+      white-space: nowrap;
+    }
+
+    .cart-item {
+      padding: 0.8rem;
+    }
+
+    .cart-item-details {
+      gap: 0.5rem;
+    }
+
+    .cart-item-name {
+      font-size: 0.8rem;
+    }
+
+    .cart-item-size {
+      font-size: 0.7rem;
+    }
+
+    .cart-item-price {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav {
+      padding: 0.5rem;
+      gap: 0.2rem;
+    }
+
+    .brand {
+      font-size: 0.55rem;
+      margin: 0.3rem 0 0 0;
+    }
+
+    .category-nav {
+      gap: 0.3rem;
+      margin: 0.3rem 0;
+    }
+
+    .nav-item {
+      padding: 0.25rem 0.4rem;
+      font-size: 0.6rem;
+      border-radius: 3px;
+      border-width: 1px;
+    }
+
+    .auth-btns {
+      gap: 0.15rem;
+    }
+
+    .btn {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.55rem;
+    }
+
+    #languageBtn, #currencyBtn {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.55rem;
+    }
+
+    #cartToggle {
+      font-size: 0.65rem;
+      padding: 0.25rem 0.4rem;
+    }
+
+    .hero {
+      padding: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 1.2rem;
+    }
+
+    .hero p {
+      font-size: 0.8rem;
+    }
+
+    .shop-btn, .learn-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.65rem;
+    }
+
+    .products-grid {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+      padding: 0.8rem;
+    }
+
+    .product-card {
+      padding: 0.5rem;
+    }
+
+    .product-image {
+      height: 100px;
+    }
+
+    .product-name {
+      font-size: 0.7rem;
+    }
+
+    .product-price {
+      font-size: 0.75rem;
+    }
+
+    .cartModal, .signUpModal, .signInModal, .checkoutModal, .successModal {
+      width: 98%;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .close {
+      font-size: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 0.6rem;
+    }
+
+    .form-group label {
+      font-size: 0.75rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-size: 16px;
+      padding: 0.5rem;
+    }
+
+    .type-filter-tabs {
+      gap: 0.3rem;
+      padding: 0.5rem;
+    }
+
+    .type-filter-btn {
+      padding: 0.3rem 0.5rem;
+      font-size: 0.65rem;
+    }
+
+    .cart-item {
+      padding: 0.6rem;
+      gap: 0.5rem;
+    }
+
+    .cart-item-name {
+      font-size: 0.75rem;
+    }
+
+    .cart-item-size {
+      font-size: 0.65rem;
+    }
+
+    .qty-btn, .remove-btn {
+      font-size: 0.7rem;
+      padding: 0.3rem 0.5rem;
+    }
+  }
+
+</style>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/build/es5/email.min.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="logo-center">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Outer decorative oval -->
+          <ellipse cx="60" cy="60" rx="58" ry="58" fill="none" stroke="#ff69b4" stroke-width="1.5" opacity="0.6"/>
+          <!-- Main oval frame -->
+          <ellipse cx="60" cy="60" rx="55" ry="55" fill="none" stroke="#ff69b4" stroke-width="2.5"/>
+          <!-- Inner decorative oval -->
+          <ellipse cx="60" cy="60" rx="52" ry="52" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6"/>
+
+          <!-- Top ornamental curves -->
+          <path d="M 50 5 Q 60 0 70 5" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M 48 8 Q 60 2 72 8" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+
+          <!-- Bottom ornamental curves -->
+          <path d="M 50 115 Q 60 120 70 115" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M 48 112 Q 60 118 72 112" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+
+          <!-- Left ornamental curves -->
+          <path d="M 5 50 Q 0 60 5 70" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M 8 48 Q 2 60 8 72" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+
+          <!-- Right ornamental curves -->
+          <path d="M 115 50 Q 120 60 115 70" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M 112 48 Q 118 60 112 72" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+
+          <!-- Diagonal top-left curves -->
+          <path d="M 25 20 Q 28 15 32 18" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
+
+          <!-- Diagonal top-right curves -->
+          <path d="M 95 20 Q 92 15 88 18" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
+
+          <!-- Diagonal bottom-left curves -->
+          <path d="M 25 100 Q 28 105 32 102" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
+
+          <!-- Diagonal bottom-right curves -->
+          <path d="M 95 100 Q 92 105 88 102" fill="none" stroke="#ff69b4" stroke-width="1" opacity="0.6" stroke-linecap="round"/>
+
+          <!-- Decorative dots at cardinal points -->
+          <circle cx="60" cy="8" r="2.5" fill="#ff69b4"/>
+          <circle cx="60" cy="112" r="2.5" fill="#ff69b4"/>
+          <circle cx="8" cy="60" r="2.5" fill="#ff69b4"/>
+          <circle cx="112" cy="60" r="2.5" fill="#ff69b4"/>
+
+          <!-- Flick at start of first T -->
+          <path d="M 35 65 Q 28 62 25 70 Q 28 75 35 72" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          <path d="M 35 60 Q 25 55 20 65" fill="none" stroke="#ff69b4" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+
+          <!-- Flick at end of second T -->
+          <path d="M 85 65 Q 92 62 95 70 Q 92 75 85 72" fill="none" stroke="#ff69b4" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          <path d="M 85 60 Q 95 55 100 65" fill="none" stroke="#ff69b4" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+
+          <!-- TT text -->
+          <text x="60" y="75" font-family="'Playfair Display', serif" font-size="48" font-weight="700" fill="#ff69b4" text-anchor="middle">TT</text>
+        </svg>
+      </div>
+      <span class="brand-text"><span class="rust">O</span>DETTA</span>
+    </div>
+
+    <!-- CATEGORY NAVIGATION -->
+    <div class="category-nav">
+      <div class="nav-item">
+        Woman
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-item" data-filter="women-shirts">Shirts</div>
+          <div class="nav-dropdown-item" data-filter="women-bottoms">Bottoms</div>
+          <div class="nav-dropdown-item" data-filter="women-skirts">Skirts</div>
+          <div class="nav-dropdown-item" data-filter="women-accessories">Accessories</div>
+          <div class="nav-dropdown-item" data-filter="women-jewelry">Jewelry</div>
+        </div>
+      </div>
+      <div class="nav-item">
+        Man
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-item" data-filter="men-shirts">Shirts</div>
+          <div class="nav-dropdown-item" data-filter="men-bottoms">Bottoms</div>
+          <div class="nav-dropdown-item" data-filter="men-accessories">Accessories</div>
+          <div class="nav-dropdown-item" data-filter="men-jewelry">Jewelry</div>
+        </div>
+      </div>
+      <div class="nav-item">
+        Girl
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-item" data-filter="girl-shirts">Shirts</div>
+          <div class="nav-dropdown-item" data-filter="girl-skirts">Skirts</div>
+          <div class="nav-dropdown-item" data-filter="girl-accessories">Accessories</div>
+          <div class="nav-dropdown-item" data-filter="girl-jewelry">Jewelry</div>
+        </div>
+      </div>
+      <div class="nav-item">
+        Boy
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-item" data-filter="boy-shirts">Shirts</div>
+          <div class="nav-dropdown-item" data-filter="boy-bottoms">Bottoms</div>
+          <div class="nav-dropdown-item" data-filter="boy-accessories">Accessories</div>
+          <div class="nav-dropdown-item" data-filter="boy-jewelry">Jewelry</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-btns">
+      <button class="device-toggle" id="deviceToggle">
+        <span id="deviceText">📱 Mobile</span>
+      </button>
+      <div class="language-currency-selectors">
+        <button class="selector-btn" id="languageBtn">🌐 Language</button>
+        <div class="selector-dropdown" id="languageDropdown">
+          <div class="dropdown-item" data-lang="en">English</div>
+          <div class="dropdown-item" data-lang="es">Español (Spanish)</div>
+          <div class="dropdown-item" data-lang="fr">Français (French)</div>
+          <div class="dropdown-item" data-lang="de">Deutsch (German)</div>
+          <div class="dropdown-item" data-lang="it">Italiano (Italian)</div>
+          <div class="dropdown-item" data-lang="pt">Português (Portuguese)</div>
+          <div class="dropdown-item" data-lang="ru">Русский (Russian)</div>
+          <div class="dropdown-item" data-lang="pl">Polski (Polish)</div>
+          <div class="dropdown-item" data-lang="nl">Nederlands (Dutch)</div>
+          <div class="dropdown-item" data-lang="sv">Svenska (Swedish)</div>
+          <div class="dropdown-item" data-lang="no">Norsk (Norwegian)</div>
+          <div class="dropdown-item" data-lang="da">Dansk (Danish)</div>
+          <div class="dropdown-item" data-lang="fi">Suomi (Finnish)</div>
+          <div class="dropdown-item" data-lang="cs">Čeština (Czech)</div>
+          <div class="dropdown-item" data-lang="sk">Slovenčina (Slovak)</div>
+          <div class="dropdown-item" data-lang="hu">Magyar (Hungarian)</div>
+          <div class="dropdown-item" data-lang="ro">Română (Romanian)</div>
+          <div class="dropdown-item" data-lang="el">Ελληνικά (Greek)</div>
+          <div class="dropdown-item" data-lang="tr">Türkçe (Turkish)</div>
+          <div class="dropdown-item" data-lang="uk">Українська (Ukrainian)</div>
+          <div class="dropdown-item" data-lang="be">Беларусь (Belarusian)</div>
+          <div class="dropdown-item" data-lang="bg">Български (Bulgarian)</div>
+          <div class="dropdown-item" data-lang="hr">Hrvatski (Croatian)</div>
+          <div class="dropdown-item" data-lang="sr">Српски (Serbian)</div>
+          <div class="dropdown-item" data-lang="sl">Slovenščina (Slovenian)</div>
+          <div class="dropdown-item" data-lang="et">Eesti (Estonian)</div>
+          <div class="dropdown-item" data-lang="lv">Latvian</div>
+          <div class="dropdown-item" data-lang="lt">Lietuvių (Lithuanian)</div>
+          <div class="dropdown-item" data-lang="zh">中文 (Chinese)</div>
+          <div class="dropdown-item" data-lang="ja">日本語 (Japanese)</div>
+          <div class="dropdown-item" data-lang="ko">한국어 (Korean)</div>
+          <div class="dropdown-item" data-lang="vi">Tiếng Việt (Vietnamese)</div>
+          <div class="dropdown-item" data-lang="th">ไทย (Thai)</div>
+          <div class="dropdown-item" data-lang="id">Bahasa Indonesia (Indonesian)</div>
+          <div class="dropdown-item" data-lang="ms">Bahasa Melayu (Malay)</div>
+          <div class="dropdown-item" data-lang="tl">Tagalog (Filipino)</div>
+          <div class="dropdown-item" data-lang="my">မြန်မာ (Burmese)</div>
+          <div class="dropdown-item" data-lang="km">ខ្មែរ (Khmer)</div>
+          <div class="dropdown-item" data-lang="lo">ລາວ (Lao)</div>
+          <div class="dropdown-item" data-lang="hi">हिन्दी (Hindi)</div>
+          <div class="dropdown-item" data-lang="bn">বাংলা (Bengali)</div>
+          <div class="dropdown-item" data-lang="pa">ਪੰਜਾਬੀ (Punjabi)</div>
+          <div class="dropdown-item" data-lang="gu">ગુજરાતી (Gujarati)</div>
+          <div class="dropdown-item" data-lang="ta">தமிழ் (Tamil)</div>
+          <div class="dropdown-item" data-lang="te">తెలుగు (Telugu)</div>
+          <div class="dropdown-item" data-lang="kn">ಕನ್ನಡ (Kannada)</div>
+          <div class="dropdown-item" data-lang="ml">മലയാളം (Malayalam)</div>
+          <div class="dropdown-item" data-lang="ar">العربية (Arabic)</div>
+          <div class="dropdown-item" data-lang="ur">اردو (Urdu)</div>
+          <div class="dropdown-item" data-lang="fa">فارسی (Persian)</div>
+          <div class="dropdown-item" data-lang="he">עברית (Hebrew)</div>
+          <div class="dropdown-item" data-lang="af">Afrikaans</div>
+          <div class="dropdown-item" data-lang="zu">Zulu</div>
+          <div class="dropdown-item" data-lang="xh">Xhosa</div>
+          <div class="dropdown-item" data-lang="am">አማርኛ (Amharic)</div>
+          <div class="dropdown-item" data-lang="sw">Kiswahili (Swahili)</div>
+          <div class="dropdown-item" data-lang="yo">Yorùbá (Yoruba)</div>
+          <div class="dropdown-item" data-lang="ig">Igbo</div>
+          <div class="dropdown-item" data-lang="ha">Hausa</div>
+          <div class="dropdown-item" data-lang="wo">Wolof</div>
+          <div class="dropdown-item" data-lang="mg">Malagasy</div>
+          <div class="dropdown-item" data-lang="ny">Chichewa</div>
+        </div>
+      </div>
+      <button class="selector-btn" id="currencyBtn">💱 GBP</button>
+      <div class="selector-dropdown" id="currencyDropdown">
+        <div class="dropdown-item" data-currency="GBP">GBP - £ British Pound</div>
+        <div class="dropdown-item" data-currency="USD">USD - $ US Dollar</div>
+        <div class="dropdown-item" data-currency="EUR">EUR - € Euro</div>
+        <div class="dropdown-item" data-currency="JPY">JPY - ¥ Japanese Yen</div>
+        <div class="dropdown-item" data-currency="CNY">CNY - ¥ Chinese Yuan</div>
+        <div class="dropdown-item" data-currency="INR">INR - ₹ Indian Rupee</div>
+        <div class="dropdown-item" data-currency="AUD">AUD - A$ Australian Dollar</div>
+        <div class="dropdown-item" data-currency="CAD">CAD - C$ Canadian Dollar</div>
+        <div class="dropdown-item" data-currency="CHF">CHF - Fr Swiss Franc</div>
+        <div class="dropdown-item" data-currency="SEK">SEK - kr Swedish Krona</div>
+        <div class="dropdown-item" data-currency="NOK">NOK - kr Norwegian Krone</div>
+        <div class="dropdown-item" data-currency="NZD">NZD - NZ$ New Zealand Dollar</div>
+        <div class="dropdown-item" data-currency="SGD">SGD - S$ Singapore Dollar</div>
+        <div class="dropdown-item" data-currency="HKD">HKD - HK$ Hong Kong Dollar</div>
+        <div class="dropdown-item" data-currency="MXN">MXN - $ Mexican Peso</div>
+        <div class="dropdown-item" data-currency="ZAR">ZAR - R South African Rand</div>
+        <div class="dropdown-item" data-currency="KES">KES - Sh Kenyan Shilling</div>
+        <div class="dropdown-item" data-currency="NGN">NGN - ₦ Nigerian Naira</div>
+        <div class="dropdown-item" data-currency="EGP">EGP - £ Egyptian Pound</div>
+        <div class="dropdown-item" data-currency="GHS">GHS - ₵ Ghanaian Cedi</div>
+        <div class="dropdown-item" data-currency="MAD">MAD - د.م. Moroccan Dirham</div>
+        <div class="dropdown-item" data-currency="TZS">TZS - Sh Tanzanian Shilling</div>
+        <div class="dropdown-item" data-currency="UGX">UGX - Sh Ugandan Shilling</div>
+        <div class="dropdown-item" data-currency="AED">AED - د.إ UAE Dirham</div>
+        <div class="dropdown-item" data-currency="SAR">SAR - ر.س Saudi Riyal</div>
+        <div class="dropdown-item" data-currency="KWD">KWD - د.ك Kuwaiti Dinar</div>
+        <div class="dropdown-item" data-currency="AED">AED - د.إ UAE Dirham</div>
+        <div class="dropdown-item" data-currency="QAR">QAR - ر.ق Qatari Riyal</div>
+        <div class="dropdown-item" data-currency="BHD">BHD - .د.ب Bahraini Dinar</div>
+        <div class="dropdown-item" data-currency="OMR">OMR - ر.ع. Omani Rial</div>
+        <div class="dropdown-item" data-currency="JOD">JOD - د.ا Jordanian Dinar</div>
+        <div class="dropdown-item" data-currency="LBP">LBP - ل.ل Lebanese Pound</div>
+        <div class="dropdown-item" data-currency="ILS">ILS - ₪ Israeli Shekel</div>
+        <div class="dropdown-item" data-currency="TRY">TRY - ₺ Turkish Lira</div>
+        <div class="dropdown-item" data-currency="PKR">PKR - ₨ Pakistani Rupee</div>
+        <div class="dropdown-item" data-currency="BDT">BDT - ৳ Bangladeshi Taka</div>
+        <div class="dropdown-item" data-currency="LKR">LKR - Rs Sri Lankan Rupee</div>
+        <div class="dropdown-item" data-currency="MYR">MYR - RM Malaysian Ringgit</div>
+        <div class="dropdown-item" data-currency="PHP">PHP - ₱ Philippine Peso</div>
+        <div class="dropdown-item" data-currency="IDR">IDR - Rp Indonesian Rupiah</div>
+        <div class="dropdown-item" data-currency="THB">THB - ฿ Thai Baht</div>
+        <div class="dropdown-item" data-currency="VND">VND - ₫ Vietnamese Dong</div>
+        <div class="dropdown-item" data-currency="KRW">KRW - ₩ South Korean Won</div>
+        <div class="dropdown-item" data-currency="TWD">TWD - NT$ Taiwan Dollar</div>
+        <div class="dropdown-item" data-currency="CLP">CLP - $ Chilean Peso</div>
+        <div class="dropdown-item" data-currency="ARS">ARS - $ Argentine Peso</div>
+        <div class="dropdown-item" data-currency="BRL">BRL - R$ Brazilian Real</div>
+        <div class="dropdown-item" data-currency="COP">COP - $ Colombian Peso</div>
+        <div class="dropdown-item" data-currency="PEN">PEN - S/ Peruvian Nuevo Sol</div>
+        <div class="dropdown-item" data-currency="UYU">UYU - $U Uruguayan Peso</div>
+        <div class="dropdown-item" data-currency="VEF">VEF - Bs Venezuelan Bolívar</div>
+        <div class="dropdown-item" data-currency="BOB">BOB - Bs Bolivian Boliviano</div>
+        <div class="dropdown-item" data-currency="PYG">PYG - ₲ Paraguayan Guaraní</div>
+        <div class="dropdown-item" data-currency="RUB">RUB - ₽ Russian Ruble</div>
+        <div class="dropdown-item" data-currency="UAH">UAH - ₴ Ukrainian Hryvnia</div>
+        <div class="dropdown-item" data-currency="BYN">BYN - Br Belarusian Ruble</div>
+        <div class="dropdown-item" data-currency="KZT">KZT - ₸ Kazakhstani Tenge</div>
+        <div class="dropdown-item" data-currency="UZS">UZS - сўм Uzbekistani Soʻm</div>
+        <div class="dropdown-item" data-currency="GEL">GEL - ₾ Georgian Lari</div>
+        <div class="dropdown-item" data-currency="AMD">AMD - ֏ Armenian Dram</div>
+        <div class="dropdown-item" data-currency="AZN">AZN - ₼ Azerbaijani Manat</div>
+        <div class="dropdown-item" data-currency="BGN">BGN - лв Bulgarian Lev</div>
+        <div class="dropdown-item" data-currency="HRK">HRK - kn Croatian Kuna</div>
+        <div class="dropdown-item" data-currency="CZK">CZK - Kč Czech Koruna</div>
+        <div class="dropdown-item" data-currency="DKK">DKK - kr Danish Krone</div>
+        <div class="dropdown-item" data-currency="HUF">HUF - Ft Hungarian Forint</div>
+        <div class="dropdown-item" data-currency="ISK">ISK - kr Icelandic Króna</div>
+        <div class="dropdown-item" data-currency="PLN">PLN - zł Polish Złoty</div>
+        <div class="dropdown-item" data-currency="RON">RON - lei Romanian Leu</div>
+        <div class="dropdown-item" data-currency="RSD">RSD - дин Serbian Dinar</div>
+        <div class="dropdown-item" data-currency="HUF">HUF - Ft Hungarian Forint</div>
+        <div class="dropdown-item" data-currency="IMP">IMP - £ Isle of Man Pound</div>
+        <div class="dropdown-item" data-currency="GIP">GIP - £ Gibraltar Pound</div>
+        <div class="dropdown-item" data-currency="FKP">FKP - £ Falkland Islands Pound</div>
+        <div class="dropdown-item" data-currency="GGP">GGP - £ Guernsey Pound</div>
+        <div class="dropdown-item" data-currency="JEP">JEP - £ Jersey Pound</div>
+        <div class="dropdown-item" data-currency="SHP">SHP - £ Saint Helena Pound</div>
+        <div class="dropdown-item" data-currency="AFN">AFN - ؋ Afghan Afghani</div>
+        <div class="dropdown-item" data-currency="ALL">ALL - L Albanian Lek</div>
+        <div class="dropdown-item" data-currency="AMD">AMD - ֏ Armenian Dram</div>
+        <div class="dropdown-item" data-currency="ANG">ANG - ƒ Neth. Antilles Guilder</div>
+        <div class="dropdown-item" data-currency="AOA">AOA - Kz Angolan Kwanza</div>
+        <div class="dropdown-item" data-currency="AWG">AWG - ƒ Aruban Florin</div>
+        <div class="dropdown-item" data-currency="BAM">BAM - KM Bosnia Convertible Mark</div>
+        <div class="dropdown-item" data-currency="BBD">BBD - $ Barbadian Dollar</div>
+        <div class="dropdown-item" data-currency="BGN">BGN - лв Bulgarian Lev</div>
+        <div class="dropdown-item" data-currency="BIF">BIF - FBu Burundian Franc</div>
+        <div class="dropdown-item" data-currency="BMD">BMD - $ Bermudian Dollar</div>
+        <div class="dropdown-item" data-currency="BND">BND - $ Brunei Dollar</div>
+        <div class="dropdown-item" data-currency="BTN">BTN - Nu. Bhutanese Ngultrum</div>
+        <div class="dropdown-item" data-currency="BWP">BWP - P Botswanan Pula</div>
+        <div class="dropdown-item" data-currency="BZD">BZD - BZ$ Belize Dollar</div>
+        <div class="dropdown-item" data-currency="CDF">CDF - FC Congolese Franc</div>
+        <div class="dropdown-item" data-currency="CVE">CVE - $ Cape Verdean Escudo</div>
+        <div class="dropdown-item" data-currency="DJF">DJF - Fdj Djiboutian Franc</div>
+        <div class="dropdown-item" data-currency="DZD">DZD - د.ج Algerian Dinar</div>
+        <div class="dropdown-item" data-currency="ERN">ERN - Nfk Eritrean Nakfa</div>
+        <div class="dropdown-item" data-currency="ETB">ETB - Br Ethiopian Birr</div>
+        <div class="dropdown-item" data-currency="FJD">FJD - $ Fijian Dollar</div>
+        <div class="dropdown-item" data-currency="GMD">GMD - D Gambian Dalasi</div>
+        <div class="dropdown-item" data-currency="GNF">GNF - FG Guinean Franc</div>
+        <div class="dropdown-item" data-currency="GTQ">GTQ - Q Guatemalan Quetzal</div>
+        <div class="dropdown-item" data-currency="HNL">HNL - L Honduran Lempira</div>
+        <div class="dropdown-item" data-currency="HTG">HTG - G Haitian Gourde</div>
+        <div class="dropdown-item" data-currency="KGS">KGS - с Kyrgystani Som</div>
+        <div class="dropdown-item" data-currency="KHR">KHR - ៛ Cambodian Riel</div>
+        <div class="dropdown-item" data-currency="KMF">KMF - CF Comorian Franc</div>
+        <div class="dropdown-item" data-currency="KPW">KPW - ₩ North Korean Won</div>
+        <div class="dropdown-item" data-currency="KYD">KYD - $ Cayman Islands Dollar</div>
+        <div class="dropdown-item" data-currency="LAK">LAK - ₭ Laotian Kip</div>
+        <div class="dropdown-item" data-currency="LRD">LRD - $ Liberian Dollar</div>
+        <div class="dropdown-item" data-currency="LSL">LSL - L Lesotho Loti</div>
+        <div class="dropdown-item" data-currency="LYD">LYD - ل.د Libyan Dinar</div>
+        <div class="dropdown-item" data-currency="MDL">MDL - L Moldovan Leu</div>
+        <div class="dropdown-item" data-currency="MGA">MGA - Ar Malagasy Ariary</div>
+        <div class="dropdown-item" data-currency="MKD">MKD - ден Macedonian Denar</div>
+        <div class="dropdown-item" data-currency="MMK">MMK - K Myanmar Kyat</div>
+        <div class="dropdown-item" data-currency="MNT">MNT - ₮ Mongolian Tugrik</div>
+        <div class="dropdown-item" data-currency="MOP">MOP - P Macanese Pataca</div>
+        <div class="dropdown-item" data-currency="MRU">MRU - UM Mauritanian Ouguiya</div>
+        <div class="dropdown-item" data-currency="MUR">MUR - ₨ Mauritian Rupee</div>
+        <div class="dropdown-item" data-currency="MVR">MVR - Rf Maldivian Rufiyaa</div>
+        <div class="dropdown-item" data-currency="MWK">MWK - MK Malawian Kwacha</div>
+        <div class="dropdown-item" data-currency="MZN">MZN - MT Mozambican Metical</div>
+        <div class="dropdown-item" data-currency="NAD">NAD - $ Namibian Dollar</div>
+        <div class="dropdown-item" data-currency="NIO">NIO - C$ Nicaraguan Córdoba</div>
+        <div class="dropdown-item" data-currency="NPR">NPR - ₨ Nepalese Rupee</div>
+        <div class="dropdown-item" data-currency="PGK">PGK - K Papua New Guinean Kina</div>
+        <div class="dropdown-item" data-currency="PLN">PLN - zł Polish Złoty</div>
+        <div class="dropdown-item" data-currency="RWF">RWF - FRw Rwandan Franc</div>
+        <div class="dropdown-item" data-currency="SBD">SBD - $ Solomon Islands Dollar</div>
+        <div class="dropdown-item" data-currency="SCR">SCR - ₨ Seychellois Rupee</div>
+        <div class="dropdown-item" data-currency="SDG">SDG - ج.س Sudanese Pound</div>
+        <div class="dropdown-item" data-currency="SLL">SLL - Le Sierra Leonean Leone</div>
+        <div class="dropdown-item" data-currency="SOS">SOS - Sh Somali Shilling</div>
+        <div class="dropdown-item" data-currency="SRD">SRD - $ Surinamese Dollar</div>
+        <div class="dropdown-item" data-currency="SSP">SSP - £ South Sudanese Pound</div>
+        <div class="dropdown-item" data-currency="STN">STN - Db São Tomé & Príncipe Dobra</div>
+        <div class="dropdown-item" data-currency="SYP">SYP - £ Syrian Pound</div>
+        <div class="dropdown-item" data-currency="SZL">SZL - L Eswatini Lilangeni</div>
+        <div class="dropdown-item" data-currency="TJS">TJS - ЅМ Tajikistani Somoni</div>
+        <div class="dropdown-item" data-currency="TMT">TMT - m Turkmenistani Manat</div>
+        <div class="dropdown-item" data-currency="TND">TND - د.ت Tunisian Dinar</div>
+        <div class="dropdown-item" data-currency="TOP">TOP - T$ Tongan Paʻanga</div>
+        <div class="dropdown-item" data-currency="TTD">TTD - TT$ Trinidad & Tobago Dollar</div>
+        <div class="dropdown-item" data-currency="TWD">TWD - NT$ Taiwan Dollar</div>
+        <div class="dropdown-item" data-currency="TZS">TZS - Sh Tanzanian Shilling</div>
+        <div class="dropdown-item" data-currency="UGX">UGX - Sh Ugandan Shilling</div>
+        <div class="dropdown-item" data-currency="UYU">UYU - $U Uruguayan Peso</div>
+        <div class="dropdown-item" data-currency="VES">VES - Bs Venezuelan Bolívar</div>
+        <div class="dropdown-item" data-currency="VND">VND - ₫ Vietnamese Dong</div>
+        <div class="dropdown-item" data-currency="VUV">VUV - Vt Vanuatu Vatu</div>
+        <div class="dropdown-item" data-currency="WST">WST - T Samoan Tala</div>
+        <div class="dropdown-item" data-currency="XAF">XAF - FCFA Central African CFA Franc</div>
+        <div class="dropdown-item" data-currency="XCD">XCD - $ East Caribbean Dollar</div>
+        <div class="dropdown-item" data-currency="XOF">XOF - CFA West African CFA Franc</div>
+        <div class="dropdown-item" data-currency="XPF">XPF - ₣ CFP Franc</div>
+        <div class="dropdown-item" data-currency="YER">YER - ﷼ Yemeni Rial</div>
+        <div class="dropdown-item" data-currency="ZMW">ZMW - ZK Zambian Kwacha</div>
+        <div class="dropdown-item" data-currency="ZWL">ZWL - $ Zimbabwean Dollar</div>
+      </div>
+      <button class="cart-btn" id="cartToggle">
+        🛒 <span id="cartCount" class="cart-count">0</span>
+      </button>
+      <div class="account-menu">
+        <button class="account-btn" id="authToggle" style="display:none">Account</button>
+        <div class="account-dropdown" id="accountDropdown">
+          <div class="account-user" id="accountEmail"></div>
+          <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+        <div id="authButtons" style="display:flex;gap:.6rem">
+          <button class="btn" id="signInBtn">Sign in</button>
+          <button class="btn btn-primary" id="signUpBtn">Sign up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Welcome to <span class="rust">ODETTA</span></h1>
+    <p>Timeless fashion for the whole family. Natural fabrics, made to last.</p>
+    <div class="hero-btns">
+      <button class="btn" id="shopBtn">Shop Collection</button>
+      <button class="btn btn-primary" id="learnBtn">Learn More</button>
+    </div>
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section class="products">
+    <h2>Our Collection</h2>
+
+    <!-- TYPE FILTER TABS -->
+    <div class="category-tabs" id="typeFilters">
+      <button class="category-tab active" data-type="">All Products</button>
+      <button class="category-tab" data-type="Shirt">Shirts</button>
+      <button class="category-tab" data-type="Bottoms">Bottoms</button>
+      <button class="category-tab" data-type="Jewelry">Jewelry</button>
+      <button class="category-tab" data-type="Accessories">Accessories</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <!-- Products will be generated here by JavaScript -->
+    </div>
+  </section>
+</main>
+
+<!-- SHOPPING CART MODAL -->
+<div class="cart-modal" id="cartModal">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button class="close-cart" id="closeCart">×</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">Your cart is empty</div>
+  </div>
+  <div class="cart-summary" id="cartSummary" style="display:none">
+    <div class="summary-row">
+      <span>Subtotal:</span>
+      <span id="subtotal">£0.00</span>
+    </div>
+    <div class="summary-row">
+      <span>Shipping:</span>
+      <span>Free</span>
+    </div>
+    <div class="summary-total">
+      <span>Total:</span>
+      <span id="total">£0.00</span>
+    </div>
+  </div>
+  <button class="checkout-btn" id="checkoutBtn" disabled>Proceed to Checkout</button>
+</div>
+
+<!-- SIGN UP MODAL -->
+<div class="modal" id="signUpModal">
+  <div class="modal-box">
+    <button class="close-modal" id="closeSignUp">×</button>
+    <div class="modal-head">
+      <h2>Create an account</h2>
+      <p>Join ODETTA for early access and 10% off your first order.</p>
+    </div>
+    <form id="signUpForm">
+      <div class="form-group">
+        <label for="signUpEmail">Email address</label>
+        <input type="email" id="signUpEmail" required placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label for="signUpPassword">Password</label>
+        <input type="password" id="signUpPassword" required placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn-submit">Create account</button>
+    </form>
+    <div class="toggle-form">
+      Already have an account? <button type="button" id="toSignIn">Sign in</button>
+    </div>
+  </div>
+</div>
+
+<!-- SIGN IN MODAL -->
+<div class="modal" id="signInModal">
+  <div class="modal-box">
+    <button class="close-modal" id="closeSignIn">×</button>
+    <div class="modal-head">
+      <h2>Sign in</h2>
+      <p>Welcome back to ODETTA</p>
+    </div>
+    <form id="signInForm">
+      <div class="form-group">
+        <label for="signInEmail">Email address</label>
+        <input type="email" id="signInEmail" required placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label for="signInPassword">Password</label>
+        <input type="password" id="signInPassword" required placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn-submit">Sign in</button>
+    </form>
+    <div class="toggle-form">
+      Don't have an account? <button type="button" id="toSignUp">Create one</button>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT ADDRESS MODAL -->
+<div class="modal" id="checkoutModal">
+  <div class="modal-box">
+    <button class="close-modal" id="closeCheckout">×</button>
+    <div class="modal-head">
+      <h2>Shipping Address</h2>
+      <p>Enter your delivery address</p>
+    </div>
+    <form id="checkoutForm">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" required placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label for="addressLine1">Address Line 1</label>
+        <input type="text" id="addressLine1" required placeholder="Street address">
+      </div>
+      <div class="form-group">
+        <label for="addressLine2">Address Line 2 (Optional)</label>
+        <input type="text" id="addressLine2" placeholder="Apartment, suite, etc.">
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" required placeholder="City">
+      </div>
+      <div class="form-group">
+        <label for="postcode">Postcode</label>
+        <input type="text" id="postcode" required placeholder="Postcode">
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" id="country" required placeholder="Country">
+      </div>
+      <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--line);">
+      <div class="form-group">
+        <label for="cardName">Name on Card</label>
+        <input type="text" id="cardName" required placeholder="John Doe">
+      </div>
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" required placeholder="1234 5678 9012 3456" maxlength="19">
+      </div>
+      <div style="display:flex;gap:1rem">
+        <div class="form-group" style="flex:1">
+          <label for="expiry">Expiry Date</label>
+          <input type="text" id="expiry" required placeholder="MM/YY" maxlength="5">
+        </div>
+        <div class="form-group" style="flex:1">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" required placeholder="123" maxlength="4">
+        </div>
+      </div>
+      <button type="submit" class="btn-submit">Pay Now</button>
+    </form>
+  </div>
+</div>
+
+<!-- ORDER SUCCESS MODAL -->
+<div class="modal" id="successModal">
+  <div class="modal-box" style="text-align:center">
+    <button class="close-modal" id="closeSuccess">×</button>
+    <div style="font-size:4rem;margin:1rem 0">📦✨</div>
+    <h2 style="font-size:1.8rem;margin:1rem 0">Order Confirmed!</h2>
+    <p style="font-size:1.1rem;color:var(--muted);margin:1rem 0">Thank you for shopping at ODETTA!</p>
+    <div style="background:#fff0f6;padding:1.5rem;border-radius:8px;margin:1.5rem 0">
+      <p style="font-size:0.9rem;color:var(--muted);margin-bottom:0.5rem">Your package will arrive in:</p>
+      <p style="font-size:1.5rem;font-weight:700;color:#ff69b4;margin:0" id="deliveryTime">3-5 Business Days</p>
+    </div>
+    <p style="color:var(--muted);font-size:0.9rem;margin:1rem 0">Order confirmation sent to your email</p>
+    <button class="btn-submit" id="continueShoppingBtn" style="margin-top:1rem">Continue Shopping</button>
+  </div>
+</div>
+
+<script>
+  // ========== EMAILJS SETUP ==========
+  // Initialize EmailJS with your credentials
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init('vSxdzef8XDzlucZTf');
+  }
+
+  const sendConfirmationEmail = async (customerEmail, orderDetails) => {
+    if (typeof emailjs === 'undefined') {
+      console.log('EmailJS not loaded - email not sent.');
+      return false;
+    }
+    try {
+      const response = await emailjs.send(
+        'service_4m7ak5i',  // Your Gmail Service ID
+        'template_4anrcn9',  // Your Order Confirmation Template ID
+        {
+          to_email: customerEmail,
+          customer_name: orderDetails.fullName,
+          order_items: orderDetails.items,
+          order_total: orderDetails.total,
+          delivery_time: orderDetails.deliveryTime,
+          order_date: new Date().toLocaleDateString()
+        }
+      );
+      console.log('Email sent successfully:', response);
+      return true;
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      return false;
+    }
+  };
+
+  // PRODUCT DATA WITH CATEGORIES
+  const products = [
+    // WOMEN - SHIRTS (£5-10)
+    { id: 1, name: 'Cotton Tee', price: 7.99, emoji: '👕', image: '/_blob/bc0424dacaa8bb8d1b2a84a06cc0e933', type: 'Shirt', category: 'women', gender: 'Female', inStock: true, colors: ['Pink', 'White', 'Navy', 'Beige'] },
+    { id: 2, name: 'Linen Blouse', price: 9.99, emoji: '👔', image: '/_blob/80f575a263cd013edcc0b73f3f9eeddc', type: 'Shirt', category: 'women', gender: 'Female', inStock: true, colors: ['White', 'Beige', 'Sage', 'Navy'] },
+    { id: 3, name: 'Striped Shirt', price: 8.99, emoji: '👕', image: '/_blob/f187bf17001f9b21f711651c032a7c06', type: 'Shirt', category: 'women', gender: 'Female', inStock: true, colors: ['Navy', 'Pink', 'Black', 'Grey'] },
+    { id: 4, name: 'Oversized Tee', price: 8.99, emoji: '👕', image: '/_blob/5c9555eddc86af646ef907139f009883', type: 'Shirt', category: 'women', gender: 'Female', inStock: true, colors: ['Pink', 'White', 'Sage', 'Black'] },
+    { id: 5, name: 'Long-sleeve Blouse', price: 9.99, emoji: '👔', image: '/_blob/317faa23223b8bb01813cb2d3f8052dd', type: 'Shirt', category: 'women', gender: 'Female', inStock: true, colors: ['White', 'Beige', 'Pink', 'Navy'] },
+    { id: 6, name: 'Crop Top', price: 6.99, emoji: '👕', image: '/_blob/8ce7842f4a52184684d0b9afeac7655f', type: 'Shirt', category: 'women', gender: 'Female', inStock: true, colors: ['Pink', 'White', 'Black', 'Beige'] },
+    { id: 7, name: 'V-neck Tee', price: 7.99, emoji: '👕', image: '/_blob/e61a96459654438cd205d73a6461e85b', type: 'Shirt', category: 'women', gender: 'Female', inStock: true, colors: ['White', 'Navy', 'Beige', 'Pink'] },
+    { id: 8, name: 'Silk Blouse', price: 9.99, emoji: '👔', image: '/_blob/30582e33906538cca26bffa761e3d116', type: 'Shirt', category: 'women', gender: 'Female', inStock: true, colors: ['White', 'Blush', 'Navy', 'Gold'] },
+    { id: 9, name: 'Casual Henley', price: 7.99, emoji: '👕', image: '/_blob/cbce5e272700e1cca4edb50fb2f792ad', type: 'Shirt', category: 'women', gender: 'Female', inStock: true, colors: ['White', 'Navy', 'Beige', 'Black'] },
+    { id: 10, name: 'Fitted Shirt', price: 8.99, emoji: '👔', image: '/_blob/28604fd04bbc8c8319827ebe00b957ad', type: 'Shirt', category: 'women', gender: 'Female', inStock: true, colors: ['White', 'Pink', 'Navy', 'Beige'] },
+
+    // MEN - SHIRTS
+    { id: 26, name: 'Basic Cotton Tee', price: 14.99, emoji: '👕', image: '/_blob/c76b6ccb601134e3c2e64aa30e6d887e', type: 'Shirt', category: 'men', gender: 'Male', inStock: true, colors: ['White', 'Black', 'Navy', 'Grey', 'Olive'] },
+    { id: 27, name: 'Casual Polo Shirt', price: 19.99, emoji: '👔', image: '/_blob/b6989371a682ff129b42ac9ca7258f10', type: 'Shirt', category: 'men', gender: 'Male', inStock: true, colors: ['White', 'Black', 'Navy', 'Grey', 'Beige'] },
+    { id: 28, name: 'Henley Shirt', price: 17.99, emoji: '👕', image: '/_blob/a591cdb9b282cdc11996da4a1c61ee18', type: 'Shirt', category: 'men', gender: 'Male', inStock: true, colors: ['White', 'Black', 'Navy', 'Olive', 'Grey'] },
+    { id: 29, name: 'Oxford Button-up Shirt', price: 29.99, emoji: '👔', image: '/_blob/f636b8aac74b020a89c4b2cc8118f6d4', type: 'Shirt', category: 'men', gender: 'Male', inStock: true, colors: ['White', 'Light Blue', 'Navy', 'Pink', 'Grey', 'Black'] },
+    { id: 30, name: 'V-neck Tee', price: 14.99, emoji: '👕', image: '/_blob/1a6ac5c384ae5446a810aa2581cd3893', type: 'Shirt', category: 'men', gender: 'Male', inStock: true, colors: ['White', 'Black', 'Navy', 'Grey', 'Olive'] },
+    { id: 31, name: 'Striped Shirt', price: 26.99, emoji: '👔', image: '/_blob/6b3ab87e625dadf2ed1db0eb46c8e1df', type: 'Shirt', category: 'men', gender: 'Male', inStock: true, colors: ['Blue Stripe', 'Navy Stripe', 'Grey Stripe', 'Pink Stripe', 'Green Stripe'] },
+    { id: 32, name: 'Linen Shirt', price: 27.99, emoji: '👔', image: '/_blob/afc343615a404ad7b2f75fe889e6e67e', type: 'Shirt', category: 'men', gender: 'Male', inStock: true, colors: ['White', 'Stone', 'Light Blue', 'Navy', 'Sage Green', 'Black'] },
+    { id: 33, name: 'Long-sleeve Fitted Shirt', price: 9.99, emoji: '👔', image: '/_blob/39aab3d56daeed00cbd2d47ac4b13545', type: 'Shirt', category: 'men', gender: 'Male', inStock: true, colors: ['White', 'Light Blue', 'Navy', 'Black', 'Grey', 'Olive'] },
+    { id: 34, name: 'Graphic Tee', price: 7.99, emoji: '👕', image: '/_blob/fec6a7bf952a3beb15c7ccb25bb0b4ce', type: 'Shirt', category: 'men', gender: 'Male', inStock: true, colors: ['White', 'Black', 'Navy', 'Grey', 'Olive'] },
+    { id: 35, name: 'Flannel Shirt', price: 8.99, emoji: '👔', image: '/_blob/ecfe5038603a257587e0f3ccda529d7a', type: 'Shirt', category: 'men', gender: 'Male', inStock: true, colors: ['Red Check', 'Navy Check', 'Green Check', 'Grey Check', 'Brown Check'] },
+    { id: 11, name: 'Casual Shorts', price: 9.99, emoji: '👖', type: 'Bottoms', category: 'men', gender: 'Male', inStock: true, colors: ['Navy', 'Beige', 'Black', 'Grey'] },
+    { id: 12, name: 'Silver Chain', price: 7.99, emoji: '⛓️', type: 'Jewelry', category: 'men', gender: 'Male', inStock: true, colors: ['Silver'] },
+    { id: 13, name: 'Leather Bracelet', price: 5.99, emoji: '💍', type: 'Jewelry', category: 'men', gender: 'Male', inStock: true, colors: ['Brown', 'Black'] },
+    { id: 14, name: 'Cotton Cap', price: 6.99, emoji: '🧢', type: 'Accessories', category: 'men', gender: 'Male', inStock: true, colors: ['Navy', 'Black', 'Beige', 'White'] },
+    { id: 15, name: 'Fabric Scarf', price: 7.99, emoji: '🧣', type: 'Accessories', category: 'men', gender: 'Male', inStock: true, colors: ['Navy', 'Beige', 'Grey', 'Black'] },
+
+    // GIRL - AFFORDABLE (£5-10)
+    { id: 16, name: 'Colorful Tee', price: 6.99, emoji: '👕', type: 'Shirt', category: 'girl', gender: 'Female', inStock: true, colors: ['Pink', 'White', 'Purple', 'Yellow'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    { id: 17, name: 'Girl Skirt', price: 7.99, emoji: '🎀', type: 'Skirt', category: 'girl', gender: 'Female', inStock: true, colors: ['Pink', 'Purple', 'White', 'Navy'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    { id: 18, name: 'Fun Bracelet', price: 4.99, emoji: '💍', type: 'Jewelry', category: 'girl', gender: 'Female', inStock: true, colors: ['Pink', 'Purple', 'Yellow', 'Blue'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    { id: 19, name: 'Hair Clips', price: 3.99, emoji: '✨', type: 'Jewelry', category: 'girl', gender: 'Female', inStock: true, colors: ['Pink', 'Purple', 'White', 'Gold'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    { id: 20, name: 'Girl Backpack', price: 9.99, emoji: '🎒', type: 'Accessories', category: 'girl', gender: 'Female', inStock: true, colors: ['Pink', 'Purple', 'Navy', 'Black'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+
+    // BOY - AFFORDABLE (£5-10)
+    { id: 21, name: 'Boy Tee', price: 6.99, emoji: '👕', type: 'Shirt', category: 'boy', gender: 'Male', inStock: true, colors: ['Navy', 'White', 'Black', 'Green'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    { id: 22, name: 'Boy Shorts', price: 8.99, emoji: '👖', type: 'Bottoms', category: 'boy', gender: 'Male', inStock: true, colors: ['Navy', 'Black', 'Grey', 'Khaki'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    { id: 23, name: 'Wrist Band', price: 4.99, emoji: '💍', type: 'Jewelry', category: 'boy', gender: 'Male', inStock: true, colors: ['Navy', 'Black', 'Green', 'Blue'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    { id: 24, name: 'Boy Cap', price: 6.99, emoji: '🧢', type: 'Accessories', category: 'boy', gender: 'Male', inStock: true, colors: ['Navy', 'Black', 'Green', 'Grey'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+    { id: 25, name: 'Boy Backpack', price: 9.99, emoji: '🎒', type: 'Accessories', category: 'boy', gender: 'Male', inStock: true, colors: ['Navy', 'Black', 'Green', 'Grey'], ages: ['2-3', '4-5', '6-7', '8-9', '10-11'] },
+  ];
+
+  const colorHexMap = {
+    'Pink': '#ff69b4',
+    'Beige': '#d4b896',
+    'Sage': '#7d8a6a',
+    'Navy': '#1a3a52',
+    'White': '#ffffff',
+    'Black': '#1a1a1a',
+    'Grey': '#808080',
+    'Purple': '#9370db',
+    'Yellow': '#ffd700',
+    'Blue': '#4169e1',
+    'Green': '#228b22',
+    'Brown': '#8b4513',
+    'Silver': '#c0c0c0',
+    'Gold': '#ffd700',
+    'Khaki': '#f0e68c',
+    'Blush': '#f8b8d0'
+  };
+
+  let currentCategory = 'women';
+  let currentType = null;
+  let currentCurrency = 'GBP';
+  let currentLanguage = 'en';
+
+  // CURRENCY CONVERSION RATES (to GBP) - GLOBAL
+  const currencyRates = {
+    'GBP': 1, 'USD': 1.27, 'EUR': 0.85, 'JPY': 190, 'CNY': 9.2, 'INR': 105, 'AUD': 1.95, 'CAD': 1.72, 'CHF': 1.13, 'SEK': 13.5, 'NOK': 13.8, 'NZD': 2.1, 'SGD': 1.7, 'HKD': 9.9, 'MXN': 21.5,
+    'ZAR': 24.5, 'KES': 162, 'NGN': 1280, 'EGP': 49, 'GHS': 16.5, 'MAD': 12.8, 'TZS': 3250, 'UGX': 5100, 'AED': 4.67, 'SAR': 4.76, 'KWD': 0.39, 'QAR': 4.62, 'BHD': 0.479, 'OMR': 0.489, 'JOD': 0.901, 'LBP': 127500, 'ILS': 4.7, 'TRY': 45, 'PKR': 352, 'BDT': 133, 'LKR': 402, 'MYR': 5.7, 'PHP': 73, 'IDR': 20100, 'THB': 45, 'VND': 32500, 'KRW': 1680, 'TWD': 40.5, 'CLP': 1190, 'ARS': 1050, 'BRL': 6.8, 'COP': 5200, 'PEN': 4.7, 'UYU': 50, 'VEF': 3750000, 'BOB': 8.8, 'PYG': 9900, 'RUB': 128, 'UAH': 52, 'BYN': 4.2, 'KZT': 565, 'UZS': 14500, 'GEL': 3.55, 'AMD': 520, 'AZN': 2.15, 'BGN': 1.66, 'HRK': 6.35, 'CZK': 19.8, 'DKK': 6.35, 'HUF': 465, 'ISK': 175, 'PLN': 5.1, 'RON': 4, 'RSD': 137, 'IMP': 1, 'GIP': 1, 'FKP': 1, 'GGP': 1, 'JEP': 1, 'SHP': 1, 'AFN': 90, 'ALL': 127, 'ANG': 2.27, 'AOA': 835, 'AWG': 2.3, 'BAM': 1.66, 'BBD': 2.55, 'BIF': 3900, 'BMD': 1.27, 'BND': 1.75, 'BTN': 106, 'BWP': 17.5, 'BZD': 2.55, 'CDF': 3650, 'CVE': 127, 'DJF': 226, 'DZD': 171, 'ERN': 19, 'ETB': 72, 'FJD': 2.85, 'GMD': 82, 'GNF': 11000, 'GTQ': 9.8, 'HNL': 31.5, 'HTG': 166, 'KGS': 114, 'KHR': 5200, 'KMF': 567, 'KPW': 1144, 'KYD': 1.06, 'LAK': 27500, 'LRD': 195, 'LSL': 23.5, 'LYD': 6.3, 'MDL': 22.5, 'MGA': 5600, 'MKD': 70.5, 'MMK': 2670, 'MNT': 4350, 'MOP': 10.2, 'MRU': 47, 'MUR': 56, 'MVR': 19.5, 'MWK': 2780, 'MZN': 81, 'NAD': 23.5, 'NIO': 45, 'NPR': 167, 'PGK': 4.5, 'RWF': 1350, 'SBD': 10.5, 'SCR': 16.8, 'SDG': 762, 'SLL': 27500, 'SOS': 724, 'SRD': 40, 'SSP': 165, 'STN': 28.5, 'SYP': 13500, 'SZL': 23.5, 'TJS': 13.5, 'TMT': 4.45, 'TND': 3.9, 'TOP': 2.95, 'TTD': 8.6, 'TZS': 3250, 'UGX': 5100, 'UYU': 50, 'VES': 53.5, 'VND': 32500, 'VUV': 151, 'WST': 3.5, 'XAF': 759, 'XCD': 3.43, 'XOF': 759, 'XPF': 138, 'YER': 318, 'ZMW': 32.5, 'ZWL': 410
+  };
+
+  const currencySymbols = {
+    'GBP': '£', 'USD': '$', 'EUR': '€', 'JPY': '¥', 'CNY': '¥', 'INR': '₹', 'AUD': 'A$', 'CAD': 'C$', 'CHF': 'Fr', 'SEK': 'kr', 'NOK': 'kr', 'NZD': 'NZ$', 'SGD': 'S$', 'HKD': 'HK$', 'MXN': '$',
+    'ZAR': 'R', 'KES': 'Sh', 'NGN': '₦', 'EGP': '£', 'GHS': '₵', 'MAD': 'د.م.', 'TZS': 'Sh', 'UGX': 'Sh', 'AED': 'د.إ', 'SAR': 'ر.س', 'KWD': 'د.ك', 'QAR': 'ر.ق', 'BHD': '.د.ب', 'OMR': 'ر.ع.', 'JOD': 'د.ا', 'LBP': 'ل.ل', 'ILS': '₪', 'TRY': '₺', 'PKR': '₨', 'BDT': '৳', 'LKR': 'Rs', 'MYR': 'RM', 'PHP': '₱', 'IDR': 'Rp', 'THB': '฿', 'VND': '₫', 'KRW': '₩', 'TWD': 'NT$', 'CLP': '$', 'ARS': '$', 'BRL': 'R$', 'COP': '$', 'PEN': 'S/', 'UYU': '$U', 'VEF': 'Bs', 'BOB': 'Bs', 'PYG': '₲', 'RUB': '₽', 'UAH': '₴', 'BYN': 'Br', 'KZT': '₸', 'UZS': 'сўм', 'GEL': '₾', 'AMD': '֏', 'AZN': '₼', 'BGN': 'лв', 'HRK': 'kn', 'CZK': 'Kč', 'DKK': 'kr', 'HUF': 'Ft', 'ISK': 'kr', 'PLN': 'zł', 'RON': 'lei', 'RSD': 'дин', 'IMP': '£', 'GIP': '£', 'FKP': '£', 'GGP': '£', 'JEP': '£', 'SHP': '£', 'AFN': '؋', 'ALL': 'L', 'ANG': 'ƒ', 'AOA': 'Kz', 'AWG': 'ƒ', 'BAM': 'KM', 'BBD': '$', 'BIF': 'FBu', 'BMD': '$', 'BND': '$', 'BTN': 'Nu.', 'BWP': 'P', 'BZD': 'BZ$', 'CDF': 'FC', 'CVE': '$', 'DJF': 'Fdj', 'DZD': 'د.ج', 'ERN': 'Nfk', 'ETB': 'Br', 'FJD': '$', 'GMD': 'D', 'GNF': 'FG', 'GTQ': 'Q', 'HNL': 'L', 'HTG': 'G', 'KGS': 'с', 'KHR': '៛', 'KMF': 'CF', 'KPW': '₩', 'KYD': '$', 'LAK': '₭', 'LRD': '$', 'LSL': 'L', 'LYD': 'ل.د', 'MDL': 'L', 'MGA': 'Ar', 'MKD': 'ден', 'MMK': 'K', 'MNT': '₮', 'MOP': 'P', 'MRU': 'UM', 'MUR': '₨', 'MVR': 'Rf', 'MWK': 'MK', 'MZN': 'MT', 'NAD': '$', 'NIO': 'C$', 'NPR': '₨', 'PGK': 'K', 'RWF': 'FRw', 'SBD': '$', 'SCR': '₨', 'SDG': 'ج.س', 'SLL': 'Le', 'SOS': 'Sh', 'SRD': '$', 'SSP': '£', 'STN': 'Db', 'SYP': '£', 'SZL': 'L', 'TJS': 'ЅМ', 'TMT': 'm', 'TND': 'د.ت', 'TOP': 'T$', 'TTD': 'TT$', 'TZS': 'Sh', 'UGX': 'Sh', 'UYU': '$U', 'VES': 'Bs', 'VND': '₫', 'VUV': 'Vt', 'WST': 'T', 'XAF': 'FCFA', 'XCD': '$', 'XOF': 'CFA', 'XPF': '₣', 'YER': '﷼', 'ZMW': 'ZK', 'ZWL': '$'
+  };
+
+  const convertPrice = (priceInGBP) => {
+    const converted = priceInGBP * currencyRates[currentCurrency];
+    return currentCurrency === 'JPY' ? Math.round(converted) : converted.toFixed(2);
+  };
+
+  // CART STATE
+  let cart = JSON.parse(localStorage.getItem('odettaCart')) || [];
+  let currentUser = localStorage.getItem('odettaUser');
+
+  const renderProducts = () => {
+    const productsGrid = document.getElementById('productsGrid');
+    let filtered = products.filter(p => p.category === currentCategory);
+
+    if (currentType) {
+      filtered = filtered.filter(p => p.type === currentType);
+    }
+
+    productsGrid.innerHTML = filtered.map(product => `
+      <div class="product-card ${!product.inStock ? 'out-of-stock' : ''}">
+        <div class="gender-badge">${product.gender}</div>
+        ${!product.inStock ? '<div class="stock-badge">Out of Stock</div>' : ''}
+        <div class="product-image" ${product.image ? `style="background-image: url('${product.image}'); background-size: contain; background-position: center; background-repeat: no-repeat;"` : ''}>${!product.image ? product.emoji : ''}</div>
+        <div class="product-info">
+          <div class="product-name">${product.name}</div>
+          <div class="product-price">${currencySymbols[currentCurrency]}${convertPrice(product.price)}</div>
+
+          <div class="product-colors">
+            ${product.colors.map(color => `
+              <div class="color-swatch" style="background-color: ${colorHexMap[color]}" title="${color}"></div>
+            `).join('')}
+          </div>
+
+          <div class="product-options">
+            ${product.ages ? `
+              <select class="option-select size-select-${product.id}" ${!product.inStock ? 'disabled' : ''} required>
+                <option value="">Age</option>
+                ${product.ages.map(a => `<option value="${a}">${a} years</option>`).join('')}
+              </select>
+            ` : `
+              <select class="option-select size-select-${product.id}" ${!product.inStock ? 'disabled' : ''} required>
+                <option value="">Size</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+              </select>
+            `}
+            <select class="option-select color-select-${product.id}" ${!product.inStock ? 'disabled' : ''} required>
+              <option value="">Color</option>
+              ${product.colors.map(c => `<option value="${c}">${c}</option>`).join('')}
+            </select>
+            <select class="option-select qty-select-${product.id}" ${!product.inStock ? 'disabled' : ''}>
+              ${[1, 2, 3, 4, 5].map(q => `<option value="${q}">${q}</option>`).join('')}
+            </select>
+          </div>
+          <button class="add-to-cart-btn" data-product-id="${product.id}" ${!product.inStock ? 'disabled' : ''} style="${!product.inStock ? 'opacity: 0.5; cursor: not-allowed;' : ''}">
+            ${product.inStock ? 'Add to Cart' : 'Out of Stock'}
+          </button>
+        </div>
+      </div>
+    `).join('');
+
+    document.querySelectorAll('.add-to-cart-btn:not(:disabled)').forEach(btn => {
+      btn.addEventListener('click', () => addToCart(btn));
+    });
+  };
+
+  // TYPE FILTERING TABS
+  document.querySelectorAll('#typeFilters .category-tab').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      document.querySelectorAll('#typeFilters .category-tab').forEach(t => t.classList.remove('active'));
+      e.target.classList.add('active');
+      currentType = e.target.dataset.type || null;
+      renderProducts();
+    });
+  });
+
+  // HEADER NAVIGATION CATEGORY BUTTONS
+  document.querySelectorAll('.category-nav .nav-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      // Only handle direct clicks on the nav-item, not on dropdown items
+      if (e.target.classList.contains('nav-item')) {
+        const navText = e.target.textContent.trim().split('\n')[0].toLowerCase();
+        const categoryMap = {
+          'woman': 'women',
+          'man': 'men',
+          'girl': 'girl',
+          'boy': 'boy'
+        };
+
+        currentCategory = categoryMap[navText];
+        currentType = null;
+
+        // Update active button
+        document.querySelectorAll('.category-nav .nav-item').forEach(n => {
+          n.classList.remove('active');
+        });
+        e.target.classList.add('active');
+
+        renderProducts();
+      }
+    });
+  });
+
+  const addToCart = (btn) => {
+    const productId = parseInt(btn.dataset.productId);
+    const product = products.find(p => p.id === productId);
+    const sizeSelect = document.querySelector(`.size-select-${productId}`);
+    const colorSelect = document.querySelector(`.color-select-${productId}`);
+    const qtySelect = document.querySelector(`.qty-select-${productId}`);
+
+    if (!sizeSelect.value || !colorSelect.value) {
+      alert('Please select size and color');
+      return;
+    }
+
+    const quantity = parseInt(qtySelect.value);
+    const cartItem = {
+      id: productId,
+      name: product.name,
+      price: product.price,
+      size: sizeSelect.value,
+      color: colorSelect.value,
+      quantity: quantity,
+      emoji: product.emoji
+    };
+
+    const existing = cart.find(item =>
+      item.id === productId && item.size === sizeSelect.value && item.color === colorSelect.value
+    );
+
+    if (existing) {
+      existing.quantity += quantity;
+    } else {
+      cart.push(cartItem);
+    }
+
+    localStorage.setItem('odettaCart', JSON.stringify(cart));
+    updateCartUI();
+    alert('Added to cart!');
+  };
+
+  const updateCartUI = () => {
+    const cartCount = document.getElementById('cartCount');
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
+
+    const cartItemsContainer = document.getElementById('cartItems');
+    const cartSummary = document.getElementById('cartSummary');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+      cartSummary.style.display = 'none';
+      checkoutBtn.disabled = true;
+    } else {
+      cartItemsContainer.innerHTML = cart.map((item, idx) => `
+        <div class="cart-item">
+          <div class="cart-item-img">${item.emoji}</div>
+          <div class="cart-item-details">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-size">${item.size} / ${item.color}</div>
+            <div class="cart-item-price">${currencySymbols[currentCurrency]}${convertPrice(item.price * item.quantity)}</div>
+            <div class="cart-item-quantity">
+              <button class="qty-btn" data-action="decrease" data-index="${idx}">−</button>
+              <span>${item.quantity}</span>
+              <button class="qty-btn" data-action="increase" data-index="${idx}">+</button>
+              <button class="remove-btn" data-index="${idx}">Remove</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      document.querySelectorAll('.qty-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const idx = parseInt(btn.dataset.index);
+          const action = btn.dataset.action;
+          if (action === 'increase') {
+            cart[idx].quantity++;
+          } else if (action === 'decrease' && cart[idx].quantity > 1) {
+            cart[idx].quantity--;
+          }
+          localStorage.setItem('odettaCart', JSON.stringify(cart));
+          updateCartUI();
+        });
+      });
+
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt(btn.dataset.index);
+          cart.splice(idx, 1);
+          localStorage.setItem('odettaCart', JSON.stringify(cart));
+          updateCartUI();
+        });
+      });
+
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const convertedSubtotal = convertPrice(subtotal);
+      document.getElementById('subtotal').textContent = currencySymbols[currentCurrency] + convertedSubtotal;
+      document.getElementById('total').textContent = currencySymbols[currentCurrency] + convertedSubtotal;
+      cartSummary.style.display = 'block';
+      checkoutBtn.disabled = false;
+    }
+  };
+
+  const updateAuthUI = () => {
+    const authButtons = document.getElementById('authButtons');
+    const authToggle = document.getElementById('authToggle');
+    const accountDropdown = document.getElementById('accountDropdown');
+
+    if (currentUser) {
+      authButtons.style.display = 'none';
+      authToggle.style.display = 'block';
+      document.getElementById('accountEmail').textContent = currentUser;
+    } else {
+      authButtons.style.display = 'flex';
+      authToggle.style.display = 'none';
+      accountDropdown.classList.remove('open');
+    }
+  };
+
+  // MODAL CONTROLS
+  const signUpModal = document.getElementById('signUpModal');
+  const signInModal = document.getElementById('signInModal');
+  const checkoutModal = document.getElementById('checkoutModal');
+  const successModal = document.getElementById('successModal');
+
+  document.getElementById('signUpBtn').addEventListener('click', () => {
+    signUpModal.classList.add('open');
+  });
+
+  document.getElementById('signInBtn').addEventListener('click', () => {
+    signInModal.classList.add('open');
+  });
+
+  document.getElementById('closeSignUp').addEventListener('click', () => {
+    signUpModal.classList.remove('open');
+  });
+
+  document.getElementById('closeSignIn').addEventListener('click', () => {
+    signInModal.classList.remove('open');
+  });
+
+  document.getElementById('closeCheckout').addEventListener('click', () => {
+    checkoutModal.classList.remove('open');
+  });
+
+  document.getElementById('closeSuccess').addEventListener('click', () => {
+    successModal.classList.remove('open');
+  });
+
+  document.getElementById('continueShoppingBtn').addEventListener('click', () => {
+    successModal.classList.remove('open');
+    cartModal.classList.remove('open');
+  });
+
+  // TOGGLE BETWEEN MODALS
+  document.getElementById('toSignIn').addEventListener('click', () => {
+    signUpModal.classList.remove('open');
+    signInModal.classList.add('open');
+  });
+
+  document.getElementById('toSignUp').addEventListener('click', () => {
+    signInModal.classList.remove('open');
+    signUpModal.classList.add('open');
+  });
+
+  // FORM SUBMISSIONS
+  document.getElementById('signUpForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('signUpEmail').value;
+    localStorage.setItem('odettaUser', email);
+    currentUser = email;
+    signUpModal.classList.remove('open');
+    updateAuthUI();
+    document.getElementById('signUpForm').reset();
+  });
+
+  document.getElementById('signInForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('signInEmail').value;
+    localStorage.setItem('odettaUser', email);
+    currentUser = email;
+    signInModal.classList.remove('open');
+    updateAuthUI();
+    document.getElementById('signInForm').reset();
+  });
+
+  // ACCOUNT DROPDOWN
+  document.getElementById('authToggle').addEventListener('click', () => {
+    document.getElementById('accountDropdown').classList.toggle('open');
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('odettaUser');
+    currentUser = null;
+    document.getElementById('accountDropdown').classList.remove('open');
+    updateAuthUI();
+  });
+
+  // CLOSE MODAL ON BACKGROUND CLICK
+  [signUpModal, signInModal, checkoutModal].forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('open');
+      }
+    });
+  });
+
+  // DEVICE VIEW TOGGLE
+  let isMobileView = window.innerWidth < 768;
+  const deviceToggle = document.getElementById('deviceToggle');
+  const deviceText = document.getElementById('deviceText');
+
+  const updateDeviceText = () => {
+    deviceText.textContent = isMobileView ? '📱 Mobile' : '🖥️ Desktop';
+  };
+
+  updateDeviceText();
+
+  deviceToggle.addEventListener('click', () => {
+    isMobileView = !isMobileView;
+    updateDeviceText();
+    if (isMobileView) {
+      document.documentElement.style.setProperty('--viewport-width', '375px');
+      document.body.style.maxWidth = '375px';
+      document.body.style.margin = '0 auto';
+    } else {
+      document.documentElement.style.removeProperty('--viewport-width');
+      document.body.style.maxWidth = '';
+      document.body.style.margin = '';
+    }
+  });
+
+  // CART CONTROLS
+  const cartModal = document.getElementById('cartModal');
+  const cartToggle = document.getElementById('cartToggle');
+  const closeCart = document.getElementById('closeCart');
+  const shopBtn = document.getElementById('shopBtn');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+
+  cartToggle.addEventListener('click', () => {
+    cartModal.classList.toggle('open');
+  });
+
+  closeCart.addEventListener('click', () => {
+    cartModal.classList.remove('open');
+  });
+
+  cartModal.addEventListener('click', (e) => {
+    if (e.target === cartModal) {
+      cartModal.classList.remove('open');
+    }
+  });
+
+  shopBtn.addEventListener('click', () => {
+    document.querySelector('.products').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  checkoutBtn.addEventListener('click', () => {
+    checkoutModal.classList.add('open');
+  });
+
+  document.getElementById('checkoutForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fullName = document.getElementById('fullName').value;
+    const addressLine1 = document.getElementById('addressLine1').value;
+    const city = document.getElementById('city').value;
+    const postcode = document.getElementById('postcode').value;
+    const country = document.getElementById('country').value;
+    const cardName = document.getElementById('cardName').value;
+    const cardNumber = document.getElementById('cardNumber').value;
+    const expiry = document.getElementById('expiry').value;
+    const cvv = document.getElementById('cvv').value;
+
+    checkoutModal.classList.remove('open');
+    successModal.classList.add('open');
+
+    const deliveryDays = Math.floor(Math.random() * 5) + 3;
+    const deliveryTime = `${deliveryDays}-${deliveryDays + 2} Business Days`;
+    document.getElementById('deliveryTime').textContent = deliveryTime;
+
+    // Prepare order details for email
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const convertedSubtotal = convertPrice(subtotal);
+    const orderDetails = {
+      fullName: fullName,
+      items: cart.map(item => `${item.name} (${item.quantity}x) - ${currencySymbols[currentCurrency]}${convertPrice(item.price)}`).join(', '),
+      total: `${currencySymbols[currentCurrency]}${convertedSubtotal}`,
+      deliveryTime: deliveryTime
+    };
+
+    // Send confirmation email if user is logged in
+    if (currentUser) {
+      await sendConfirmationEmail(currentUser, orderDetails);
+    }
+
+    setTimeout(() => {
+      cart = [];
+      localStorage.setItem('odettaCart', JSON.stringify(cart));
+      updateCartUI();
+      cartModal.classList.remove('open');
+      document.getElementById('checkoutForm').reset();
+    }, 500);
+  });
+
+  // DROPDOWN NAVIGATION FILTERING
+  document.querySelectorAll('.nav-dropdown-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      const filter = e.target.dataset.filter;
+      const [category, type] = filter.split('-');
+
+      currentCategory = category;
+      currentType = type.charAt(0).toUpperCase() + type.slice(1);
+
+      // Update active button in nav
+      document.querySelectorAll('.category-nav .nav-item').forEach(navItem => {
+        navItem.classList.remove('active');
+      });
+      const categoryMap = {
+        'women': 0,
+        'men': 1,
+        'girl': 2,
+        'boy': 3
+      };
+      const navItems = document.querySelectorAll('.category-nav .nav-item');
+      if (navItems[categoryMap[category]]) {
+        navItems[categoryMap[category]].classList.add('active');
+      }
+
+      renderProducts();
+    });
+  });
+
+  // INIT - Set Woman as default active
+  // LANGUAGE & CURRENCY SELECTORS
+  const languageBtn = document.getElementById('languageBtn');
+  const languageDropdown = document.getElementById('languageDropdown');
+  const currencyBtn = document.getElementById('currencyBtn');
+  const currencyDropdown = document.getElementById('currencyDropdown');
+
+  languageBtn.addEventListener('click', () => {
+    languageDropdown.classList.toggle('open');
+    currencyDropdown.classList.remove('open');
+  });
+
+  // TRANSLATION SYSTEM
+  const translations = {
+    en: { shop: 'Shop Collection', learn: 'Learn More', cart: 'Your Cart', empty: 'Your cart is empty', subtotal: 'Subtotal:', shipping: 'Shipping:', free: 'Free', total: 'Total:', checkout: 'Proceed to Checkout', add: 'Add to Cart', outOfStock: 'Out of Stock', size: 'Size', age: 'Age', color: 'Color', signin: 'Sign in', signup: 'Sign up', createAccount: 'Create an account', joinOdetta: 'Join ODETTA for early access and 10% off your first order.', email: 'Email address', password: 'Password', create: 'Create account', haveAccount: 'Already have an account?', noAccount: 'Don\'t have an account?', signInForm: 'Sign in', signInWelcome: 'Welcome back to ODETTA', password: 'Password', newShippingAddress: 'Shipping Address', enterDelivery: 'Enter your delivery address', fullName: 'Full Name', addressLine1: 'Address Line 1', addressLine2: 'Address Line 2 (Optional)', city: 'City', postcode: 'Postcode', country: 'Country', nameOnCard: 'Name on Card', cardNumber: 'Card Number', expiry: 'Expiry Date', cvv: 'CVV', payNow: 'Pay Now', orderConfirmed: 'Order Confirmed!', thanksShop: 'Thank you for shopping at ODETTA!', arriveIn: 'Your package will arrive in:', days: '3-5 Business Days', confirmation: 'Order confirmation sent to your email', continueShopping: 'Continue Shopping', account: 'Account', logout: 'Logout', woman: 'Woman', man: 'Man', girl: 'Girl', boy: 'Boy', shirts: 'Shirts', bottoms: 'Bottoms', skirts: 'Skirts', accessories: 'Accessories', jewelry: 'Jewelry' },
+    es: { shop: 'Colección de Compras', learn: 'Más Información', cart: 'Tu Carrito', empty: 'Tu carrito está vacío', subtotal: 'Subtotal:', shipping: 'Envío:', free: 'Gratis', total: 'Total:', checkout: 'Proceder a Pagar', add: 'Añadir al Carrito', outOfStock: 'Agotado', size: 'Tamaño', age: 'Edad', color: 'Color', signin: 'Iniciar Sesión', signup: 'Registrarse', createAccount: 'Crear una cuenta', joinOdetta: 'Únete a ODETTA y obtén 10% de descuento en tu primer pedido.', email: 'Correo Electrónico', password: 'Contraseña', create: 'Crear cuenta', haveAccount: '¿Ya tienes una cuenta?', noAccount: '¿No tienes una cuenta?', signInForm: 'Iniciar Sesión', signInWelcome: 'Bienvenido a ODETTA', newShippingAddress: 'Dirección de Envío', enterDelivery: 'Ingresa tu dirección de entrega', fullName: 'Nombre Completo', addressLine1: 'Línea de Dirección 1', addressLine2: 'Línea de Dirección 2 (Opcional)', city: 'Ciudad', postcode: 'Código Postal', country: 'País', nameOnCard: 'Nombre en la Tarjeta', cardNumber: 'Número de Tarjeta', expiry: 'Fecha de Vencimiento', cvv: 'CVV', payNow: 'Pagar Ahora', orderConfirmed: '¡Pedido Confirmado!', thanksShop: '¡Gracias por comprar en ODETTA!', arriveIn: 'Tu paquete llegará en:', days: '3-5 días hábiles', confirmation: 'Confirmación de pedido enviada a tu correo', continueShopping: 'Continuar Comprando', account: 'Cuenta', logout: 'Cerrar Sesión', woman: 'Mujer', man: 'Hombre', girl: 'Niña', boy: 'Niño', shirts: 'Camisas', bottoms: 'Pantalones', skirts: 'Faldas', accessories: 'Accesorios', jewelry: 'Joyería' },
+    fr: { shop: 'Collection de Shopping', learn: 'En Savoir Plus', cart: 'Votre Panier', empty: 'Votre panier est vide', subtotal: 'Sous-total:', shipping: 'Livraison:', free: 'Gratuit', total: 'Total:', checkout: 'Procéder au Paiement', add: 'Ajouter au Panier', outOfStock: 'Rupture de Stock', size: 'Taille', age: 'Âge', color: 'Couleur', signin: 'Se Connecter', signup: 'S\'inscrire', createAccount: 'Créer un compte', joinOdetta: 'Rejoignez ODETTA et obtenez 10% de réduction sur votre première commande.', email: 'Adresse Email', password: 'Mot de Passe', create: 'Créer un compte', haveAccount: 'Vous avez déjà un compte?', noAccount: 'Vous n\'avez pas de compte?', signInForm: 'Se Connecter', signInWelcome: 'Bienvenue sur ODETTA', newShippingAddress: 'Adresse de Livraison', enterDelivery: 'Entrez votre adresse de livraison', fullName: 'Nom Complet', addressLine1: 'Ligne d\'Adresse 1', addressLine2: 'Ligne d\'Adresse 2 (Optionnel)', city: 'Ville', postcode: 'Code Postal', country: 'Pays', nameOnCard: 'Nom sur la Carte', cardNumber: 'Numéro de Carte', expiry: 'Date d\'Expiration', cvv: 'CVV', payNow: 'Payer Maintenant', orderConfirmed: 'Commande Confirmée!', thanksShop: 'Merci d\'avoir acheté chez ODETTA!', arriveIn: 'Votre colis arrivera dans:', days: '3-5 jours ouvrables', confirmation: 'Confirmation de commande envoyée à votre email', continueShopping: 'Continuer vos Achats', account: 'Compte', logout: 'Se Déconnecter', woman: 'Femme', man: 'Homme', girl: 'Fille', boy: 'Garçon', shirts: 'Chemises', bottoms: 'Bas', skirts: 'Jupes', accessories: 'Accessoires', jewelry: 'Bijoux' },
+    de: { shop: 'Kollektion Einkaufen', learn: 'Mehr Erfahren', cart: 'Ihr Warenkorb', empty: 'Ihr Warenkorb ist leer', subtotal: 'Zwischensumme:', shipping: 'Versand:', free: 'Kostenlos', total: 'Gesamt:', checkout: 'Zur Kasse', add: 'In den Warenkorb', outOfStock: 'Ausverkauft', size: 'Größe', age: 'Alter', color: 'Farbe', signin: 'Anmelden', signup: 'Registrieren', createAccount: 'Konto erstellen', joinOdetta: 'Treten Sie ODETTA bei und erhalten Sie 10% Rabatt auf Ihre erste Bestellung.', email: 'E-Mail-Adresse', password: 'Passwort', create: 'Konto erstellen', haveAccount: 'Sie haben bereits ein Konto?', noAccount: 'Sie haben noch kein Konto?', signInForm: 'Anmelden', signInWelcome: 'Willkommen bei ODETTA', newShippingAddress: 'Lieferadresse', enterDelivery: 'Geben Sie Ihre Lieferadresse ein', fullName: 'Vollständiger Name', addressLine1: 'Adresszeile 1', addressLine2: 'Adresszeile 2 (Optional)', city: 'Stadt', postcode: 'Postleitzahl', country: 'Land', nameOnCard: 'Name auf der Karte', cardNumber: 'Kartennummer', expiry: 'Ablaufdatum', cvv: 'CVV', payNow: 'Jetzt Zahlen', orderConfirmed: 'Bestellung Bestätigt!', thanksShop: 'Vielen Dank für Ihren Einkauf bei ODETTA!', arriveIn: 'Ihr Paket kommt an in:', days: '3-5 Werktagen', confirmation: 'Bestellbestätigung an Ihre E-Mail gesendet', continueShopping: 'Weiter Einkaufen', account: 'Konto', logout: 'Abmelden', woman: 'Frau', man: 'Mann', girl: 'Mädchen', boy: 'Junge', shirts: 'Hemden', bottoms: 'Hosen', skirts: 'Röcke', accessories: 'Zubehör', jewelry: 'Schmuck' },
+    it: { shop: 'Collezione Shopping', learn: 'Scopri di Più', cart: 'Il Tuo Carrello', empty: 'Il tuo carrello è vuoto', subtotal: 'Subtotale:', shipping: 'Spedizione:', free: 'Gratis', total: 'Totale:', checkout: 'Procedi al Pagamento', add: 'Aggiungi al Carrello', outOfStock: 'Esaurito', size: 'Taglia', age: 'Età', color: 'Colore', signin: 'Accedi', signup: 'Registrati', createAccount: 'Crea un account', joinOdetta: 'Iscriviti a ODETTA e ottieni il 10% di sconto sul tuo primo ordine.', email: 'Indirizzo Email', password: 'Password', create: 'Crea account', haveAccount: 'Hai già un account?', noAccount: 'Non hai un account?', signInForm: 'Accedi', signInWelcome: 'Benvenuto su ODETTA', newShippingAddress: 'Indirizzo di Spedizione', enterDelivery: 'Inserisci il tuo indirizzo di spedizione', fullName: 'Nome Completo', addressLine1: 'Indirizzo 1', addressLine2: 'Indirizzo 2 (Opzionale)', city: 'Città', postcode: 'CAP', country: 'Paese', nameOnCard: 'Nome sulla Carta', cardNumber: 'Numero Carta', expiry: 'Data di Scadenza', cvv: 'CVV', payNow: 'Paga Ora', orderConfirmed: 'Ordine Confermato!', thanksShop: 'Grazie per aver acquistato da ODETTA!', arriveIn: 'Il tuo pacco arriverà in:', days: '3-5 giorni lavorativi', confirmation: 'Conferma ordine inviata alla tua email', continueShopping: 'Continua gli Acquisti', account: 'Account', logout: 'Esci', woman: 'Donna', man: 'Uomo', girl: 'Ragazza', boy: 'Ragazzo', shirts: 'Camicie', bottoms: 'Pantaloni', skirts: 'Gonne', accessories: 'Accessori', jewelry: 'Gioielleria' },
+    pt: { shop: 'Coleção de Compras', learn: 'Saiba Mais', cart: 'Seu Carrinho', empty: 'Seu carrinho está vazio', subtotal: 'Subtotal:', shipping: 'Envio:', free: 'Grátis', total: 'Total:', checkout: 'Ir para Pagamento', add: 'Adicionar ao Carrinho', outOfStock: 'Esgotado', size: 'Tamanho', age: 'Idade', color: 'Cor', signin: 'Entrar', signup: 'Registrar', createAccount: 'Criar uma conta', joinOdetta: 'Junte-se ao ODETTA e obtenha 10% de desconto no seu primeiro pedido.', email: 'Endereço de Email', password: 'Senha', create: 'Criar conta', haveAccount: 'Já tem uma conta?', noAccount: 'Não tem uma conta?', signInForm: 'Entrar', signInWelcome: 'Bem-vindo ao ODETTA', newShippingAddress: 'Endereço de Envio', enterDelivery: 'Digite seu endereço de envio', fullName: 'Nome Completo', addressLine1: 'Linha de Endereço 1', addressLine2: 'Linha de Endereço 2 (Opcional)', city: 'Cidade', postcode: 'CEP', country: 'País', nameOnCard: 'Nome no Cartão', cardNumber: 'Número do Cartão', expiry: 'Data de Validade', cvv: 'CVV', payNow: 'Pagar Agora', orderConfirmed: 'Pedido Confirmado!', thanksShop: 'Obrigado por comprar no ODETTA!', arriveIn: 'Seu pacote chegará em:', days: '3-5 dias úteis', confirmation: 'Confirmação do pedido enviada para seu email', continueShopping: 'Continuar Comprando', account: 'Conta', logout: 'Sair', woman: 'Mulher', man: 'Homem', girl: 'Menina', boy: 'Menino', shirts: 'Camisas', bottoms: 'Calças', skirts: 'Saias', accessories: 'Acessórios', jewelry: 'Joias' },
+    ja: { shop: 'ショップコレクション', learn: '詳しく知る', cart: 'あなたのカート', empty: 'カートは空です', subtotal: '小計:', shipping: '配送:', free: '無料', total: '合計:', checkout: 'チェックアウトに進む', add: 'カートに追加', outOfStock: '在庫切れ', size: 'サイズ', age: '年齢', color: '色', signin: 'ログイン', signup: '登録', createAccount: 'アカウントを作成', joinOdetta: 'ODETTAに参加して、初回注文で10%割引を受けましょう。', email: 'メールアドレス', password: 'パスワード', create: 'アカウント作成', haveAccount: 'すでにアカウントをお持ちですか?', noAccount: 'アカウントをお持ちでないですか?', signInForm: 'ログイン', signInWelcome: 'ODETTAへようこそ', newShippingAddress: '配送先住所', enterDelivery: '配送先住所を入力', fullName: 'フルネーム', addressLine1: '住所1', addressLine2: '住所2(オプション)', city: '都市', postcode: '郵便番号', country: '国', nameOnCard: 'カード名義人', cardNumber: 'カード番号', expiry: '有効期限', cvv: 'CVV', payNow: '今すぐ支払う', orderConfirmed: 'ご注文ありがとうございました!', thanksShop: 'ODETTAでのご購入ありがとうございます!', arriveIn: 'お荷物は以下の期間でお届けします:', days: '3-5営業日', confirmation: '注文確認がメールに送信されました', continueShopping: '買い物を続ける', account: 'アカウント', logout: 'ログアウト', woman: '女性', man: '男性', girl: '女の子', boy: '男の子', shirts: 'シャツ', bottoms: 'ボトムス', skirts: 'スカート', accessories: 'アクセサリー', jewelry: 'ジュエリー' },
+    zh: { shop: '购物系列', learn: '了解更多', cart: '您的购物车', empty: '您的购物车是空的', subtotal: '小计:', shipping: '运费:', free: '免费', total: '总计:', checkout: '结账', add: '加入购物车', outOfStock: '缺货', size: '尺寸', age: '年龄', color: '颜色', signin: '登录', signup: '注册', createAccount: '创建账户', joinOdetta: '加入ODETTA，首次订单享受10%折扣。', email: '电子邮箱', password: '密码', create: '创建账户', haveAccount: '已有账户?', noAccount: '没有账户?', signInForm: '登录', signInWelcome: '欢迎来到ODETTA', newShippingAddress: '收货地址', enterDelivery: '输入您的收货地址', fullName: '全名', addressLine1: '地址1', addressLine2: '地址2(可选)', city: '城市', postcode: '邮编', country: '国家', nameOnCard: '卡片名称', cardNumber: '卡号', expiry: '有效期', cvv: 'CVV', payNow: '立即支付', orderConfirmed: '订单已确认!', thanksShop: '感谢您在ODETTA购物!', arriveIn: '您的包裹将在以下时间送达:', days: '3-5个工作日', confirmation: '订单确认已发送至您的邮箱', continueShopping: '继续购物', account: '账户', logout: '登出', woman: '女性', man: '男性', girl: '女孩', boy: '男孩', shirts: '衬衫', bottoms: '下装', skirts: '裙子', accessories: '配饰', jewelry: '珠宝' },
+    ar: { shop: 'مجموعة التسوق', learn: 'تعرف على المزيد', cart: 'سلتك', empty: 'سلتك فارغة', subtotal: 'المجموع الجزئي:', shipping: 'الشحن:', free: 'مجاني', total: 'الإجمالي:', checkout: 'متابعة الدفع', add: 'أضف إلى السلة', outOfStock: 'نفد المخزون', size: 'الحجم', age: 'العمر', color: 'اللون', signin: 'تسجيل الدخول', signup: 'إنشاء حساب', createAccount: 'إنشاء حساب', joinOdetta: 'انضم إلى ODETTA واحصل على خصم 10% على طلبك الأول.', email: 'عنوان البريد الإلكتروني', password: 'كلمة المرور', create: 'إنشاء حساب', haveAccount: 'هل لديك حساب بالفعل?', noAccount: 'ليس لديك حساب?', signInForm: 'تسجيل الدخول', signInWelcome: 'مرحبا بك في ODETTA', newShippingAddress: 'عنوان الشحن', enterDelivery: 'أدخل عنوان التسليم', fullName: 'الاسم الكامل', addressLine1: 'سطر العنوان 1', addressLine2: 'سطر العنوان 2 (اختياري)', city: 'المدينة', postcode: 'الرمز البريدي', country: 'الدولة', nameOnCard: 'الاسم على البطاقة', cardNumber: 'رقم البطاقة', expiry: 'تاريخ انتهاء الصلاحية', cvv: 'CVV', payNow: 'ادفع الآن', orderConfirmed: 'تم تأكيد الطلب!', thanksShop: 'شكرا لك على التسوق في ODETTA!', arriveIn: 'سيصل طردك في:', days: '3-5 أيام عمل', confirmation: 'تم إرسال تأكيد الطلب إلى بريدك الإلكتروني', continueShopping: 'متابعة التسوق', account: 'الحساب', logout: 'تسجيل الخروج', woman: 'امرأة', man: 'رجل', girl: 'فتاة', boy: 'صبي', shirts: 'القمصان', bottoms: 'السراويل', skirts: 'التنانير', accessories: 'الملحقات', jewelry: 'المجوهرات' },
+    hi: { shop: 'शॉपिंग संग्रह', learn: 'और जानें', cart: 'आपकी कार्ट', empty: 'आपकी कार्ट खाली है', subtotal: 'उप-कुल:', shipping: 'शिपिंग:', free: 'मुक्त', total: 'कुल:', checkout: 'चेकआउट के लिए आगे बढ़ें', add: 'कार्ट में जोड़ें', outOfStock: 'स्टॉक से बाहर', size: 'आकार', age: 'आयु', color: 'रंग', signin: 'साइन इन करें', signup: 'साइन अप करें', createAccount: 'खाता बनाएं', joinOdetta: 'ODETTA में शामिल हों और अपने पहले ऑर्डर पर 10% छूट पाएं।', email: 'ईमेल पता', password: 'पासवर्ड', create: 'खाता बनाएं', haveAccount: 'पहले से खाता है?', noAccount: 'खाता नहीं है?', signInForm: 'साइन इन करें', signInWelcome: 'ODETTA में आपका स्वागत है', newShippingAddress: 'शिपिंग पता', enterDelivery: 'अपना डिलीवरी पता दर्ज करें', fullName: 'पूरा नाम', addressLine1: 'पता पंक्ति 1', addressLine2: 'पता पंक्ति 2 (वैकल्पिक)', city: 'शहर', postcode: 'डाक कोड', country: 'देश', nameOnCard: 'कार्ड पर नाम', cardNumber: 'कार्ड नंबर', expiry: 'समाप्ति तारीख', cvv: 'CVV', payNow: 'अभी भुगतान करें', orderConfirmed: 'ऑर्डर की पुष्टि!', thanksShop: 'ODETTA पर खरीदारी के लिए धन्यवाद!', arriveIn: 'आपका पैकेज आ जाएगा:', days: '3-5 कार्य दिवस', confirmation: 'ऑर्डर की पुष्टि आपके ईमेल पर भेजी गई है', continueShopping: 'खरीदारी जारी रखें', account: 'खाता', logout: 'लॉग आउट', woman: 'महिला', man: 'आदमी', girl: 'लड़की', boy: 'लड़का', shirts: 'शर्ट्स', bottoms: 'पैंट', skirts: 'स्कर्ट', accessories: 'सामान', jewelry: 'गहने' },
+    ru: { shop: 'Коллекция Покупок', learn: 'Узнать Больше', cart: 'Ваша Корзина', empty: 'Ваша корзина пуста', subtotal: 'Сумма:', shipping: 'Доставка:', free: 'Бесплатно', total: 'Итого:', checkout: 'Оформить Заказ', add: 'Добавить в Корзину', outOfStock: 'Нет в Наличии', size: 'Размер', age: 'Возраст', color: 'Цвет', signin: 'Войти', signup: 'Зарегистрироваться', createAccount: 'Создать Аккаунт', joinOdetta: 'Присоединитесь к ODETTA и получите 10% скидку на первый заказ.', email: 'Email', password: 'Пароль', create: 'Создать Аккаунт', haveAccount: 'Уже есть аккаунт?', noAccount: 'Нет аккаунта?', signInForm: 'Войти', signInWelcome: 'Добро пожаловать в ODETTA', newShippingAddress: 'Адрес Доставки', enterDelivery: 'Введите адрес доставки', fullName: 'Полное Имя', addressLine1: 'Адрес 1', addressLine2: 'Адрес 2 (Опционально)', city: 'Город', postcode: 'Почтовый Код', country: 'Страна', nameOnCard: 'Имя на Карте', cardNumber: 'Номер Карты', expiry: 'Срок Действия', cvv: 'CVV', payNow: 'Оплатить Сейчас', orderConfirmed: 'Заказ Подтвержден!', thanksShop: 'Спасибо за покупку в ODETTA!', arriveIn: 'Ваша посылка прибудет:', days: '3-5 рабочих дней', confirmation: 'Подтверждение заказа отправлено на вашу почту', continueShopping: 'Продолжить Покупки', account: 'Аккаунт', logout: 'Выход', woman: 'Женщина', man: 'Мужчина', girl: 'Девочка', boy: 'Мальчик', shirts: 'Рубашки', bottoms: 'Брюки', skirts: 'Юбки', accessories: 'Аксессуары', jewelry: 'Украшения' },
+    ko: { shop: '쇼핑 컬렉션', learn: '더 알아보기', cart: '장바구니', empty: '장바구니가 비어있습니다', subtotal: '소계:', shipping: '배송:', free: '무료', total: '합계:', checkout: '결제하기', add: '장바구니에 추가', outOfStock: '품절', size: '사이즈', age: '나이', color: '색상', signin: '로그인', signup: '가입', createAccount: '계정 만들기', joinOdetta: 'ODETTA에 가입하고 첫 주문에서 10% 할인을 받으세요.', email: '이메일 주소', password: '비밀번호', create: '계정 만들기', haveAccount: '이미 계정이 있으신가요?', noAccount: '계정이 없으신가요?', signInForm: '로그인', signInWelcome: 'ODETTA에 오신 것을 환영합니다', newShippingAddress: '배송 주소', enterDelivery: '배송 주소를 입력하세요', fullName: '이름', addressLine1: '주소 1', addressLine2: '주소 2 (선택 사항)', city: '도시', postcode: '우편번호', country: '국가', nameOnCard: '카드 이름', cardNumber: '카드 번호', expiry: '만료 날짜', cvv: 'CVV', payNow: '지금 결제', orderConfirmed: '주문 확인됨!', thanksShop: 'ODETTA에서 쇼핑해주셔서 감사합니다!', arriveIn: '패키지 배송:', days: '3-5 업무일', confirmation: '주문 확인이 이메일로 전송되었습니다', continueShopping: '쇼핑 계속', account: '계정', logout: '로그아웃', woman: '여성', man: '남성', girl: '소녀', boy: '소년', shirts: '셔츠', bottoms: '하의', skirts: '스커트', accessories: '액세서리', jewelry: '주얼리' },
+    tl: { shop: 'Koleksyon ng Shopping', learn: 'Matuto Pa', cart: 'Iyong Cart', empty: 'Ang iyong cart ay walang laman', subtotal: 'Subtotal:', shipping: 'Shipping:', free: 'Libre', total: 'Kabuuan:', checkout: 'Magpatuloy sa Pagbili', add: 'Idagdag sa Cart', outOfStock: 'Wala na', size: 'Laki', age: 'Edad', color: 'Kulay', signin: 'Mag-sign In', signup: 'Mag-sign Up', createAccount: 'Lumikha ng Account', joinOdetta: 'Sumali sa ODETTA at makatanggap ng 10% diskwento sa iyong unang order.', email: 'Email Address', password: 'Password', create: 'Lumikha ng Account', haveAccount: 'Mayroon ka nang account?', noAccount: 'Walang account?', signInForm: 'Mag-sign In', signInWelcome: 'Maligayang pagdating sa ODETTA', newShippingAddress: 'Shipping Address', enterDelivery: 'Ipasok ang iyong shipping address', fullName: 'Buong Pangalan', addressLine1: 'Address Line 1', addressLine2: 'Address Line 2 (Opsyonal)', city: 'Siyudad', postcode: 'Postal Code', country: 'Bansa', nameOnCard: 'Pangalan sa Kard', cardNumber: 'Card Number', expiry: 'Expiry Date', cvv: 'CVV', payNow: 'Bayaran Na', orderConfirmed: 'Order Confirmed!', thanksShop: 'Salamat sa pagbili sa ODETTA!', arriveIn: 'Ang iyong package ay darating sa:', days: '3-5 Business Days', confirmation: 'Order confirmation na ipinadala sa iyong email', continueShopping: 'Magpatuloy na Mamili', account: 'Account', logout: 'Mag-logout', woman: 'Babae', man: 'Lalaki', girl: 'Batang Babae', boy: 'Batang Lalaki', shirts: 'Mga Damit', bottoms: 'Mga Pantalon', skirts: 'Mga Saya', accessories: 'Mga Accessories', jewelry: 'Alahas' },
+    yo: { shop: 'Àkójọ Ìtàjà', learn: 'Mọ Ẹkó Síi', cart: 'Àkójọ Rẹ', empty: 'Àkójọ rẹ tupu', subtotal: 'Àpapọ:', shipping: 'Iṣiṣẹ', free: 'Ọfẹ', total: 'Apapọ Gbogbo:', checkout: 'Tẹle Sipa', add: 'Fi sii Àkójọ', outOfStock: 'Kò sí', size: 'Iwọn', age: 'Ọjọ́ Àbímọ', color: 'Ina', signin: 'Wọlé', signup: 'Forifikeshon', createAccount: 'Ṣẹda Akáùnt', joinOdetta: 'Darapọ ODETTA ki o gba ìdinku 10% lori oniṣẹ akọkọ rẹ.', email: 'Adirẹṣi Imeeli', password: 'Ọ̀rọ̀ Asisẹ', create: 'Ṣẹda Akáùnt', haveAccount: 'Ṣé o ní akáùnt tẹlẹ?', noAccount: 'Ṣé o kò ní akáùnt?', signInForm: 'Wọlé', signInWelcome: 'Ẹ kin wẹlkọmu si ODETTA', newShippingAddress: 'Adirẹṣi Jiẹji', enterDelivery: 'Tẹ adirẹṣi jiẹji rẹ', fullName: 'Orúkọ Ṣíṣẹ', addressLine1: 'Adirẹṣi 1', addressLine2: 'Adirẹṣi 2 (Ẹlọnii)', city: 'Ilu', postcode: 'Koodu Jiẹji', country: 'Omi', nameOnCard: 'Orúkọ Lori Kadi', cardNumber: 'Nomba Kadi', expiry: 'Ọjọ Igbagbe', cvv: 'CVV', payNow: 'Sanwo Eyi Akoko', orderConfirmed: 'Oniṣẹ Delẹ!', thanksShop: 'Ẹ ṣeun fun rira ni ODETTA!', arriveIn: 'Ohun rẹ yoo de:', days: '3-5 Ọjọ Iṣẹ', confirmation: 'Ìranlọwọ oniṣẹ ti firanṣẹ si imeeli rẹ', continueShopping: 'Tẹle Rira', account: 'Akáùnt', logout: 'Jade', woman: 'Obinrin', man: 'Okunrin', girl: 'Ọmọ Obinrin', boy: 'Ọmọ Okunrin', shirts: 'Awọ Aṣọ', bottoms: 'Irun Isalẹ', skirts: 'Awọ Ete', accessories: 'Awọ Ohun Ina', jewelry: 'Awọ Iyalode' },
+    ha: { shop: 'Jerin Saya', learn: 'Sannu Carida', cart: 'Kayyokanki', empty: 'Kayyokanki babbar', subtotal: 'Jami\'i:',  shipping: 'Turi', free: 'Kyauta', total: 'Jami\'i Duka:', checkout: 'Ci Gida', add: 'Kada da Kayyoka', outOfStock: 'Babu', size: 'Girma', age: 'Shekara', color: 'Launi', signin: 'Shiga', signup: 'Zama Memba', createAccount: 'Ƙirƙiro Akant', joinOdetta: 'Shiga ODETTA kuma karbi rabbar 10% akan kashia farko.',  email: 'Adireshi Allurar Sadarwa', password: 'Kalmar Siri', create: 'Ƙirƙiro Akant', haveAccount: 'Shin ka da akant?', noAccount: 'Shin ba ka da akant?', signInForm: 'Shiga', signInWelcome: 'Sannu zu ODETTA', newShippingAddress: 'Adireshi Turi', enterDelivery: 'Saka adireshi turi',  fullName: 'Cikakken Suna', addressLine1: 'Adireshi 1', addressLine2: 'Adireshi 2 (Sako)',  city: 'Gari', postcode: 'Lamba Turi', country: 'Kasa', nameOnCard: 'Suna A Kadi', cardNumber: 'Lamba Kadi', expiry: 'Lokacin Karewa', cvv: 'CVV',  payNow: 'Biya Yanzu', orderConfirmed: 'Kashia an Yarda!', thanksShop: 'Na gode muka saya a ODETTA!', arriveIn: 'Kayan ki za tashi:', days: '3-5 Ayyukan Rana', confirmation: 'Tabbataccen kashia an aika ga adireshin karatun sadarwa',  continueShopping: 'Ci gida Saya', account: 'Akant', logout: 'Fita', woman: 'Mace', man: 'Namiji', girl: 'Yarinya', boy: 'Yaro', shirts: 'Awaye',  bottoms: 'Waje', skirts: 'Jebiyar Mace', accessories: 'Ƴan Aiki', jewelry: 'Magani' },
+    ig: { shop: 'Ncheta Ire Nri', learn: 'Matu Ikarị', cart: 'Akpa Gị', empty: 'Akpa Gị tupu', subtotal: 'Ncheta:',  shipping: 'Ibupu', free: 'Edo Mma', total: 'Ncheta Nile:', checkout: 'Ga Aka Mma', add: 'Tinye na Akpa', outOfStock: 'Enweghị', size: 'Nnukwu', age: 'Afọ',  color: 'Agba', signin: 'Banye', signup: 'Tozuo Akaụntụ', createAccount: 'Kee Akaụntụ', joinOdetta: 'Sochapụ ODETTA ma nweta 10% mbelata na ọrụ mbu gị.', email: 'Adiresi Ozi Ntanetị', password: 'Asụsụ Nzuzo', create: 'Kee Akaụntụ', haveAccount: 'Ị nwere akaụntụ?', noAccount: 'Ị nweghị akaụntụ?', signInForm: 'Banye', signInWelcome: 'Nnọọ na ODETTA', newShippingAddress: 'Adiresi Ibupu', enterDelivery: 'Tinye adiresi ibupu gị', fullName: 'Aha Zuru Ezu', addressLine1: 'Adiresi 1', addressLine2: 'Adiresi 2 (Ọzọ)', city: 'Obodo', postcode: 'Ọgba Ibupu', country: 'Mba', nameOnCard: 'Aha Na Kadi', cardNumber: 'Namba Kadi', expiry: 'Oge Ngwụ', cvv: 'CVV', payNow: 'Kwụọ Ọtụtụ', orderConfirmed: 'Ọrụ Kwadoro!', thanksShop: 'Daalụ maka ire n\'ODETTA!', arriveIn: 'Ihe gị ga-abido:', days: '3-5 Ụbọchị Ọrụ', confirmation: 'Itutu ọrụ ezigbo ibupu na ozi ntanetị', continueShopping: 'Ga ire ozọ', account: 'Akaụntụ', logout: 'Pụta', woman: 'Nwanyị', man: 'Nwoke', girl: 'Ntakịrị Nwanyị', boy: 'Ntakịrị Nwoke', shirts: 'Akwa Elu', bottoms: 'Akwa Ala', skirts: 'Ákwà Nwanyị', accessories: 'Ihe Eze', jewelry: 'Aka Mma' },
+    sw: { shop: 'Mkutano wa Ununuzi', learn: 'Jifunze Zaidi', cart: 'Kasha Yako', empty: 'Kasha yako ni tupu', subtotal: 'Jumla:', shipping: 'Usambazaji', free: 'Bure', total: 'Jumla Jumla:', checkout: 'Nenda Kulipia', add: 'Ongeza kwenye Kasha', outOfStock: 'Hakuna', size: 'Ukubwa', age: 'Umri', color: 'Rangi', signin: 'Ingia', signup: 'Jisajili', createAccount: 'Fungua Akaunti', joinOdetta: 'Jiunge na ODETTA na upate punguzo la 10% kwenye agizo lako la kwanza.', email: 'Anwani ya Barua Pepe', password: 'Nenosiri', create: 'Fungua Akaunti', haveAccount: 'Je, una akaunti tayari?', noAccount: 'Je, huna akaunti?', signInForm: 'Ingia', signInWelcome: 'Karibu sana kwenye ODETTA', newShippingAddress: 'Anwani ya Usambazaji', enterDelivery: 'Ingiza anwani yako ya usambazaji', fullName: 'Jina Kamili', addressLine1: 'Anwani 1', addressLine2: 'Anwani 2 (Hiyari)', city: 'Jiji', postcode: 'Namba ya Usambazaji', country: 'Nchi', nameOnCard: 'Jina Kwenye Kadi', cardNumber: 'Namba ya Kadi', expiry: 'Tarehe ya Mwisho', cvv: 'CVV', payNow: 'Lipia Sasa', orderConfirmed: 'Agizo Limethibitishwa!', thanksShop: 'Asante kwa kununua kwenye ODETTA!', arriveIn: 'Kile kitu chako kitakuja:', days: '3-5 Siku za Kazi', confirmation: 'Uthibitisho wa agizo umesomwa kwenye barua yako pepe', continueShopping: 'Endelea Kununua', account: 'Akaunti', logout: 'Toka', woman: 'Mwanamke', man: 'Mwanaume', girl: 'Msichana', boy: 'Mvulana', shirts: 'Viatu Juu', bottoms: 'Viatu Chini', skirts: 'Sketi', accessories: 'Vipengee', jewelry: 'Yenye Thamani' }
+  };
+
+  const translateUI = (lang) => {
+    const t = translations[lang] || translations.en;
+    document.getElementById('shopBtn').textContent = t.shop;
+    document.getElementById('learnBtn').textContent = t.learn;
+    document.getElementById('cartToggle').innerHTML = `🛒 <span id="cartCount" class="cart-count">${document.getElementById('cartCount').textContent}</span>`;
+    document.getElementById('signInBtn').textContent = t.signin;
+    document.getElementById('signUpBtn').textContent = t.signup;
+    document.getElementById('checkoutBtn').textContent = t.checkout;
+    document.getElementById('closeCart').parentElement.querySelector('h2').textContent = t.cart;
+    document.querySelectorAll('.category-nav .nav-item').forEach(el => {
+      const current = el.textContent.trim().split('\n')[0];
+      const langMap = { 'Woman': t.woman, 'Man': t.man, 'Girl': t.girl, 'Boy': t.boy };
+      for (let key in langMap) {
+        if (current.includes(key)) el.textContent = langMap[key];
+      }
+    });
+    renderProducts();
+  };
+
+  currencyBtn.addEventListener('click', () => {
+    currencyDropdown.classList.toggle('open');
+    languageDropdown.classList.remove('open');
+  });
+
+  document.querySelectorAll('#languageDropdown .dropdown-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      currentLanguage = e.target.dataset.lang;
+      languageBtn.textContent = `🌐 ${e.target.textContent.split('(')[0].trim()}`;
+      languageDropdown.classList.remove('open');
+      translateUI(currentLanguage);
+    });
+  });
+
+  document.querySelectorAll('#currencyDropdown .dropdown-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      currentCurrency = e.target.dataset.currency;
+      currencyBtn.textContent = `💱 ${currentCurrency}`;
+      currencyDropdown.classList.remove('open');
+      renderProducts();
+      updateCartUI();
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.language-currency-selectors') && !e.target.closest('#currencyBtn')) {
+      languageDropdown.classList.remove('open');
+      currencyDropdown.classList.remove('open');
+    }
+  });
+
+  document.querySelectorAll('.category-nav .nav-item')[0].classList.add('active');
+  renderProducts();
+  updateCartUI();
+  updateAuthUI();
+</script>
+
+</body>
+</html>
