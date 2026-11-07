@@ -2331,14 +2331,13 @@
       if (typeof emailjs !== 'undefined') {
         await emailjs.send(
           'service_4m7ak5i',
-          'template_4anrcn9',
+          'template_gxnzz46',
           {
-            to_email: 'contact@odetta.com',
             customer_name: name,
-            order_items: email,
-            order_total: provider,
-            delivery_time: subject,
-            order_date: message
+            customer_email: email,
+            customer_provider: provider,
+            contact_subject: subject,
+            contact_message: message
           }
         );
       }
